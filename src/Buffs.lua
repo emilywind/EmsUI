@@ -28,7 +28,9 @@ local function applySkin(b)
   border:SetAllPoints(icon)
   b.border = border
 
-  b.duration:SetDrawLayer("OVERLAY")
+  if b.duration then
+    b.duration:SetDrawLayer("OVERLAY")
+  end
 
   --set button styled variable
   b.rillyClean = true
