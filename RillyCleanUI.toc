@@ -1,4 +1,4 @@
-## Interface: 100002
+## Interface: 100007
 ## Title: RillyCleanUI
 ## Notes: Simple skinnning modifications for the default interface to make it cleaner and unobtrusive.
 ## Author: Emily
