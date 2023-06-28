@@ -11,6 +11,8 @@ local function applySkin(b)
     end
   end
 
+  if not icon.SetTexCoord then return end
+
   icon:SetTexCoord(0.1,0.94,0.1,0.94)
 
   --border
