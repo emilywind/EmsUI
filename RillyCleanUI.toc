@@ -1,8 +1,8 @@
-## Interface: 100100
+## Interface: 100105
 ## Title: RillyCleanUI
 ## Notes: Simple skinnning modifications for the default interface to make it cleaner and unobtrusive.
 ## Author: Emily
-## Version: 4.0.19
+## Version: 4.0.20
 ## SavedVariables: RCUIDB
 ## Email: emlywind@gmail.com
 
