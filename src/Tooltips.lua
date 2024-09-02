@@ -30,7 +30,7 @@ end
 local CF=CreateFrame("Frame")
 CF:RegisterEvent("PLAYER_LOGIN")
 CF:SetScript("OnEvent", function(self, event)
-	if IsAddOnLoaded('TinyTooltip') or IsAddOnLoaded('TipTac') then
+	if C_AddOns.IsAddOnLoaded('TinyTooltip') or C_AddOns.IsAddOnLoaded('TipTac') then
 		return
 	end
 
@@ -130,16 +130,16 @@ CF:SetScript("OnEvent", function(self, event)
 
 	GameTooltipStatusBar:HookScript("OnValueChanged", function(self, hp)
 		local unit = "mouseover"
-	  local focus = GetMouseFocus()
+	  local focus = GetMouseFoci()
 	  if (focus and focus.unit) then
 	      unit = focus.unit
 	  end
 
-		local value = UnitHealth(unit)
-		local valueMax = UnitHealthMax(unit)
-		local percent = math.floor(value / valueMax * 100)
+		-- local value = UnitHealth(unit)
+		-- local valueMax = UnitHealthMax(unit)
+		-- local percent = math.floor(value / valueMax * 100)
 
-		TextStatusBar_UpdateTextStringWithValues(self, self.TextString, value, 0, valueMax)
+		-- TextStatusBar:UpdateTextStringWithValues(self, self.TextString, value, 0, valueMax)
 
 	  local r, g, b = getUnitHealthColor(unit)
 

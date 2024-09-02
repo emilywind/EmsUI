@@ -76,7 +76,7 @@ local function rcui_defaults()
 
   RCUIDB = copyDefaults(RCUIDBDefaults, RCUIDB)
 
-  rcui ={}
+  rcui = {}
 end
 
 local rc_catch = CreateFrame("Frame")
@@ -91,19 +91,19 @@ local makePanel = function(frameName, mainpanel, panelName)
   local panel = CreateFrame("Frame", frameName, mainpanel)
   panel.name, panel.parent = panelName, name
   panel:SetScript("OnShow", onShow)
-  InterfaceOptions_AddCategory(panel)
+  Settings:AddCategory(panel)
 end
 
 local function openRcuiConfig()
-  InterfaceOptionsFrame_OpenToCategory(rcuiPanel)
-  InterfaceOptionsFrame_OpenToCategory(rcuiPanel)
+  Settings.OpenToCategory(rcuiPanel)
+  Settings.OpenToCategory(rcuiPanel)
 end
 
 local function rcui_options()
   -- Creation of the options menu
   rcui.panel = CreateFrame( "Frame", "rcuiPanel", UIParent )
   rcui.panel.name = "RillyCleanUI";
-  InterfaceOptions_AddCategory(rcui.panel);
+  Settings:AddCategory(rcui.panel);
 
   local function newCheckbox(label, description, initialValue, onChange, relativeEl, frame)
     if ( not frame ) then
@@ -534,19 +534,6 @@ local function rcui_options()
   --   SetFriendlyNameplateSize()
   -- end)
 end
-
-GameMenuFrame.Header:Hide()
-local frame = CreateFrame("Button","UIPanelButtonTemplateTest",
-  GameMenuFrame, "UIPanelButtonTemplate")
-frame:SetHeight(20)
-frame:SetWidth(145)
-frame:SetText("|cffb07aebRC|r|cff009cffUI|r")
-frame:ClearAllPoints()
-frame:SetPoint("TOP", 0, -11)
-frame:RegisterForClicks("AnyUp")
-frame:SetScript("OnClick", function()
-	openRcuiConfig()
-end)
 
 local rc_catch = CreateFrame("Frame")
 rc_catch:RegisterEvent("PLAYER_LOGIN")

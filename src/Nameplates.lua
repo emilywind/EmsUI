@@ -49,7 +49,7 @@ RillyCleanNameplates:SetScript("OnEvent", function()
   SetCVar("nameplateOtherBottomInset", 0.1);
   SetCVar("nameplateOtherTopInset", 0.08);
 
-  if IsAddOnLoaded('TidyPlates_ThreatPlates') then
+  if C_AddOns.IsAddOnLoaded('TidyPlates_ThreatPlates') then
     return
   end
 

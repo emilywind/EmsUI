@@ -1,7 +1,3 @@
-hooksecurefunc("BonusObjectiveTrackerProgressBar_UpdateReward", function(progressBar)
-  skinProgressBar(progressBar.Bar)
-end)
-
 local function setQuestTrackerFont(textObject)
   local outline = ""
   if RCUIDB.objectivesTextOutline then
@@ -86,8 +82,11 @@ local function skinnedOnLoad(_, _, addon)
 end
 
 local function skinnedOnLogin()
-  if IsAddOnLoaded("Blizzard_ObjectiveTracker") then
+  if C_AddOns.IsAddOnLoaded("Blizzard_ObjectiveTracker") then
     skinBlizzardObjectiveTracker()
+    hooksecurefunc(BonusObjectiveTrackerProgressBar, "UpdateReward", function(progressBar)
+      skinProgressBar(progressBar.Bar)
+    end)
   else
     catchaddon:SetScript("OnEvent", skinnedOnLoad)
   end

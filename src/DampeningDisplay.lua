@@ -4,7 +4,7 @@
 local frame = CreateFrame("Frame", nil , UIParent)
 local _
 local FindAuraByName = AuraUtil.FindAuraByName
-local dampeningtext = GetSpellInfo(110310)
+local dampeningtext = C_Spell.GetSpellInfo(110310)
 
 frame:SetScript("OnEvent", function(self, event, ...) self[event](self, ...) end)
 frame:RegisterEvent("PLAYER_ENTERING_WORLD")

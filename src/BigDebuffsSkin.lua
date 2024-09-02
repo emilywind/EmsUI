@@ -2,7 +2,7 @@ RillyCleanBigDebuffs = CreateFrame("Frame", "RillyCleanBigDebuffs")
 RillyCleanBigDebuffs:RegisterEvent("PLAYER_LOGIN")
 
 RillyCleanBigDebuffs:SetScript("OnEvent", function()
-  if ( not IsAddOnLoaded('BigDebuffs') ) then return end
+  if ( not C_AddOns.IsAddOnLoaded('BigDebuffs') ) then return end
 
   -- Unit portraits
   -- hooksecurefunc(BigDebuffs, 'AttachUnitFrame', function(self, unit)

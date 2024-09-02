@@ -1,6 +1,6 @@
 local function init()
-  local dominos = IsAddOnLoaded("Dominos")
-  local bartender4 = IsAddOnLoaded("Bartender4")
+  local dominos = C_AddOns.IsAddOnLoaded("Dominos")
+  local bartender4 = C_AddOns.IsAddOnLoaded("Bartender4")
 
   -- Function to hide the talking frame
   if not dominos and not bartender4 then
@@ -30,7 +30,7 @@ local function init()
 
     -- Hide Talking Head Frame
     if RCUIDB.hideTalkingHeads then
-      if IsAddOnLoaded("Blizzard_TalkingHeadUI") then
+      if C_AddOns.IsAddOnLoaded("Blizzard_TalkingHeadUI") then
         NoTalkingHeads()
       else
         local waitFrame = CreateFrame("FRAME")
@@ -62,7 +62,7 @@ local function init()
   -- FUNCTIONS
   ---------------------------------------
 
-  if IsAddOnLoaded("Masque") and (dominos or bartender4) then
+  if C_AddOns.IsAddOnLoaded("Masque") and (dominos or bartender4) then
     return
   end
 

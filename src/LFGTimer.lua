@@ -2,8 +2,8 @@
 -- Adapted from LFG_ProposalTime --
 -----------------------------------
 function init()
-  local bigWigs = IsAddOnLoaded("BigWigs")
-  local lfgProposalTime = IsAddOnLoaded("LFG_ProposalTime")
+  local bigWigs = C_AddOns.IsAddOnLoaded("BigWigs")
+  local lfgProposalTime = C_AddOns.IsAddOnLoaded("LFG_ProposalTime")
 
   local TIMEOUT = 40
 

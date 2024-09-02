@@ -5,9 +5,9 @@ local function applySkin(b)
   local icon = b.Icon
   if consolidated then
     if select(1,UnitFactionGroup("player")) == "Alliance" then
-      icon:SetTexture(select(3,GetSpellInfo(61573)))
+      icon:SetTexture(select(3,C_Spell.GetSpellInfo(61573)))
     elseif select(1,UnitFactionGroup("player")) == "Horde" then
-      icon:SetTexture(select(3,GetSpellInfo(61574)))
+      icon:SetTexture(select(3,C_Spell.GetSpellInfo(61574)))
     end
   end
 
