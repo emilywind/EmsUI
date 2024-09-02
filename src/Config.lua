@@ -91,7 +91,8 @@ local makePanel = function(frameName, mainpanel, panelName)
   local panel = CreateFrame("Frame", frameName, mainpanel)
   panel.name, panel.parent = panelName, name
   panel:SetScript("OnShow", onShow)
-  Settings:AddCategory(panel)
+  local category = Settings.GetCategory("RillyCleanUI")
+  Settings.RegisterCanvasLayoutSubcategory(category, panel, panelName)
 end
 
 local function openRcuiConfig()
@@ -103,7 +104,9 @@ local function rcui_options()
   -- Creation of the options menu
   rcui.panel = CreateFrame( "Frame", "rcuiPanel", UIParent )
   rcui.panel.name = "RillyCleanUI";
-  Settings:AddCategory(rcui.panel);
+  local category = Settings.RegisterCanvasLayoutCategory(rcui.panel, "RillyCleanUI")
+  category.ID = "RillyCleanUI"
+  Settings.RegisterAddOnCategory(category)
 
   local function newCheckbox(label, description, initialValue, onChange, relativeEl, frame)
     if ( not frame ) then
@@ -182,7 +185,7 @@ local function rcui_options()
     return slider
   end
 
-  local version = GetAddOnMetadata("RillyCleanUI", "Version")
+  local version = C_AddOns.GetAddOnMetadata("RillyCleanUI", "Version")
 
   local rcuiTitle = rcui.panel:CreateFontString(nil, "ARTWORK", "GameFontNormalLarge")
   rcuiTitle:SetPoint("TOPLEFT", 16, -16)
