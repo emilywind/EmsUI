@@ -1,62 +1,10 @@
 local function init()
+  if not RCUIDB.skinActionBars then
+    return
+  end
+
   local dominos = C_AddOns.IsAddOnLoaded("Dominos")
   local bartender4 = C_AddOns.IsAddOnLoaded("Bartender4")
-
-  -- Function to hide the talking frame
-  if not dominos and not bartender4 then
-    local function NoTalkingHeads()
-      hooksecurefunc(TalkingHeadFrame, "Show", function(self)
-        self:Hide()
-      end)
-    end
-
-    -- Hide stance bar
-    -- if (RCUIDB.hideStanceBar and not dominos and not bartender4) then
-    --   StanceBarFrame:SetAlpha(0)
-    --   RegisterStateDriver(StanceBarFrame, "visibility", "hide")
-    -- elseif (not dominos and not bartender4) then
-    --   StanceButton1:ClearAllPoints()
-    --   local relativeButton = MultiBarBottomLeftButton1
-    --   if (not relativeButton) then
-    --     relativeButton = ActionButton1
-    --   end
-    --   StanceButton1:SetPoint("BOTTOMLEFT", relativeButton, "TOPLEFT", 0, 16)
-    --   StanceBarRight:Hide()
-    -- end
-
-    -- AlertFrame:ClearAllPoints()
-    -- AlertFrame:SetPoint("TOP", Screen, "TOP", 0, 0)
-    -- AlertFrame.SetPoint = function() end
-
-    -- Hide Talking Head Frame
-    if RCUIDB.hideTalkingHeads then
-      if C_AddOns.IsAddOnLoaded("Blizzard_TalkingHeadUI") then
-        NoTalkingHeads()
-      else
-        local waitFrame = CreateFrame("FRAME")
-        waitFrame:RegisterEvent("ADDON_LOADED")
-        waitFrame:SetScript("OnEvent", function(self, event, arg1)
-          if arg1 == "Blizzard_TalkingHeadUI" then
-            NoTalkingHeads()
-            waitFrame:UnregisterAllEvents()
-          end
-        end)
-      end
-    end
-
-    -- Clean up XP Bar/Azerite Bar appearance
-    local statusBars = {
-      "SingleBarLargeUpper",
-      "SingleBarLarge",
-      "SingleBarSmall",
-      "SingleBarSmallUpper"
-    }
-
-    -- Fix issue with Blizzard trying to call this
-    if not AchievementMicroButton_Update then
-        AchievementMicroButton_Update = function() end
-    end
-  end
 
   ---------------------------------------
   -- FUNCTIONS
@@ -80,18 +28,6 @@ local function init()
     local icon = bu.icon or bu.Icon
     local cooldown = bu.cooldown or bu.Cooldown
     local ho = _G[name .. "HotKey"]
-
-    -- remove the style background theme
-    -- style:SetTexture(nil)
-    -- hooksecurefunc(
-    --   style,
-    --   "SetTexture",
-    --   function(self, texture)
-    --     if texture then
-    --       self:SetTexture(nil)
-    --     end
-    --   end
-    -- )
 
     --icon
     styleIcon(icon, bu)
@@ -285,20 +221,6 @@ local function init()
 
   --extraactionbutton1
   styleExtraActionButton(ExtraActionButton1)
-
-  -- -- Zone Ability buttons
-  -- local function styleZoneAbilityButton(self)
-  --   local activeSpellButtons = self.SpellButtonContainer
-  --   for k,v in pairs(activeSpellButtons) do
-  --     -- print(k)
-  --   end
-  --   local abilities = C_ZoneAbility.GetActiveAbilities()
-  --   for i, ability in pairs(abilities) do
-  --     -- styleExtraActionButton(button)
-  --   end
-  -- end
-  -- hooksecurefunc(ZoneAbilityFrame, "UpdateDisplayedZoneAbilities", styleZoneAbilityButton)
-  -- -- hooksecurefunc(ZoneAbilityFrame.SpellButtonContainer, "Refresh", styleZoneAbilityButton)
 
   --dominos styling
   if dominos then

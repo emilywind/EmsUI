@@ -1,7 +1,6 @@
 -- This table defines the addon's default settings:
 local name, RCUI = ...
 RCUIDBDefaults = {
-  actionBarOffset = 40,
   disableAutoAddSpells = true, -- Whether or not to disable the automatic addition of spells to bars when changing talents and etc
   castbarOffset = 170,
   hideHotkeys = true,
@@ -10,6 +9,7 @@ RCUIDBDefaults = {
   hideStanceBar = false,
   hideTalkingHeads = true,
   arenaNumbers = false,
+  skinActionBars = false,
 
   hideAltPower = false,
   lootSpecDisplay = true, -- Display loot spec icon in the player frame
@@ -304,6 +304,17 @@ local function rcui_options()
   actionbarText:SetText("Action Bars")
   actionbarText:SetPoint("TOPLEFT", 16, -16)
 
+  local skinActionBars = newCheckbox(
+    "Skin Action Bars",
+    "Applies various skins to action bars.",
+    RCUIDB.skinActionBars,
+    function(self, value)
+      RCUIDB.skinActionBars = value
+    end,
+    actionbarText,
+    RCUI_ActionBars
+  )
+
   local hideHotkeys = newCheckbox(
     "Hide Hotkeys on Action Bars",
     "Hides keybinding text on your action bar buttons.",
@@ -311,7 +322,7 @@ local function rcui_options()
     function(self, value)
       RCUIDB.hideHotkeys = value
     end,
-    actionbarText,
+    skinActionBars,
     RCUI_ActionBars
   )
 
@@ -325,28 +336,6 @@ local function rcui_options()
     hideHotkeys,
     RCUI_ActionBars
   )
-
-  -- local hideMicroButtonsAndBags = newCheckbox(
-  --   "Hide Micro Buttons and Bags (Requires reload)",
-  --   "Hides micro buttons and bags to increase screen real-estate and cleanliness.",
-  --   RCUIDB.hideMicroButtonsAndBags,
-  --   function(self, value)
-  --     RCUIDB.hideMicroButtonsAndBags = value
-  --   end,
-  --   hideMacroText,
-  --   RCUI_ActionBars
-  -- )
-
-  -- local hideStanceBar = newCheckbox(
-  --   "Hide Stance Bar (Requires reload)",
-  --   "Hides stance bar in favour of binding stances to action bars.",
-  --   RCUIDB.hideStanceBar,
-  --   function(self, value)
-  --     RCUIDB.hideStanceBar = value
-  --   end,
-  --   hideMicroButtonsAndBags,
-  --   RCUI_ActionBars
-  -- )
 
   local disableAutoAddSpells = newCheckbox(
     "Disable Auto Adding of Spells",
