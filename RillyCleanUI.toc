@@ -20,6 +20,7 @@ src\TimerTracker.lua
 src\Buffs.lua
 src\Nameplates.lua
 src\Tooltips.lua
+src\SUI.lua
 # src\UnitFrames.lua
 # src\RaidFrames.lua
 src\Portrait.lua
