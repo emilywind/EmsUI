@@ -30,3 +30,6 @@ LSM:Register ("statusbar", "RillyClean", [[Interface\AddOns\RillyCleanUI\media\t
 
 LSM:Register ("font", "Andika", [[Interface\AddOns\RillyCleanUI\media\fonts\Andika.ttf]])
 LSM:Register ("font", "Marmelad", [[Interface\AddOns\RillyCleanUI\media\fonts\Marmelad.ttf]])
+LSM:Register ("font", "Bangers", [[Interface\AddOns\RillyCleanUI\media\fonts\Bangers-Regular.ttf]])
+LSM:Register ("font", "FiraSans", [[Interface\AddOns\RillyCleanUI\media\fonts\FiraSans.ttf]])
+LSM:Register ("font", "SourceSans3", [[Interface\AddOns\RillyCleanUI\media\fonts\SourceSans3.ttf]])
