@@ -24,6 +24,44 @@ RillyCleanUnitFrames:SetScript("OnEvent", function()
 		end
 	end
 
+  local function healthTexture(self, event)
+    if event == "PLAYER_ENTERING_WORLD" then
+        self.healthbar:SetStatusBarTexture(RILLY_CLEAN_TEXTURES.statusBar)
+        self.healthbar:GetStatusBarTexture():SetDrawLayer("BORDER")
+        self.healthbar.AnimatedLossBar:SetStatusBarTexture(RILLY_CLEAN_TEXTURES.statusBar)
+        self.healthbar.AnimatedLossBar:GetStatusBarTexture():SetDrawLayer("BORDER")
+    end
+  end
+
+  local function manaTexture(self)
+    if self and self.manabar then
+      -- Get Power Color
+      local powerColor = PowerBarColor[self.manabar.powerType]
+
+      -- Set Texture
+      self.manabar.texture:SetTexture(RILLY_CLEAN_TEXTURES.statusBar)
+
+      -- Set Power Color
+      if self.manabar.powerType == 0 then
+          self.manabar:SetStatusBarColor(0, 0.5, 1)
+      else
+          self.manabar:SetStatusBarColor(powerColor.r, powerColor.g, powerColor.b)
+      end
+    end
+  end
+
+PlayerFrame:HookScript("OnEvent", function(self, event)
+  healthTexture(self, event)
+  manaTexture(self, event)
+end)
+
+PetFrame:HookScript("OnEvent", function(self, event)
+  if event == "PLAYER_ENTERING_WORLD" then
+    self.healthbar:SetStatusBarTexture(RILLY_CLEAN_TEXTURES.statusBar)
+    self.healthbar:GetStatusBarTexture():SetDrawLayer("BORDER")
+  end
+end)
+
 	-- --------------------------------------
 	-- ---      Class colored frames      ---
 	-- --------------------------------------
