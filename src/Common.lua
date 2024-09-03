@@ -1,6 +1,6 @@
 SQUARE_TEXTURE = "Interface\\BUTTONS\\WHITE8X8"
 
-AddonDir = "Interface\\AddOns\\RillyCleanUI"
+AddonDir = "Interface\\AddOns\\EmsUI"
 MediaDir = AddonDir.."\\media"
 FontsDir = MediaDir.."\\fonts"
 TextureDir = MediaDir.."\\textures"

@@ -91,7 +91,7 @@ local makePanel = function(frameName, mainpanel, panelName)
   local panel = CreateFrame("Frame", frameName, mainpanel)
   panel.name, panel.parent = panelName, name
   panel:SetScript("OnShow", onShow)
-  local category = Settings.GetCategory("RillyCleanUI")
+  local category = Settings.GetCategory("EmsUI")
   Settings.RegisterCanvasLayoutSubcategory(category, panel, panelName)
 end
 
@@ -103,9 +103,9 @@ end
 local function rcui_options()
   -- Creation of the options menu
   rcui.panel = CreateFrame( "Frame", "rcuiPanel", UIParent )
-  rcui.panel.name = "RillyCleanUI";
-  local category = Settings.RegisterCanvasLayoutCategory(rcui.panel, "RillyCleanUI")
-  category.ID = "RillyCleanUI"
+  rcui.panel.name = "EmsUI";
+  local category = Settings.RegisterCanvasLayoutCategory(rcui.panel, "EmsUI")
+  category.ID = "EmsUI"
   Settings.RegisterAddOnCategory(category)
 
   local function newCheckbox(label, description, initialValue, onChange, relativeEl, frame)
@@ -185,11 +185,11 @@ local function rcui_options()
     return slider
   end
 
-  local version = C_AddOns.GetAddOnMetadata("RillyCleanUI", "Version")
+  local version = C_AddOns.GetAddOnMetadata("EmsUI", "Version")
 
   local rcuiTitle = rcui.panel:CreateFontString(nil, "ARTWORK", "GameFontNormalLarge")
   rcuiTitle:SetPoint("TOPLEFT", 16, -16)
-  rcuiTitle:SetText("RillyCleanUI ("..version..")")
+  rcuiTitle:SetText("Em's UI ("..version..")")
 
   local portraitSelect, portraitDropdown = newDropdown(
     "Portrait Style",
@@ -255,8 +255,8 @@ local function rcui_options()
   fontChooser:SetPoint("LEFT", customFonts, "RIGHT", 300, 0)
 
   local damageFont = newCheckbox(
-    "Use Custom Damage Font (Requires Game Restart)",
-    "Use custom damage font, ZCOOL KuaiLe. Replace font file in Addons/RillyCleanUI/fonts to customise.",
+    "Use Custom Damage Font",
+    "Use custom damage font, ZCOOL KuaiLe. Replace font file in Addons/EmsUI/fonts to customise.",
     RCUIDB.damageFont,
     function(self, value)
       RCUIDB.damageFont = value
@@ -283,17 +283,6 @@ local function rcui_options()
     end,
     objectivesTextOutline
   )
-
-  -- local hideMinimapZoneText = newCheckbox(
-  --   "Hide Minimap Zone Text",
-  --   "Hides the Zone text at the top of the Minimap.",
-  --   RCUIDB.hideMinimapZoneText,
-  --   function(self, value)
-  --     RCUIDB.hideMinimapZoneText = value
-  --     handleMinimapZoneText()
-  --   end,
-  --   damageFont
-  -- )
 
   ----------------
   -- Action Bars --
@@ -513,18 +502,11 @@ local function rcui_options()
     ReloadUI()
   end)
 
-  SLASH_rcui1 = "/rcui"
+  SLASH_emsui1 = "/emsui"
 
-  SlashCmdList["rcui"] = function()
+  SlashCmdList["emsui"] = function()
     openRcuiConfig()
   end
-
-  -- hooksecurefunc("OptionsFrame_OnHide", function(self) -- Ensure some settings are not randomly reverted when closing/saving Interface Options
-  --   local frameName = self:GetName()
-  --   if frameName ~= 'InterfaceOptionsFrame' then return end
-
-  --   SetFriendlyNameplateSize()
-  -- end)
 end
 
 local rc_catch = CreateFrame("Frame")
