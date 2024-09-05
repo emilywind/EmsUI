@@ -1,14 +1,6 @@
 function applyAuraSkin(b)
   if not b or (b and b.rillyClean) then return end
 
-  --button name
-  -- local name = b:GetName()
-  -- if (name:match("Debuff")) then
-  --   b.debuff = true
-  -- else
-  --   b.buff = true
-  -- end
-
   --icon
   local icon = b.Icon
   if consolidated then
