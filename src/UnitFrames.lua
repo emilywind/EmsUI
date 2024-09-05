@@ -62,9 +62,9 @@ RillyCleanUnitFrames:SetScript("OnEvent", function()
     end
   end)
 
-  -------------------
-  -- Target Frame
-  -------------------
+  ------------------
+  -- Target Frame --
+  ------------------
   local function targetHealthTexture(self)
     if self:IsForbidden() then return end
 
@@ -103,9 +103,9 @@ RillyCleanUnitFrames:SetScript("OnEvent", function()
       targetHealthTexture(self)
     end)
 
-  -------------------
-  -- Boss Frames
-  -------------------
+  -----------------
+  -- Boss Frames --
+  -----------------
   function SkinBossFrames(self, event)
       if self then
           if self.healthbar then
@@ -139,9 +139,9 @@ RillyCleanUnitFrames:SetScript("OnEvent", function()
       SkinBossFrames(self, event)
     end)
 
-    ----------------
-    -- Misc
-    ----------------
+    ----------
+    -- Misc --
+    ----------
     local function unitManaTexture(self)
       if self and self.powerType then
         if self.unit ~= 'player' then
@@ -181,9 +181,9 @@ RillyCleanUnitFrames:SetScript("OnEvent", function()
 
   AlternatePowerBar:HookScript("OnEvent", alternatePowerTexture)
 
-    ----------------
-    -- Class Colours
-    ----------------
+    -------------------
+    -- Class Colours --
+    -------------------
     TargetFrame.TargetFrameContent.TargetFrameContentMain.ReputationColor:Hide()
     FocusFrame.TargetFrameContent.TargetFrameContentMain.ReputationColor:Hide()
 
