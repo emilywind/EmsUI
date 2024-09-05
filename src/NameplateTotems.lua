@@ -56,6 +56,9 @@ if APILevel >= 8 then
 
         --Priest
         [101398] = { 211522, 12 }, -- Psyfiend
+
+        --Warlock
+        [135002] = { 265187, 15 }, -- Demonic Tyrant
     }
 elseif APILevel <= 2 then
     totemNpcIDs = {
