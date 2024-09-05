@@ -1,6 +1,6 @@
-----------------
--- Player
-----------------
+------------
+-- Player --
+------------
 PlayerCastingBarFrame:HookScript("OnEvent", function()
     PlayerCastingBarFrame.StandardGlow:Hide()
     PlayerCastingBarFrame.TextBorder:Hide()
@@ -17,7 +17,6 @@ PlayerCastingBarFrame:HookScript("OnEvent", function()
     PlayerCastingBarFrame.Icon:Show()
     PlayerCastingBarFrame.Icon:SetSize(20, 20)
 end)
-
 
 ----------------------
 -- Target and Focus --
@@ -53,9 +52,9 @@ end
 TargetFrameSpellBar:HookScript("OnEvent", skinCastBar)
 FocusFrameSpellBar:HookScript("OnEvent", skinCastBar)
 
----------------------
--- Timers
----------------------
+------------
+-- Timers --
+------------
 local frame = CreateFrame('Frame')
 frame:RegisterEvent('PLAYER_LOGIN')
 frame:SetScript('OnEvent', function()
