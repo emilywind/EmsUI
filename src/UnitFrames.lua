@@ -80,9 +80,9 @@ RillyCleanUnitFrames:SetScript("OnEvent", function()
       targetHealthTexture(self)
 
       -- Style Buffs & Debuffs
-      -- for aura, _ in self.auraPools:EnumerateActive() do
-      --     UpdateFrameAuras(aura)
-      -- end
+      for aura, _ in self.auraPools:EnumerateActive() do
+        applyAuraSkin(aura)
+      end
     end)
 
     hooksecurefunc(FocusFrame, "OnEvent", function(self)
@@ -90,9 +90,9 @@ RillyCleanUnitFrames:SetScript("OnEvent", function()
         targetHealthTexture(self)
 
         -- Style Buffs & Debuffs
-        -- for aura, _ in self.auraPools:EnumerateActive() do
-        --     UpdateFrameAuras(aura)
-        -- end
+        for aura, _ in self.auraPools:EnumerateActive() do
+            applyAuraSkin(aura)
+        end
     end)
 
     hooksecurefunc(TargetFrameToT, "Update", function(self)

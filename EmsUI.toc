@@ -20,6 +20,7 @@ src\Actionbars.lua
 src\Castbars.lua
 src\TimerTracker.lua
 src\Buffs.lua
+src\Auras.lua
 src\Nameplates.lua
 src\NameplateTotems.lua
 src\Tooltips.lua
