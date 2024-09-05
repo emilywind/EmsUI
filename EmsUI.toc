@@ -17,13 +17,17 @@ src\Common.lua
 src\Config.lua
 src\Fonts.lua
 src\Actionbars.lua
+src\Castbars.lua
 src\TimerTracker.lua
 src\Buffs.lua
 src\Nameplates.lua
 src\NameplateTotems.lua
 src\Tooltips.lua
 src\LootSpecDisplay.lua
+src\UnitFrames.lua
+src\DarkenUnitFrames.lua
 src\Portrait.lua
+src\RaidFrames.lua
 src\EasyDelete.lua
 src\LFGTimer.lua
 src\AutoKeystone.lua
