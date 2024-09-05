@@ -1,6 +1,6 @@
 -- This table defines the addon's default settings:
-local name, RCUI = ...
-RCUIDBDefaults = {
+local name, EUI = ...
+EUIDBDefaults = {
   hideHotkeys = true,
   hideMacroText = true,
   hideMicroButtonsAndBags = true,
@@ -65,7 +65,7 @@ local function rcui_defaults()
   -- Copy the values from the defaults table into the saved variables table
   -- if it exists, and assign the result to the saved variable:
 
-  RCUIDB = copyDefaults(RCUIDBDefaults, RCUIDB)
+  EUIDB =EopyDefaults(EUIDBDefaults, EUIDB)
 
   rcui = {}
 end
@@ -156,21 +156,21 @@ local function rcui_options()
   local function newSlider(frameName, label, configVar, min, max, relativeEl, frame, onChanged)
     local slider = CreateFrame("Slider", frameName, frame, "OptionsSliderTemplate")
     slider:SetMinMaxValues(min, max)
-    slider:SetValue(RCUIDB[configVar])
+    slider:SetValue(EUIDB[configVar])
     slider:SetValueStep(1)
     slider:SetWidth(110)
     local textFrame = (frameName .. 'Text')
     slider:SetScript("OnValueChanged", function(_, v)
       v = floor(v)
       _G[textFrame]:SetFormattedText(label, v)
-      RCUIDB[configVar] = v
+      EUIDB[configVar] = v
       if onChanged ~= nil and type(onChanged) == "function" then
         onChanged(v)
       end
     end)
     _G[(frameName .. 'Low')]:SetText(min)
     _G[(frameName .. 'High')]:SetText(max)
-    _G[textFrame]:SetFormattedText(label, RCUIDB[configVar])
+    _G[textFrame]:SetFormattedText(label, EUIDB[configVar])
     slider:SetPoint("TOPLEFT", relativeEl, "BOTTOMLEFT", 0, -24)
 
     return slider
@@ -185,10 +185,10 @@ local function rcui_options()
   local portraitSelect, portraitDropdown = newDropdown(
     "Portrait Style",
     {["3D"] = "3D", ["class"] = "Class", ["default"] = "Default"},
-    RCUIDB.portraitStyle,
+    EUIDB.portraitStyle,
     50,
     function(value)
-      RCUIDB.portraitStyle = value
+      EUIDB.portraitStyle = value
     end
   )
   portraitSelect:SetPoint("TOPLEFT", rcuiTitle, "BOTTOMLEFT", 0, -16)
@@ -196,10 +196,10 @@ local function rcui_options()
   local tooltipAnchor = newDropdown(
     "Tooltip Cursor Anchor",
     {["ANCHOR_CURSOR_LEFT"] = "Bottom Right", ["ANCHOR_CURSOR_RIGHT"] = "Bottom Left", ['DEFAULT'] = 'Disabled'},
-    RCUIDB.tooltipAnchor,
+    EUIDB.tooltipAnchor,
     100,
     function(value)
-      RCUIDB.tooltipAnchor = value
+      EUIDB.tooltipAnchor = value
     end
   )
   tooltipAnchor:SetPoint("LEFT", portraitSelect, "RIGHT", 200, 0)
@@ -207,9 +207,9 @@ local function rcui_options()
   local lootSpecDisplay = newCheckbox(
     "Display Loot Spec Indicator",
     "Display loot spec icon in your player portrait.",
-    RCUIDB.lootSpecDisplay,
+    EUIDB.lootSpecDisplay,
     function(self, value)
-      RCUIDB.lootSpecDisplay = value
+      EUIDB.lootSpecDisplay = value
     end,
     portraitDropdown
   )
@@ -217,9 +217,9 @@ local function rcui_options()
   local hideAltPower = newCheckbox(
     "Hide Alt Power (Requires reload)",
     "Hides alt power bars on character frame such as combo points or holy power to clean it up, when preferring WeakAura or etc.",
-    RCUIDB.hideAltPower,
+    EUIDB.hideAltPower,
     function(self, value)
-      RCUIDB.hideAltPower = value
+      EUIDB.hideAltPower = value
     end,
     lootSpecDisplay
   )
@@ -227,9 +227,9 @@ local function rcui_options()
   local customFonts = newCheckbox(
     "Use Custom Fonts (Requires Reload)",
     "Use custom fonts with support for Cyrillic and other character sets",
-    RCUIDB.customFonts,
+    EUIDB.customFonts,
     function(self, value)
-      RCUIDB.customFonts = value
+      EUIDB.customFonts = value
     end,
     hideAltPower
   )
@@ -237,10 +237,10 @@ local function rcui_options()
   local fontChooser = newDropdown(
     "Font",
     tableToWowDropdown(RILLY_CLEAN_FONTS),
-    RCUIDB.font,
+    EUIDB.font,
     100,
     function(value)
-      RCUIDB.font = value
+      EUIDB.font = value
     end
   )
   fontChooser:SetPoint("LEFT", customFonts, "RIGHT", 300, 0)
@@ -248,9 +248,9 @@ local function rcui_options()
   local damageFont = newCheckbox(
     "Use Custom Damage Font",
     "Use custom damage font, ZCOOL KuaiLe. Replace font file in Addons/EmsUI/fonts to customise.",
-    RCUIDB.damageFont,
+    EUIDB.damageFont,
     function(self, value)
-      RCUIDB.damageFont = value
+      EUIDB.damageFont = value
     end,
     customFonts
   )
@@ -258,9 +258,9 @@ local function rcui_options()
   local objectivesTextOutline = newCheckbox(
     "Outline Quest Tracker Text",
     "Add an outline to Quest Tracker text",
-    RCUIDB.objectivesTextOutline,
+    EUIDB.objectivesTextOutline,
     function(self, value)
-      RCUIDB.objectivesTextOutline = value
+      EUIDB.objectivesTextOutline = value
     end,
     damageFont
   )
@@ -268,9 +268,9 @@ local function rcui_options()
   local objectivesHideHeaders = newCheckbox(
     "Hide Quest Tracker Header Backgrounds",
     "Simplify visual appearance of the Quest Tracker by hiding header art.",
-    RCUIDB.objectivesHideHeaders,
+    EUIDB.objectivesHideHeaders,
     function(self, value)
-      RCUIDB.objectivesHideHeaders = value
+      EUIDB.objectivesHideHeaders = value
     end,
     objectivesTextOutline
   )
@@ -287,9 +287,9 @@ local function rcui_options()
   local skinActionBars = newCheckbox(
     "Skin Action Bars",
     "Applies various skins to action bars.",
-    RCUIDB.skinActionBars,
+    EUIDB.skinActionBars,
     function(self, value)
-      RCUIDB.skinActionBars = value
+      EUIDB.skinActionBars = value
     end,
     actionbarText,
     RCUI_ActionBars
@@ -298,9 +298,9 @@ local function rcui_options()
   local hideHotkeys = newCheckbox(
     "Hide Hotkeys on Action Bars",
     "Hides keybinding text on your action bar buttons.",
-    RCUIDB.hideHotkeys,
+    EUIDB.hideHotkeys,
     function(self, value)
-      RCUIDB.hideHotkeys = value
+      EUIDB.hideHotkeys = value
     end,
     skinActionBars,
     RCUI_ActionBars
@@ -309,9 +309,9 @@ local function rcui_options()
   local hideMacroText = newCheckbox(
     "Hide Macro Text on Action Bars",
     "Hides macro text on your action bar buttons.",
-    RCUIDB.hideMacroText,
+    EUIDB.hideMacroText,
     function(self, value)
-      RCUIDB.hideMacroText = value
+      EUIDB.hideMacroText = value
     end,
     hideHotkeys,
     RCUI_ActionBars
@@ -320,9 +320,9 @@ local function rcui_options()
   local disableAutoAddSpells = newCheckbox(
     "Disable Auto Adding of Spells",
     "Disables automatic adding of spells to action bars when learning new spells.",
-    RCUIDB.disableAutoAddSpells,
+    EUIDB.disableAutoAddSpells,
     function(self, value)
-      RCUIDB.disableAutoAddSpells = value
+      EUIDB.disableAutoAddSpells = value
     end,
     hideMacroText,
     RCUI_ActionBars
@@ -350,12 +350,12 @@ local function rcui_options()
   local nameplateNameLength = newCheckbox(
     "Abbreviate Unit Names",
     "Abbreviate long NPC names on nameplates.",
-    RCUIDB.nameplateNameLength > 0,
+    EUIDB.nameplateNameLength > 0,
     function(self, value)
       if value == true then
-        RCUIDB.nameplateNameLength = 20
+        EUIDB.nameplateNameLength = 20
       else
-        RCUIDB.nameplateNameLength = 0
+        EUIDB.nameplateNameLength = 0
       end
     end,
     nameplateFontSlider,
@@ -365,9 +365,9 @@ local function rcui_options()
   local nameplateHideServerNames = newCheckbox(
     "Hide Server Names (Must rezone to see change).",
     "Hide server names for players from different servers to reduce clutter.",
-    RCUIDB.nameplateHideServerNames,
+    EUIDB.nameplateHideServerNames,
     function(self, value)
-      RCUIDB.nameplateHideServerNames = value
+      EUIDB.nameplateHideServerNames = value
     end,
     nameplateNameLength,
     RCUI_Nameplates
@@ -376,9 +376,9 @@ local function rcui_options()
   local nameplateFriendlyNamesClassColor = newCheckbox(
     "Class Colour Friendly Names",
     "Colours friendly players' names on their nameplates.",
-    RCUIDB.nameplateFriendlyNamesClassColor,
+    EUIDB.nameplateFriendlyNamesClassColor,
     function(self, value)
-      RCUIDB.nameplateFriendlyNamesClassColor = value
+      EUIDB.nameplateFriendlyNamesClassColor = value
     end,
     nameplateHideServerNames,
     RCUI_Nameplates
@@ -387,9 +387,9 @@ local function rcui_options()
   local nameplateFriendlySmall = newCheckbox(
     "Smaller Friendly Nameplates",
     "Reduce size of friendly nameplates to more easily distinguish friend from foe",
-    RCUIDB.nameplateFriendlySmall,
+    EUIDB.nameplateFriendlySmall,
     function(self, value)
-      RCUIDB.nameplateFriendlySmall = value
+      EUIDB.nameplateFriendlySmall = value
       SetFriendlyNameplateSize(true)
     end,
     nameplateFriendlyNamesClassColor,
@@ -399,9 +399,9 @@ local function rcui_options()
   local nameplateShowLevel = newCheckbox(
     "Show Level",
     "Show player/mob level on nameplate",
-    RCUIDB.nameplateShowLevel,
+    EUIDB.nameplateShowLevel,
     function(self, value)
-      RCUIDB.nameplateShowLevel = value
+      EUIDB.nameplateShowLevel = value
     end,
     nameplateFriendlySmall,
     RCUI_Nameplates
@@ -410,9 +410,9 @@ local function rcui_options()
   local nameplateShowHealth = newCheckbox(
     "Show Health Percentage",
     "Show percentages of health on nameplates",
-    RCUIDB.nameplateHealthPercent,
+    EUIDB.nameplateHealthPercent,
     function(self, value)
-      RCUIDB.nameplateHealthPercent = value
+      EUIDB.nameplateHealthPercent = value
     end,
     nameplateShowLevel,
     RCUI_Nameplates
@@ -421,9 +421,9 @@ local function rcui_options()
   local nameplateHideCastText = newCheckbox(
     "Hide Cast Text",
     "Hide cast text from nameplate castbars.",
-    RCUIDB.nameplateHideCastText,
+    EUIDB.nameplateHideCastText,
     function(self, value)
-      RCUIDB.nameplateHideCastText = value
+      EUIDB.nameplateHideCastText = value
     end,
     nameplateShowHealth,
     RCUI_Nameplates
@@ -441,9 +441,9 @@ local function rcui_options()
   local safeQueue = newCheckbox(
     "Safe Queue",
     "Hide Leave Queue button and show timer for Arena/RBG queues.",
-    RCUIDB.safeQueue,
+    EUIDB.safeQueue,
     function(self, value)
-      RCUIDB.safeQueue = value
+      EUIDB.safeQueue = value
     end,
     pvpText,
     RCUI_PvP
@@ -452,9 +452,9 @@ local function rcui_options()
   local dampeningDisplay = newCheckbox(
     "Dampening Display",
     "Display Dampening % under remaining time at the top of the screen in arenas.",
-    RCUIDB.dampeningDisplay,
+    EUIDB.dampeningDisplay,
     function(self, value)
-      RCUIDB.dampeningDisplay = value
+      EUIDB.dampeningDisplay = value
     end,
     safeQueue,
     RCUI_PvP
@@ -463,9 +463,9 @@ local function rcui_options()
   local tabBinder = newCheckbox(
     "Tab Binder",
     "Tab-target only between players in Arenas and BGs.",
-    RCUIDB.tabBinder,
+    EUIDB.tabBinder,
     function(self, value)
-      RCUIDB.tabBinder = value
+      EUIDB.tabBinder = value
     end,
     dampeningDisplay,
     RCUI_PvP
@@ -474,9 +474,9 @@ local function rcui_options()
   local arenaNumbers = newCheckbox(
     "Show Arena Numbers on nameplates in arenas",
     "Show Arena number (i.e. 1, 2, 3 etc) on top of nameplates in arenas instead of player names to assist with macro use awareness",
-    RCUIDB.arenaNumbers,
+    EUIDB.arenaNumbers,
     function(self, value)
-      RCUIDB.arenaNumbers = value
+      EUIDB.arenaNumbers = value
     end,
     tabBinder,
     RCUI_PvP

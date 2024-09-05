@@ -5,7 +5,7 @@ RillyCleanUnitFrames:SetScript("OnEvent", function()
 	-----------------------
 	-- Loot Spec Display --
 	-----------------------
-	if RCUIDB.lootSpecDisplay then
+	if EUIDB.lootSpecDisplay then
 		local lootSpecId = nil
 		local lootSpecName = ""
 		local lootIcon = nil

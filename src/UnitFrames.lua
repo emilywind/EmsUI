@@ -5,7 +5,7 @@ RillyCleanUnitFrames:SetScript("OnEvent", function()
 	-------------------------
 	-- Hide Alt Power bars --
 	-------------------------
-	if (RCUIDB.hideAltPower) then
+	if (EUIDB.hideAltPower) then
 		local altPowerBars = {
 			PaladinPowerBarFrame,
 			PlayerFrameAlternateManaBar,

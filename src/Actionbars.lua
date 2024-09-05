@@ -1,5 +1,5 @@
 local function init()
-  if not RCUIDB.skinActionBars then
+  if not EUIDB.skinActionBars then
     return
   end
 
@@ -36,7 +36,7 @@ local function init()
     cooldown:SetAllPoints(icon)
 
     --hotkey
-    if RCUIDB.hideHotkeys and ho then
+    if EUIDB.hideHotkeys and ho then
       ho:Hide()
     end
 
@@ -79,12 +79,12 @@ local function init()
 
     --hotkey
     ho:SetTextColor(1, 1, 1, 1)
-    if RCUIDB.hideHotkeys then
+    if EUIDB.hideHotkeys then
       ho:Hide()
     end
 
     -- Macro name
-    if (RCUIDB.hideMacroText) then
+    if (EUIDB.hideMacroText) then
       na:Hide()
     end
 
@@ -172,7 +172,7 @@ local function init()
     end
   end
 
-  if not dominos and not bartender and (RCUIDB.hideHotkeys) then
+  if not dominos and not bartender and (EUIDB.hideHotkeys) then
     local frame = CreateFrame("Frame")
     frame:RegisterEvent("UPDATE_BINDINGS")
     frame:RegisterEvent("PLAYER_LOGIN")

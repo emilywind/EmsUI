@@ -42,7 +42,7 @@ local function makeRillyCleanPortrait(frame)
 
   local unit = frame.unit
 
-  if ( RCUIDB.portraitStyle == "class" ) then -- Flat class icons
+  if ( EUIDB.portraitStyle == "class" ) then -- Flat class icons
     if ( UnitIsPlayer(unit) ) then
       local t = CLASS_ICON_TCOORDS[select(2, UnitClass(unit))]
       if t then
@@ -53,7 +53,7 @@ local function makeRillyCleanPortrait(frame)
     else
       frame.portrait:SetTexCoord(0.15, 0.85, 0.15, 0.85)
     end
-  elseif (RCUIDB.portraitStyle == "3D") then
+  elseif (EUIDB.portraitStyle == "3D") then
     if ( not frame.portraitModel ) then -- Initialize 3D Model Container
       local portrait = frame.portrait
       local portraitModel = CreateFrame("PlayerModel", nil, frame)
@@ -107,7 +107,7 @@ end
 local CF=CreateFrame("Frame")
 CF:RegisterEvent("PLAYER_LOGIN")
 CF:SetScript("OnEvent", function(self, event)
-  if (RCUIDB.portraitStyle == "default") then return end
+  if (EUIDB.portraitStyle == "default") then return end
 
   hooksecurefunc("UnitFramePortrait_Update", makeRillyCleanPortrait)
 end)

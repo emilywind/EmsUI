@@ -42,7 +42,7 @@ end
 
 SafeQueue:RegisterEvent("UPDATE_BATTLEFIELD_STATUS")
 SafeQueue:SetScript("OnEvent", function()
-	if not RCUIDB.safeQueue then return end
+	if not EUIDB.safeQueue then return end
 
 	local queued
 	for i=1, GetMaxBattlefieldID() do
@@ -64,7 +64,7 @@ SafeQueue:SetScript("OnEvent", function()
 end)
 
 SafeQueue:SetScript("OnUpdate", function(self)
-	if not RCUIDB.safeQueue then return end
+	if not EUIDB.safeQueue then return end
 
 	local timerBar = PVPReadyDialog.timerBar
 

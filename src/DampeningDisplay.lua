@@ -32,7 +32,7 @@ function frame:UNIT_AURA(unit)
 end
 
 function frame:PLAYER_ENTERING_WORLD()
-	if not RCUIDB.dampeningDisplay then return end
+	if not EUIDB.dampeningDisplay then return end
 	local _, instanceType = IsInInstance()
 	if instanceType == "arena" then
 		self:RegisterUnitEvent("UNIT_AURA", "player")

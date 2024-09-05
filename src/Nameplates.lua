@@ -5,7 +5,7 @@ RillyCleanNameplates:SetScript("OnEvent", function()
   local defaultFriendlyWidth, defaultFriendlyHeight = C_NamePlate.GetNamePlateFriendlySize()
 
   function SetFriendlyNameplateSize(isChange)
-    if RCUIDB.nameplateFriendlySmall then
+    if EUIDB.nameplateFriendlySmall then
       C_NamePlate.SetNamePlateFriendlySize((0.7 * defaultFriendlyWidth), defaultFriendlyHeight)
     elseif isChange then
       C_NamePlate.SetNamePlateFriendlySize(defaultFriendlyWidth, defaultFriendlyHeight)
@@ -32,12 +32,12 @@ RillyCleanNameplates:SetScript("OnEvent", function()
     if frame.isNameplate and not frame:IsForbidden() then
       if not frame.healthPercentage then
         frame.healthPercentage = frame.healthBar:CreateFontString(frame.healthPercentage, "OVERLAY", "GameFontNormalSmall")
-        setDefaultFont(frame.healthPercentage, RCUIDB.nameplateNameFontSize - 1)
+        setDefaultFont(frame.healthPercentage, EUIDB.nameplateNameFontSize - 1)
         frame.healthPercentage:SetTextColor( 1, 1, 1 )
         frame.healthPercentage:SetPoint("CENTER", frame.healthBar, "CENTER", 0, 0)
       end
 
-      if RCUIDB.nameplateHealthPercent and healthPercentage ~= 100 then
+      if EUIDB.nameplateHealthPercent and healthPercentage ~= 100 then
         frame.healthPercentage:SetText(healthPercentage .. '%')
       else
         frame.healthPercentage:SetText('')
@@ -67,7 +67,7 @@ RillyCleanNameplates:SetScript("OnEvent", function()
       return str
   end
 
-  if RCUIDB.modNamePlates then
+  if EUIDB.modNamePlates then
     hooksecurefunc(NamePlateDriverFrame, "AcquireUnitFrame", function(_, nameplate)
       if (nameplate.UnitFrame) then
         nameplate.UnitFrame.isNameplate = true
@@ -83,13 +83,13 @@ RillyCleanNameplates:SetScript("OnEvent", function()
 
       local castBar = frame.castBar
       if (castBar) then
-        if RCUIDB.nameplateHideCastText then
+        if EUIDB.nameplateHideCastText then
           castBar.Text:Hide()
         end
 
         if (castBar.rillyClean) then return end
 
-        setDefaultFont(castBar.Text, RCUIDB.nameplateNameFontSize - 1)
+        setDefaultFont(castBar.Text, EUIDB.nameplateNameFontSize - 1)
 
         applyRillyCleanBackdrop(castBar.Icon, castBar)
 
@@ -117,11 +117,11 @@ RillyCleanNameplates:SetScript("OnEvent", function()
       return
     end
 
-    setDefaultFont(frame.name, RCUIDB.nameplateNameFontSize)
+    setDefaultFont(frame.name, EUIDB.nameplateNameFontSize)
 
     local hasArenaNumber = false
 
-    if RCUIDB.arenaNumbers and IsActiveBattlefieldArena() and UnitIsPlayer(frame.unit) and UnitIsEnemy("player", frame.unit) then -- Check to see if unit is a player to avoid needless checks on pets
+    if EUIDB.arenaNumbers and IsActiveBattlefieldArena() and UnitIsPlayer(frame.unit) and UnitIsEnemy("player", frame.unit) then -- Check to see if unit is a player to avoid needless checks on pets
       for i = 1, 5 do
         if UnitIsUnit(frame.unit, "arena" .. i) then
           frame.name:SetText(i)
@@ -131,14 +131,14 @@ RillyCleanNameplates:SetScript("OnEvent", function()
       end
     end
 
-    if RCUIDB.nameplateFriendlyNamesClassColor and UnitIsPlayer(frame.unit) and UnitIsFriend("player", frame.displayedUnit) then
+    if EUIDB.nameplateFriendlyNamesClassColor and UnitIsPlayer(frame.unit) and UnitIsFriend("player", frame.displayedUnit) then
       local _,className = UnitClass(frame.displayedUnit)
       local classR, classG, classB = GetClassColor(className)
 
       frame.name:SetTextColor(classR, classG, classB, 1)
     end
 
-    if (RCUIDB.nameplateShowLevel) then
+    if (EUIDB.nameplateShowLevel) then
       if not frame.levelText then
         frame.levelText = frame.healthBar:CreateFontString(nil, "OVERLAY", "GameFontNormalSmall")
         local isLargeNameplates = tonumber(GetCVar("nameplateVerticalScale")) >= 2.7
@@ -174,22 +174,22 @@ RillyCleanNameplates:SetScript("OnEvent", function()
       frame.levelText:SetTextColor( c.r, c.g, c.b )
       frame.levelText:SetText(levelText .. levelSuffix)
       frame.levelText:Show()
-    elseif (not RCUIDB.nameplateShowLevel) then
+    elseif (not EUIDB.nameplateShowLevel) then
       if (frame.levelText) then
         frame.levelText:SetText('')
         frame.levelText:Hide()
       end
     end
 
-    if not hasArenaNumber and (RCUIDB.nameplateHideServerNames or RCUIDB.nameplateNameLength > 0) then
+    if not hasArenaNumber and (EUIDB.nameplateHideServerNames or EUIDB.nameplateNameLength > 0) then
       local name, realm = UnitName(frame.displayedUnit) or UNKNOWN
 
-      if not RCUIDB.nameplateHideServerNames and realm then
+      if not EUIDB.nameplateHideServerNames and realm then
         name = name.." - "..realm
       end
 
-      if RCUIDB.nameplateNameLength > 0 then
-        name = abbrev(name, RCUIDB.nameplateNameLength)
+      if EUIDB.nameplateNameLength > 0 then
+        name = abbrev(name, EUIDB.nameplateNameLength)
       end
 
       frame.name:SetText(name)

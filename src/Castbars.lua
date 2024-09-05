@@ -9,7 +9,7 @@ PlayerCastingBarFrame:HookScript("OnEvent", function()
     PlayerCastingBarFrame.TextBorder:SetAlpha(0)
     PlayerCastingBarFrame.Text:ClearAllPoints()
     PlayerCastingBarFrame.Text:SetPoint("TOP", PlayerCastingBarFrame, "TOP", 0, -1)
-    PlayerCastingBarFrame.Text:SetFont(RCUIDB.font, 12, "OUTLINE")
+    PlayerCastingBarFrame.Text:SetFont(EUIDB.font, 12, "OUTLINE")
 
     PlayerCastingBarFrame.Border:SetVertexColor(0, 0, 0)
     PlayerCastingBarFrame.Background:SetVertexColor(0, 0, 0)
@@ -60,7 +60,7 @@ frame:RegisterEvent('PLAYER_LOGIN')
 frame:SetScript('OnEvent', function()
     local format = string.format
     local max = math.max
-    local FONT = RCUIDB.font
+    local FONT = EUIDB.font
 
     if not InCombatLockdown() then
         PlayerCastingBarFrame.timer = PlayerCastingBarFrame:CreateFontString(nil)

@@ -240,7 +240,7 @@ function setDefaultFont(textObject, size, outlinestyle)
   if not size then size = currSize end
   if not outlinestyle then outlinestyle = "THINOUTLINE" end
 
-  textObject:SetFont(RCUIDB.font, size, outlinestyle)
+  textObject:SetFont(EUIDB.font, size, outlinestyle)
 end
 
 xpColors = {

@@ -24,7 +24,7 @@ local RTB_Fail, RTB_DefaultKey, RTB_LastTargetKey, RTB_TargetKey, RTB_CurrentBin
 TabBinder:SetScript(
 	"OnEvent",
 	function(self, event, ...)
-		if not RCUIDB.tabBinder then return end
+		if not EUIDB.tabBinder then return end
 
 		if event == "CHAT_MSG_SYSTEM" then
 			local RTBChatMessage = ...

@@ -6,16 +6,16 @@ end
 local RCUI=CreateFrame("Frame")
 RCUI:RegisterEvent("ADDON_LOADED")
 RCUI:SetScript("OnEvent", function(self, event)
-  if RCUIDB.damageFont then
+  if EUIDB.damageFont then
     DAMAGE_TEXT_FONT          = RILLY_CLEAN_DAMAGE_FONT
   end
 
-  if not RCUIDB.customFonts then return end
+  if not EUIDB.customFonts then return end
 
-  STANDARD_TEXT_FONT          = RCUIDB.font
-  UNIT_NAME_FONT              = RCUIDB.font
-  NAMEPLATE_FONT              = RCUIDB.font
-  NAMEPLATE_SPELLCAST_FONT    = RCUIDB.font
+  STANDARD_TEXT_FONT          = EUIDB.font
+  UNIT_NAME_FONT              = EUIDB.font
+  NAMEPLATE_FONT              = EUIDB.font
+  NAMEPLATE_SPELLCAST_FONT    = EUIDB.font
 
   local ForcedFontSize = { 10, 14, 20, 64, 64 }
 
@@ -47,7 +47,7 @@ RCUI:SetScript("OnEvent", function(self, event)
   }
 
   for i, FontObject in pairs(BlizFontObjects) do
-    updateFontObject(FontObject, RCUIDB.font, ForcedFontSize[i])
+    updateFontObject(FontObject, EUIDB.font, ForcedFontSize[i])
   end
 
   BlizFontObjects = nil

@@ -3,7 +3,7 @@
 ## Notes: Simple skinnning modifications and quality of life features for the default interface to make it cleaner looking.
 ## Author: Emily
 ## Version: 4.0.21
-## SavedVariables: RCUIDB
+## SavedVariables: EUIDB
 ## Email: emlywind@gmail.com
 
 ## OptionalDeps: LibStub, LibSharedMedia-3.0
