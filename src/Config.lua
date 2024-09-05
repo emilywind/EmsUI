@@ -7,7 +7,7 @@ EUIDBDefaults = {
   hideStanceBar = false,
   hideTalkingHeads = true,
   arenaNumbers = false,
-  skinActionBars = false,
+  skinActionBars = true,
 
   hideAltPower = false,
   lootSpecDisplay = true, -- Display loot spec icon in the player frame
