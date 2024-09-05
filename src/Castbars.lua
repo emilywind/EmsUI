@@ -1,3 +1,6 @@
+----------------
+-- Player
+----------------
 PlayerCastingBarFrame:HookScript("OnEvent", function()
     PlayerCastingBarFrame.StandardGlow:Hide()
     PlayerCastingBarFrame.TextBorder:Hide()
@@ -15,6 +18,66 @@ PlayerCastingBarFrame:HookScript("OnEvent", function()
     PlayerCastingBarFrame.Icon:SetSize(20, 20)
 end)
 
+--------------
+-- Target
+--------------
+TargetFrameSpellBar:HookScript("OnEvent", function(self)
+    if self:IsForbidden() then return end
+    if InCombatLockdown() then return end
+
+    self.Icon:SetSize(16, 16)
+    self.Icon:ClearAllPoints()
+    self.Icon:SetPoint("TOPLEFT", self, "TOPLEFT", -20, 2)
+    self.BorderShield:ClearAllPoints()
+    self.BorderShield:SetPoint("CENTER", self.Icon, "CENTER", 0, -2.5)
+    self:SetSize(150, 12)
+    self.TextBorder:ClearAllPoints()
+    self.TextBorder:SetAlpha(0)
+    self.Text:ClearAllPoints()
+    self.Text:SetPoint("TOP", self, "TOP", 0, 1.5)
+    self.Text:SetFont(STANDARD_TEXT_FONT, 11, "OUTLINE")
+    self.Border:SetVertexColor(0, 0, 0)
+    self.Background:SetVertexColor(0, 0, 0)
+
+
+    local castText = self.Text:GetText()
+    if castText ~= nil then
+        if (strlen(castText) > 19) then
+            local newCastText = strsub(castText, 0, 19)
+            self.Text:SetText(newCastText .. "...")
+        end
+    end
+end)
+
+--------------
+-- Focus
+--------------
+FocusFrameSpellBar:HookScript("OnEvent", function(self)
+    if self:IsForbidden() then return end
+    if InCombatLockdown() then return end
+
+    self.Icon:SetSize(16, 16)
+    self.Icon:ClearAllPoints()
+    self.Icon:SetPoint("TOPLEFT", FocusFrameSpellBar, "TOPLEFT", -20, 2)
+    self.BorderShield:ClearAllPoints()
+    self.BorderShield:SetPoint("CENTER", self.Icon, "CENTER", 0, -2.5)
+    self:SetSize(150, 12)
+    self.TextBorder:ClearAllPoints()
+    self.TextBorder:SetAlpha(0)
+    self.Text:ClearAllPoints()
+    self.Text:SetPoint("TOP", self, "TOP", 0, 1.5)
+    self.Text:SetFont(STANDARD_TEXT_FONT, 11, "OUTLINE")
+    self.Border:SetVertexColor(0, 0, 0)
+    self.Background:SetVertexColor(0, 0, 0)
+
+    local castText = self.Text:GetText()
+    if castText ~= nil then
+        if (strlen(castText) > 19) then
+            local newCastText = strsub(castText, 0, 19)
+            self.Text:SetText(newCastText .. "...")
+        end
+    end
+end)
 
 ---------------------
 -- Timers
