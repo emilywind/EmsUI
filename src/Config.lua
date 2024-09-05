@@ -65,7 +65,7 @@ local function rcui_defaults()
   -- Copy the values from the defaults table into the saved variables table
   -- if it exists, and assign the result to the saved variable:
 
-  EUIDB =EopyDefaults(EUIDBDefaults, EUIDB)
+  EUIDB = copyDefaults(EUIDBDefaults, EUIDB)
 
   rcui = {}
 end
