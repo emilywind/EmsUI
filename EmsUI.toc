@@ -29,6 +29,7 @@ src\UnitFrames.lua
 src\DarkenUnitFrames.lua
 src\Portrait.lua
 src\RaidFrames.lua
+src\Minimap.lua
 src\EasyDelete.lua
 src\LFGTimer.lua
 src\AutoKeystone.lua

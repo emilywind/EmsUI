@@ -95,7 +95,7 @@ local function rcui_options()
   -- Creation of the options menu
   rcui.panel = CreateFrame( "Frame", "rcuiPanel", UIParent )
   rcui.panel.name = "EmsUI";
-  local category = Settings.RegisterCanvasLayoutCategory(rcui.panel, "EmsUI")
+  local category = Settings.RegisterCanvasLayoutCategory(rcui.panel, "Em's UI")
   category.ID = "EmsUI"
   Settings.RegisterAddOnCategory(category)
 
