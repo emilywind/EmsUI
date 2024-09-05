@@ -1,8 +1,6 @@
 -- This table defines the addon's default settings:
 local name, RCUI = ...
 RCUIDBDefaults = {
-  disableAutoAddSpells = true, -- Whether or not to disable the automatic addition of spells to bars when changing talents and etc
-  castbarOffset = 170,
   hideHotkeys = true,
   hideMacroText = true,
   hideMicroButtonsAndBags = true,
@@ -13,8 +11,6 @@ RCUIDBDefaults = {
 
   hideAltPower = false,
   lootSpecDisplay = true, -- Display loot spec icon in the player frame
-  showItemLevels = true,
-  afkScreen = true,
 
   damageFont = true, -- Change damage font to something cooler
   customFonts = true, -- Update all fonts to something cooler
@@ -36,16 +32,11 @@ RCUIDBDefaults = {
   nameplateShowCastTime = true,
 
   portraitStyle = "3D", -- 3D, 2D, or class (for class icons)
-  hideMinimapZoneText = false, -- True = hide zone text, False = show zone text
 
   -- PvP Settings
   safeQueue = true,
   tabBinder = true,
   dampeningDisplay = true,
-
-  -- Quest Tracker
-  objectivesTextOutline = true,
-  objectivesHideHeaders = true,
 }
 
 local function rcui_defaults()
