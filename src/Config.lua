@@ -305,17 +305,6 @@ local function rcui_options()
     RCUI_ActionBars
   )
 
-  local disableAutoAddSpells = newCheckbox(
-    "Disable Auto Adding of Spells",
-    "Disables automatic adding of spells to action bars when learning new spells.",
-    EUIDB.disableAutoAddSpells,
-    function(self, value)
-      EUIDB.disableAutoAddSpells = value
-    end,
-    hideMacroText,
-    RCUI_ActionBars
-  )
-
   ----------------
   -- Nameplates --
   ----------------
