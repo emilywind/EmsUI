@@ -5,6 +5,7 @@ EUIDBDefaults = {
   hideMacroText = true,
   arenaNumbers = false,
   skinActionBars = true,
+  darkMinimap = false,
 
   hideAltPower = false,
   lootSpecDisplay = true, -- Display loot spec icon in the player frame
@@ -252,24 +253,14 @@ local function rcui_options()
     customFonts
   )
 
-  local objectivesTextOutline = newCheckbox(
-    "Outline Quest Tracker Text",
-    "Add an outline to Quest Tracker text",
-    EUIDB.objectivesTextOutline,
+  local darkMinimap = newCheckbox(
+    "Dark Minimap",
+    "Make the outline of the Minimap dark",
+    EUIDB.darkMinimap,
     function(self, value)
-      EUIDB.objectivesTextOutline = value
+      EUIDB.darkMinimap = value
     end,
     damageFont
-  )
-
-  local objectivesHideHeaders = newCheckbox(
-    "Hide Quest Tracker Header Backgrounds",
-    "Simplify visual appearance of the Quest Tracker by hiding header art.",
-    EUIDB.objectivesHideHeaders,
-    function(self, value)
-      EUIDB.objectivesHideHeaders = value
-    end,
-    objectivesTextOutline
   )
 
   ----------------
