@@ -4,6 +4,7 @@
 ## Author: Emily
 ## Version: 5.0.1
 ## SavedVariables: EUIDB
+## IconTexture: Interface\Addons\EmsUI\media\icons\EmsUI
 ## Email: emlywind@gmail.com
 
 ## OptionalDeps: LibStub, LibSharedMedia-3.0
