@@ -3,9 +3,6 @@ local name, EUI = ...
 EUIDBDefaults = {
   hideHotkeys = true,
   hideMacroText = true,
-  hideMicroButtonsAndBags = true,
-  hideStanceBar = false,
-  hideTalkingHeads = true,
   arenaNumbers = false,
   skinActionBars = true,
 
