@@ -30,6 +30,7 @@ EUIDBDefaults = {
   nameplateShowCastTime = true,
 
   portraitStyle = "3D", -- 3D, 2D, or class (for class icons)
+  classPortraitPack = RILLY_CLEAN_TEXTURES.classCircles,
 
   -- PvP Settings
   safeQueue = true,
@@ -191,6 +192,17 @@ local function rcui_options()
   )
   portraitSelect:SetPoint("TOPLEFT", rcuiTitle, "BOTTOMLEFT", 0, -16)
 
+  local classPortraitPack = newDropdown(
+    "Class Portrait Pack",
+    CLASS_PORTRAIT_PACKS,
+    EUIDB.classPortraitPack,
+    100,
+    function(value)
+      EUIDB.classPortraitPack = value
+    end
+  )
+  classPortraitPack:SetPoint("TOPLEFT", rcuiTitle, "BOTTOMLEFT", 100, -16)
+
   local tooltipAnchor = newDropdown(
     "Tooltip Cursor Anchor",
     {["ANCHOR_CURSOR_LEFT"] = "Bottom Right", ["ANCHOR_CURSOR_RIGHT"] = "Bottom Left", ['DEFAULT'] = 'Disabled'},
@@ -200,7 +212,7 @@ local function rcui_options()
       EUIDB.tooltipAnchor = value
     end
   )
-  tooltipAnchor:SetPoint("LEFT", portraitSelect, "RIGHT", 200, 0)
+  tooltipAnchor:SetPoint("LEFT", portraitSelect, "RIGHT", 220, 0)
 
   local lootSpecDisplay = newCheckbox(
     "Display Loot Spec Indicator",

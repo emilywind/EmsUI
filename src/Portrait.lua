@@ -44,15 +44,10 @@ local function makeRillyCleanPortrait(frame)
 
   if ( EUIDB.portraitStyle == "class" ) then -- Flat class icons
     if ( UnitIsPlayer(unit) ) then
-      local t = CLASS_ICON_TCOORDS[select(2, UnitClass(unit))]
-      if t then
-        local _, playerClass = UnitClass("player")
-        if playerClass == 'EVOKER' then
-          frame.portrait:SetTexture("Interface\\TargetingFrame\\UI-Classes-Circles")
-        else
-          frame.portrait:SetTexture(RILLY_CLEAN_TEXTURES.classCircles)
-        end
-        frame.portrait:SetTexCoord(unpack(t))
+      local _, playerClass = UnitClass(unit)
+      if playerClass then
+        frame.portrait:SetTexture(EUIDB.classPortraitPack)
+        frame.portrait:SetTexCoord(unpack(FABLED_CLASS_CIRCLES_DATA.class[playerClass].texCoords))
         makePortraitBG(frame,0.05,0.05,0.05)
       end
     else

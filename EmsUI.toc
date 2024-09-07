@@ -2,7 +2,7 @@
 ## Title: EmsUI
 ## Notes: Simple skinnning modifications and quality of life features for the default interface to make it cleaner looking.
 ## Author: Emily
-## Version: 5.0.2
+## Version: 5.0.3
 ## SavedVariables: EUIDB
 ## IconTexture: Interface\Addons\EmsUI\media\icons\EmsUI
 ## Email: emlywind@gmail.com
@@ -20,6 +20,7 @@ src\Fonts.lua
 src\Actionbars.lua
 src\Castbars.lua
 src\TimerTracker.lua
+src\DetailsIconThemes.lua
 src\Buffs.lua
 src\Auras.lua
 src\Nameplates.lua

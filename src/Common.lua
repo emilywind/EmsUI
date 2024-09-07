@@ -17,7 +17,7 @@ RILLY_CLEAN_TEXTURES = {
 
   auraBorder = TextureDir.."\\aura-border",
 
-  classCircles = TextureDir.."\\targetingframe\\UI-CLASSES-CIRCLES",
+  classCircles = TextureDir.."\\class\\fabled",
 
   circleTexture = TextureDir.."\\Portrait-ModelBack",
   portraitModelFront = TextureDir.."\\portrait-modelfront",
@@ -31,6 +31,88 @@ RILLY_CLEAN_TEXTURES = {
     roles = TextureDir.."\\lfgframe\\UI-LFG-ICON-ROLES"
   },
 }
+
+FABLED_CLASS_CIRCLES_DATA = {
+  class = {
+		path = [[Interface\AddOns\EmsUI\media\textures\class\]],
+		styles = {
+			fabled = {
+				name = 'Fabled',
+				artist = 'Royroyart',
+				site = 'https://www.fiverr.com/royyanikhwani',
+			},
+			fabledrealm = {
+				name = 'Fabled Realm',
+				artist = 'Handclaw',
+				site = 'https://handclaw.artstation.com/',
+			},
+			fabledpixels = {
+				name = 'Fabled Pixels',
+				artist = 'Dragumagu',
+				site = 'https://www.artstation.com/dragumagu',
+			},
+		},
+    WARRIOR	= {
+      texString = '0:128:0:128',
+      texCoords = { 0, 0, 0, 0.125, 0.125, 0, 0.125, 0.125 },
+    },
+    MAGE = {
+      texString = '128:256:0:128',
+      texCoords = { 0.125, 0, 0.125, 0.125, 0.25, 0, 0.25, 0.125 },
+    },
+    ROGUE = {
+      texString = '256:384:0:128',
+      texCoords = { 0.25, 0, 0.25, 0.125, 0.375, 0, 0.375, 0.125 },
+    },
+      DRUID = {
+      texString = '384:512:0:128',
+      texCoords = { 0.375, 0, 0.375, 0.125, 0.5, 0, 0.5, 0.125 },
+    },
+    EVOKER = {
+      texString = '512:640:0:128',
+      texCoords = { 0.5, 0, 0.5, 0.125, 0.625, 0, 0.625, 0.125 },
+    },
+    HUNTER = {
+      texString = '0:128:128:256',
+      texCoords = { 0, 0.125, 0, 0.25, 0.125, 0.125, 0.125, 0.25 },
+    },
+    SHAMAN = {
+      texString = '128:256:128:256',
+      texCoords = { 0.125, 0.125, 0.125, 0.25, 0.25, 0.125, 0.25, 0.25 },
+    },
+    PRIEST = {
+      texString = '256:384:128:256',
+      texCoords = { 0.25, 0.125, 0.25, 0.25, 0.375, 0.125, 0.375, 0.25 },
+    },
+    WARLOCK = {
+      texString = '384:512:128:256',
+      texCoords = { 0.375, 0.125, 0.375, 0.25, 0.5, 0.125, 0.5, 0.25 },
+    },
+    PALADIN = {
+      texString = '0:128:256:384',
+      texCoords = { 0, 0.25, 0, 0.375, 0.125, 0.25, 0.125, 0.375 },
+    },
+    DEATHKNIGHT = {
+      texString = '128:256:256:384',
+      texCoords = { 0.125, 0.25, 0.125, 0.375, 0.25, 0.25, 0.25, 0.375 },
+    },
+    MONK = {
+      texString = '256:384:256:384',
+      texCoords = { 0.25, 0.25, 0.25, 0.375, 0.375, 0.25, 0.375, 0.375 },
+    },
+    DEMONHUNTER = {
+      texString = '384:512:256:384',
+      texCoords = { 0.375, 0.25, 0.375, 0.375, 0.5, 0.25, 0.5, 0.375 },
+    },
+  },
+}
+
+CLASS_PORTRAIT_PACKS = {}
+local classInfo = FABLED_CLASS_CIRCLES_DATA.class
+
+for iconStyle, data in next, classInfo.styles do
+  CLASS_PORTRAIT_PACKS[format('%s%s', classInfo.path, iconStyle)] = data.name
+end
 
 RILLY_CLEAN_FONTS = {
   Andika = FontsDir.."\\Andika.ttf",
