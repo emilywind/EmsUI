@@ -7,28 +7,28 @@ TextureDir = MediaDir.."\\textures"
 
 EUI_TEXTURES = {
   buttons = {
-    normal = TextureDir.."\\button-normal",
-    pushed = TextureDir.."\\buttons\\button-pressed",
-    hover = TextureDir.."\\buttons\\ButtonHilight-Square",
-    checked = TextureDir.."\\buttons\\button-checked"
+    normal = TextureDir.."\\button-normal.tga",
+    pushed = TextureDir.."\\buttons\\button-pressed.tga",
+    hover = TextureDir.."\\buttons\\ButtonHilight-Square.tga",
+    checked = TextureDir.."\\buttons\\button-checked.tga"
   },
 
   statusBar = TextureDir.."\\status-bar.tga",
 
-  auraBorder = TextureDir.."\\aura-border",
+  auraBorder = TextureDir.."\\aura-border.tga",
 
-  classCircles = TextureDir.."\\class\\fabled",
+  classCircles = TextureDir.."\\class\\fabled.tga",
 
-  circleTexture = TextureDir.."\\Portrait-ModelBack",
-  portraitModelFront = TextureDir.."\\portrait-modelfront",
+  circleTexture = TextureDir.."\\Portrait-ModelBack.tga",
+  portraitModelFront = TextureDir.."\\portrait-modelfront.tga",
 
   minimap = {
-    dungeonDifficulty = TextureDir.."\\minimap\\UI-DungeonDifficulty-Button"
+    dungeonDifficulty = TextureDir.."\\minimap\\UI-DungeonDifficulty-Button.tga"
   },
 
   lfg = {
-    portraitRoles = TextureDir.."\\lfgframe\\UI-LFG-ICON-PORTRAITROLES",
-    roles = TextureDir.."\\lfgframe\\UI-LFG-ICON-ROLES"
+    portraitRoles = TextureDir.."\\lfgframe\\UI-LFG-ICON-PORTRAITROLES.tga",
+    roles = TextureDir.."\\lfgframe\\UI-LFG-ICON-ROLES.tga"
   },
 }
 
