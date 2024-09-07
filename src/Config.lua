@@ -22,7 +22,6 @@ EUIDBDefaults = {
   tooltipAnchor = "ANCHOR_CURSOR_LEFT",
 
   -- Nameplate Settings
-  modNamePlates = true,
   nameplateNameFontSize = 9,
   nameplateHideServerNames = true,
   nameplateNameLength = 20,
@@ -30,9 +29,8 @@ EUIDBDefaults = {
   nameplateFriendlySmall = true,
   nameplateHideCastText = false,
   nameplateShowLevel = true,
-  nameplateCastFontSize = 6,
   nameplateHealthPercent = true,
-  nameplateShowCastTime = true,
+  nameplateTotems = true,
 
   portraitStyle = "3D", -- 3D, 2D, or class (for class icons)
   classPortraitPack = EUI_TEXTURES.classCircles,
@@ -438,6 +436,17 @@ local function eui_options()
     EUI_Nameplates
   )
 
+  local nameplateTotems = newCheckbox(
+    "Show icon above Totems, Warbanner, Psyfied, and Demonic Tyrant",
+    "Show icon above key NPCs",
+    EUIDB.nameplateTotems,
+    function(self, value)
+      EUIDB.nameplateTotems = value
+    end,
+    nameplateShowHealth,
+    EUI_Nameplates
+  )
+
   local nameplateHideCastText = newCheckbox(
     "Hide Cast Text",
     "Hide cast text from nameplate castbars.",
@@ -445,7 +454,7 @@ local function eui_options()
     function(self, value)
       EUIDB.nameplateHideCastText = value
     end,
-    nameplateShowHealth,
+    nameplateTotems,
     EUI_Nameplates
   )
 

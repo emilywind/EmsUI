@@ -19,8 +19,16 @@ EmsUINameplates:SetScript("OnEvent", function()
   hooksecurefunc("CompactUnitFrame_UpdateHealth", function(frame)
     local healthPercentage = ceil((UnitHealth(frame.displayedUnit) / UnitHealthMax(frame.displayedUnit) * 100))
     local isPersonal = C_NamePlate.GetNamePlateForUnit(frame.unit) == C_NamePlate.GetNamePlateForUnit("player")
-    if frame.optionTable.colorNameBySelection and not frame:IsForbidden() then
-      if isPersonal then
+
+    if isPersonal then
+      if not frame.emsUISkinned then
+        frame.healthBar:SetStatusBarTexture(EUIDB.statusBarTexture)
+        ClassNameplateManaBarFrame:SetStatusBarTexture(EUIDB.statusBarTexture)
+        ClassNameplateManaBarFrame.FeedbackFrame.BarTexture:SetTexture(EUIDB.statusBarTexture)
+        ClassNameplateManaBarFrame.FeedbackFrame.LossGlowTexture:SetTexture(EUIDB.statusBarTexture)
+        frame.emsUISkinned = true
+      end
+      if frame.optionTable.colorNameBySelection and not frame:IsForbidden() then
         if healthPercentage <= 100 and healthPercentage >= 30 then
           frame.healthBar:SetStatusBarColor(0, 1, 0)
         elseif healthPercentage < 30 then
@@ -46,63 +54,53 @@ EmsUINameplates:SetScript("OnEvent", function()
   end)
 
   -- Keep nameplates on screen
-  SetCVar("nameplateOtherBottomInset", 0.1);
-  SetCVar("nameplateOtherTopInset", 0.08);
-
-  if C_AddOns.IsAddOnLoaded('TidyPlates_ThreatPlates') then
-    return
-  end
-
-  local len = string.len
-  local gsub = string.gsub
+  SetCVar("nameplateOtherBottomInset", 0.1)
+  SetCVar("nameplateOtherTopInset", 0.08)
 
   function abbrev(str, length)
-      if ( not str ) then
-          return UNKNOWN
-      end
-
-      length = length or 20
-
-      str = (len(str) > length) and gsub(str, "%s?(.[\128-\191]*)%S+%s", "%1. ") or str
-      return str
-  end
-
-  if EUIDB.modNamePlates then
-    hooksecurefunc(NamePlateDriverFrame, "AcquireUnitFrame", function(_, nameplate)
-      if (nameplate.UnitFrame) then
-        nameplate.UnitFrame.isNameplate = true
-      end
-    end)
-
-    local function modifyNamePlates(frame, options)
-      if ( frame:IsForbidden() ) then return end
-      if ( not frame.isNameplate ) then return end
-
-      local healthBar = frame.healthBar
-      healthBar:SetStatusBarTexture(EUIDB.statusBarTexture)
-
-      local castBar = frame.castBar
-      if (castBar) then
-        if EUIDB.nameplateHideCastText then
-          castBar.Text:Hide()
-        end
-
-        if (castBar.euiClean) then return end
-
-        setDefaultFont(castBar.Text, EUIDB.nameplateNameFontSize - 1)
-
-        applyEuiBackdrop(castBar.Icon, castBar)
-
-        castBar.euiClean = true
-      end
-
-      if (frame.ClassificationFrame) then
-        frame.ClassificationFrame:SetPoint('CENTER', frame.healthBar, 'LEFT', 0, 0)
-      end
+    if ( not str ) then
+        return UNKNOWN
     end
 
-    hooksecurefunc("DefaultCompactNamePlateFrameSetup", modifyNamePlates)
+    length = length or 20
+
+    str = (string.len(str) > length) and string.gsub(str, "%s?(.[\128-\191]*)%S+%s", "%1. ") or str
+    return str
   end
+
+  hooksecurefunc(NamePlateDriverFrame, "AcquireUnitFrame", function(_, nameplate)
+    if (nameplate.UnitFrame) then
+      nameplate.UnitFrame.isNameplate = true
+    end
+  end)
+
+  local function modifyNamePlates(frame, options)
+    if ( frame:IsForbidden() ) then return end
+
+    local healthBar = frame.healthBar
+    healthBar:SetStatusBarTexture(EUIDB.statusBarTexture)
+
+    local castBar = frame.castBar
+    if (castBar) then
+      if EUIDB.nameplateHideCastText then
+        castBar.Text:Hide()
+      end
+
+      if (castBar.euiClean) then return end
+
+      setDefaultFont(castBar.Text, EUIDB.nameplateNameFontSize - 1)
+
+      applyEuiBackdrop(castBar.Icon, castBar)
+
+      castBar.euiClean = true
+    end
+
+    if (frame.ClassificationFrame) then
+      frame.ClassificationFrame:SetPoint('CENTER', frame.healthBar, 'LEFT', 0, 0)
+    end
+  end
+
+  hooksecurefunc("DefaultCompactNamePlateFrameSetup", modifyNamePlates)
 
   hooksecurefunc("CompactUnitFrame_UpdateName", function(frame)
     if ( not frame.unit ) or ( not frame.isNameplate ) or ( frame:IsForbidden() ) then
