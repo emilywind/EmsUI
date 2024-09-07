@@ -9,6 +9,8 @@ EUIDBDefaults = {
   skinActionBars = true,
   darkMinimap = false,
 
+  statusTexture = EUI_TEXTURES.statusBar,
+
   hideAltPower = false,
   lootSpecDisplay = true, -- Display loot spec icon in the player frame
 
@@ -66,7 +68,6 @@ end
 local function eui_defaults()
   -- Copy the values from the defaults table into the saved variables table
   -- if it exists, and assign the result to the saved variable:
-
   EUIDB = copyDefaults(EUIDBDefaults, EUIDB)
 
   eui = {}
@@ -221,6 +222,17 @@ local function eui_options()
     end
   )
   tooltipAnchor:SetPoint("TOPLEFT", portraitDropdown, "BOTTOMLEFT", 0, -16)
+
+  local statusBarChooser = newDropdown(
+    "Status Bar Texture",
+    tableToWowDropdown(LSM:HashTable('statusbar')),
+    EUIDB.statusTexture,
+    200,
+    function(value)
+      EUIDB.statusTexture = value
+    end
+  )
+  statusBarChooser:SetPoint("LEFT", tooltipAnchor, "RIGHT", 200, 0)
 
   local lootSpecDisplay = newCheckbox(
     "Display Loot Spec Indicator",

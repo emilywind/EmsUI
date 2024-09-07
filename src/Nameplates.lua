@@ -79,7 +79,7 @@ EmsUINameplates:SetScript("OnEvent", function()
       if ( not frame.isNameplate ) then return end
 
       local healthBar = frame.healthBar
-      healthBar:SetStatusBarTexture(EUI_TEXTURES.statusBar)
+      healthBar:SetStatusBarTexture(EUIDB.statusTexture)
 
       local castBar = frame.castBar
       if (castBar) then

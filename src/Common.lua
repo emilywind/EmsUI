@@ -13,7 +13,7 @@ EUI_TEXTURES = {
     checked = TextureDir.."\\buttons\\button-checked"
   },
 
-  statusBar = TextureDir.."\\status-bar",
+  statusBar = TextureDir.."\\status-bar.tga",
 
   auraBorder = TextureDir.."\\aura-border",
 
@@ -277,7 +277,7 @@ function skinProgressBar(bar)
     bar.BorderRight:SetAlpha(0)
   end
 
-  bar:SetStatusBarTexture(EUI_TEXTURES.statusBar)
+  bar:SetStatusBarTexture(EUIDB.statusTexture)
 
   if bar.BarBG then
     bar.BarBG:Hide()
