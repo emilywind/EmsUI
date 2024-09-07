@@ -26,10 +26,10 @@ EmsUIUnitFrames:SetScript("OnEvent", function()
 
   local function healthTexture(self, event)
     if event == "PLAYER_ENTERING_WORLD" then
-        self.healthbar:SetStatusBarTexture(EUIDB.statusBarTexture)
-        self.healthbar:GetStatusBarTexture():SetDrawLayer("BORDER")
-        self.healthbar.AnimatedLossBar:SetStatusBarTexture(EUIDB.statusBarTexture)
-        self.healthbar.AnimatedLossBar:GetStatusBarTexture():SetDrawLayer("BORDER")
+      self.healthbar:SetStatusBarTexture(EUIDB.statusBarTexture)
+      self.healthbar:GetStatusBarTexture():SetDrawLayer("BORDER")
+      self.healthbar.AnimatedLossBar:SetStatusBarTexture(EUIDB.statusBarTexture)
+      self.healthbar.AnimatedLossBar:GetStatusBarTexture():SetDrawLayer("BORDER")
     end
   end
 
@@ -43,9 +43,9 @@ EmsUIUnitFrames:SetScript("OnEvent", function()
 
       -- Set Power Color
       if self.manabar.powerType == 0 then
-          self.manabar:SetStatusBarColor(0, 0.5, 1)
+        self.manabar:SetStatusBarColor(0, 0.5, 1)
       else
-          self.manabar:SetStatusBarColor(powerColor.r, powerColor.g, powerColor.b)
+        self.manabar:SetStatusBarColor(powerColor.r, powerColor.g, powerColor.b)
       end
     end
   end
@@ -72,93 +72,93 @@ EmsUIUnitFrames:SetScript("OnEvent", function()
     self.healthbar:SetStatusBarTexture(EUIDB.statusBarTexture)
     self.healthbar:GetStatusBarTexture():SetDrawLayer("BORDER")
     if self.myHealPrediction then
-        self.myHealPredictionBar:SetTexture(EUIDB.statusBarTexture)
+      self.myHealPredictionBar:SetTexture(EUIDB.statusBarTexture)
     end
   end
 
   hooksecurefunc(TargetFrame, "OnEvent", function(self)
-      targetHealthTexture(self)
+    targetHealthTexture(self)
 
-      -- Style Buffs & Debuffs
-      for aura, _ in self.auraPools:EnumerateActive() do
-        applyAuraSkin(aura)
-      end
-    end)
+    -- Style Buffs & Debuffs
+    for aura, _ in self.auraPools:EnumerateActive() do
+      applyAuraSkin(aura)
+    end
+  end)
 
-    hooksecurefunc(FocusFrame, "OnEvent", function(self)
-        -- Set Health Texture
-        targetHealthTexture(self)
+  hooksecurefunc(FocusFrame, "OnEvent", function(self)
+    -- Set Health Texture
+    targetHealthTexture(self)
 
-        -- Style Buffs & Debuffs
-        for aura, _ in self.auraPools:EnumerateActive() do
-            applyAuraSkin(aura)
-        end
-    end)
+    -- Style Buffs & Debuffs
+    for aura, _ in self.auraPools:EnumerateActive() do
+      applyAuraSkin(aura)
+    end
+  end)
 
-    hooksecurefunc(TargetFrameToT, "Update", function(self)
-      targetHealthTexture(self)
-    end)
+  hooksecurefunc(TargetFrameToT, "Update", function(self)
+    targetHealthTexture(self)
+  end)
 
-    hooksecurefunc(FocusFrameToT, "Update", function(self)
-      targetHealthTexture(self)
-    end)
+  hooksecurefunc(FocusFrameToT, "Update", function(self)
+    targetHealthTexture(self)
+  end)
 
   -----------------
   -- Boss Frames --
   -----------------
   function SkinBossFrames(self, event)
-      if self then
-          if self.healthbar then
-              self.healthbar:SetStatusBarTexture(EUIDB.statusBarTexture)
-          end
+    if self then
+      if self.healthbar then
+        self.healthbar:SetStatusBarTexture(EUIDB.statusBarTexture)
+      end
 
-          if self.TargetFrameContent.TargetFrameContentMain.ReputationColor then
-              self.TargetFrameContent.TargetFrameContentMain.ReputationColor:SetVertexColor(0, 0, 0)
-          end
+      if self.TargetFrameContent.TargetFrameContentMain.ReputationColor then
+        self.TargetFrameContent.TargetFrameContentMain.ReputationColor:SetVertexColor(0, 0, 0)
       end
     end
+  end
 
-    --hooksecurefunc("TextStatusBar_UpdateTextStringWithValues", SUIBossFramesText)
-    Boss1TargetFrame:HookScript("OnEvent", function(self, event)
-      SkinBossFrames(self, event)
-    end)
+  --hooksecurefunc("TextStatusBar_UpdateTextStringWithValues", SUIBossFramesText)
+  Boss1TargetFrame:HookScript("OnEvent", function(self, event)
+    SkinBossFrames(self, event)
+  end)
 
-    Boss2TargetFrame:HookScript("OnEvent", function(self, event)
-      SkinBossFrames(self, event)
-    end)
+  Boss2TargetFrame:HookScript("OnEvent", function(self, event)
+    SkinBossFrames(self, event)
+  end)
 
-    Boss3TargetFrame:HookScript("OnEvent", function(self, event)
-      SkinBossFrames(self, event)
-    end)
+  Boss3TargetFrame:HookScript("OnEvent", function(self, event)
+    SkinBossFrames(self, event)
+  end)
 
-    Boss4TargetFrame:HookScript("OnEvent", function(self, event)
-      SkinBossFrames(self, event)
-    end)
+  Boss4TargetFrame:HookScript("OnEvent", function(self, event)
+    SkinBossFrames(self, event)
+  end)
 
-    Boss5TargetFrame:HookScript("OnEvent", function(self, event)
-      SkinBossFrames(self, event)
-    end)
+  Boss5TargetFrame:HookScript("OnEvent", function(self, event)
+    SkinBossFrames(self, event)
+  end)
 
-    ----------
-    -- Misc --
-    ----------
-    local function unitManaTexture(self)
-      if self and self.powerType then
-        if self.unit ~= 'player' then
-          -- Get Power Color
-          local powerColor = PowerBarColor[self.powerType]
+  ----------
+  -- Misc --
+  ----------
+  local function unitManaTexture(self)
+    if self and self.powerType then
+      if self.unit ~= 'player' then
+        -- Get Power Color
+        local powerColor = PowerBarColor[self.powerType]
 
-          -- Set Texture
-          self.texture:SetTexture(EUIDB.statusBarTexture)
+        -- Set Texture
+        self.texture:SetTexture(EUIDB.statusBarTexture)
 
-          -- Set Power Color
-          if self.unitFrame and self.unitFrame.manabar then
-            if self.powerType == 0 then
-              self.unitFrame.manabar:SetStatusBarColor(0, 0.5, 1)
-            else
-              self.unitFrame.manabar:SetStatusBarColor(powerColor.r, powerColor.g, powerColor.b)
-            end
+        -- Set Power Color
+        if self.unitFrame and self.unitFrame.manabar then
+          if self.powerType == 0 then
+            self.unitFrame.manabar:SetStatusBarColor(0, 0.5, 1)
+          else
+            self.unitFrame.manabar:SetStatusBarColor(powerColor.r, powerColor.g, powerColor.b)
           end
+        end
       end
     end
   end
@@ -181,38 +181,38 @@ EmsUIUnitFrames:SetScript("OnEvent", function()
 
   AlternatePowerBar:HookScript("OnEvent", alternatePowerTexture)
 
-    -------------------
-    -- Class Colours --
-    -------------------
-    TargetFrame.TargetFrameContent.TargetFrameContentMain.ReputationColor:Hide()
-    FocusFrame.TargetFrameContent.TargetFrameContentMain.ReputationColor:Hide()
+  -------------------
+  -- Class Colours --
+  -------------------
+  TargetFrame.TargetFrameContent.TargetFrameContentMain.ReputationColor:Hide()
+  FocusFrame.TargetFrameContent.TargetFrameContentMain.ReputationColor:Hide()
 
-    function SetUnitColour(healthbar, unit)
-        healthbar:SetStatusBarDesaturated(1)
-        if UnitIsPlayer(unit) and UnitIsConnected(unit) and UnitClass(unit) then
-            _, class = UnitClass(unit)
-            local color = RAID_CLASS_COLORS[class]
-            healthbar:SetStatusBarColor(color.r, color.g, color.b)
-        elseif UnitIsPlayer(unit) and (not UnitIsConnected(unit)) then
-            healthbar:SetStatusBarColor(0.5, 0.5, 0.5);
-        else
-            if UnitExists(unit) then
-                if (UnitIsTapDenied(unit)) and not UnitPlayerControlled(unit) then
-                    healthbar:SetStatusBarColor(0.5, 0.5, 0.5)
-                elseif (not UnitIsTapDenied(unit)) then
-                    local reaction = FACTION_BAR_COLORS[UnitReaction(unit, "player")];
-                    if reaction then
-                        healthbar:SetStatusBarColor(reaction.r, reaction.g, reaction.b);
-                    end
-                end
-            end
-        end
-    end
+  function SetUnitColour(healthbar, unit)
+      healthbar:SetStatusBarDesaturated(1)
+      if UnitIsPlayer(unit) and UnitIsConnected(unit) and UnitClass(unit) then
+          _, class = UnitClass(unit)
+          local color = RAID_CLASS_COLORS[class]
+          healthbar:SetStatusBarColor(color.r, color.g, color.b)
+      elseif UnitIsPlayer(unit) and (not UnitIsConnected(unit)) then
+          healthbar:SetStatusBarColor(0.5, 0.5, 0.5);
+      else
+          if UnitExists(unit) then
+              if (UnitIsTapDenied(unit)) and not UnitPlayerControlled(unit) then
+                  healthbar:SetStatusBarColor(0.5, 0.5, 0.5)
+              elseif (not UnitIsTapDenied(unit)) then
+                  local reaction = FACTION_BAR_COLORS[UnitReaction(unit, "player")];
+                  if reaction then
+                      healthbar:SetStatusBarColor(reaction.r, reaction.g, reaction.b);
+                  end
+              end
+          end
+      end
+  end
 
-    hooksecurefunc("UnitFrameHealthBar_Update", function(self)
-        SetUnitColour(self, self.unit)
-    end)
-    hooksecurefunc("HealthBar_OnValueChanged", function(self)
-        SetUnitColour(self, self.unit)
-    end)
+  hooksecurefunc("UnitFrameHealthBar_Update", function(self)
+      SetUnitColour(self, self.unit)
+  end)
+  hooksecurefunc("HealthBar_OnValueChanged", function(self)
+      SetUnitColour(self, self.unit)
+  end)
 end)
