@@ -223,17 +223,6 @@ local function eui_options()
   )
   tooltipAnchor:SetPoint("TOPLEFT", portraitDropdown, "BOTTOMLEFT", 0, -16)
 
-  local statusBarChooser = newDropdown(
-    "Status Bar Texture",
-    tableToWowDropdown(LSM:HashTable('statusbar')),
-    EUIDB.statusTexture,
-    200,
-    function(value)
-      EUIDB.statusTexture = value
-    end
-  )
-  statusBarChooser:SetPoint("LEFT", tooltipAnchor, "RIGHT", 198, 0)
-
   local lootSpecDisplay = newCheckbox(
     "Display Loot Spec Indicator",
     "Display loot spec icon in your player portrait.",
@@ -243,6 +232,17 @@ local function eui_options()
     end,
     tooltipDropdown
   )
+
+  local statusBarChooser = newDropdown(
+    "Status Bar Texture",
+    tableToWowDropdown(LSM:HashTable('statusbar')),
+    EUIDB.statusTexture,
+    200,
+    function(value)
+      EUIDB.statusTexture = value
+    end
+  )
+  statusBarChooser:SetPoint("LEFT", lootSpecDisplay, "RIGHT", 300, 32)
 
   local hideAltPower = newCheckbox(
     "Hide Alt Power (Requires reload)",
