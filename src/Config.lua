@@ -250,7 +250,7 @@ local function eui_options()
     "Font",
     tableToWowDropdown(LSM:HashTable('font')),
     EUIDB.font,
-    100,
+    200,
     function(value)
       EUIDB.font = value
     end
@@ -484,14 +484,6 @@ local function eui_options()
     ReloadUI()
   end)
 
-  local reload = CreateFrame("Button", "reload", eui.panel, "UIPanelButtonTemplate")
-  reload:SetPoint("BOTTOMRIGHT", eui.panel, "BOTTOMRIGHT", -10, 10)
-  reload:SetSize(100,22)
-  reload:SetText("Reload")
-  reload:SetScript("OnClick", function()
-    ReloadUI()
-  end)
-
   SLASH_emsui1 = "/emsui"
 
   SlashCmdList["emsui"] = function()
@@ -499,6 +491,6 @@ local function eui_options()
   end
 end
 
-local rc_catch = CreateFrame("Frame")
-rc_catch:RegisterEvent("PLAYER_LOGIN")
-rc_catch:SetScript("OnEvent", eui_options)
+local eui_catch = CreateFrame("Frame")
+eui_catch:RegisterEvent("PLAYER_LOGIN")
+eui_catch:SetScript("OnEvent", eui_options)
