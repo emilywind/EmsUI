@@ -1,7 +1,7 @@
-RillyCleanNameplates = CreateFrame("Frame", "RillyCleanNameplates")
-RillyCleanNameplates:RegisterEvent("PLAYER_LOGIN")
+EmsUINameplates = CreateFrame("Frame", "EmsUINameplates")
+EmsUINameplates:RegisterEvent("PLAYER_LOGIN")
 
-RillyCleanNameplates:SetScript("OnEvent", function()
+EmsUINameplates:SetScript("OnEvent", function()
   local defaultFriendlyWidth, defaultFriendlyHeight = C_NamePlate.GetNamePlateFriendlySize()
 
   function SetFriendlyNameplateSize(isChange)
@@ -87,13 +87,13 @@ RillyCleanNameplates:SetScript("OnEvent", function()
           castBar.Text:Hide()
         end
 
-        if (castBar.rillyClean) then return end
+        if (castBar.euiClean) then return end
 
         setDefaultFont(castBar.Text, EUIDB.nameplateNameFontSize - 1)
 
         applyEuiBackdrop(castBar.Icon, castBar)
 
-        castBar.rillyClean = true
+        castBar.euiClean = true
       end
 
       if (frame.ClassificationFrame) then

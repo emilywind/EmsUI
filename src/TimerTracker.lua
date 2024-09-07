@@ -6,7 +6,7 @@ function init()
       local prefix = 'TimerTrackerTimer'..i
       local timer = _G[prefix]
       local statusBar = _G['TimerTrackerTimer'..i..'StatusBar']
-      if statusBar and not timer.isFree and not timer.rillyClean then
+      if statusBar and not timer.isFree and not timer.euiClean then
         _G[prefix..'StatusBarBorder']:Hide()
         skinProgressBar(statusBar)
       end

@@ -1,7 +1,7 @@
-RillyCleanUnitFrames = CreateFrame("Frame", "RillyCleanUnitFrames")
-RillyCleanUnitFrames:RegisterEvent("PLAYER_LOGIN")
+EuiUnitFrames = CreateFrame("Frame", "EuiUnitFrames")
+EuiUnitFrames:RegisterEvent("PLAYER_LOGIN")
 
-RillyCleanUnitFrames:SetScript("OnEvent", function()
+EuiUnitFrames:SetScript("OnEvent", function()
 	-----------------------
 	-- Loot Spec Display --
 	-----------------------

@@ -16,7 +16,7 @@ local InsertKeystone = function(self)
       end
 end
 
-local frame = CreateFrame("Frame", "RillyCleanUI", UIParent);
+local frame = CreateFrame("Frame", "EUI", UIParent);
 frame:RegisterEvent("ADDON_LOADED");
 
 frame:SetScript("OnEvent", function(self, event, addonName, ...)

@@ -1,7 +1,7 @@
-RillyCleanUnitFrames = CreateFrame("Frame", "RillyCleanUnitFrames")
-RillyCleanUnitFrames:RegisterEvent("PLAYER_LOGIN")
+EmsUIUnitFrames = CreateFrame("Frame", "EmsUIUnitFrames")
+EmsUIUnitFrames:RegisterEvent("PLAYER_LOGIN")
 
-RillyCleanUnitFrames:SetScript("OnEvent", function()
+EmsUIUnitFrames:SetScript("OnEvent", function()
 	-------------------------
 	-- Hide Alt Power bars --
 	-------------------------

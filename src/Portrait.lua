@@ -37,7 +37,7 @@ local function make3DPortraitFG(frame)
   frame.portraitFG.forelayer = foreground
 end
 
-local function makeRillyCleanPortrait(frame)
+local function makeEUIPortrait(frame)
   if not frame.portrait then return end
 
   local unit = frame.unit
@@ -109,5 +109,5 @@ CF:RegisterEvent("PLAYER_LOGIN")
 CF:SetScript("OnEvent", function(self, event)
   if (EUIDB.portraitStyle == "default") then return end
 
-  hooksecurefunc("UnitFramePortrait_Update", makeRillyCleanPortrait)
+  hooksecurefunc("UnitFramePortrait_Update", makeEUIPortrait)
 end)

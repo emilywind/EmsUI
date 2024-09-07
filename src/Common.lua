@@ -185,7 +185,7 @@ end
 
 function applyEuiButtonSkin(bu, icon, isLeaveButton)
   if not bu then return end
-  if (bu and bu.rillyClean) then return bu.border end
+  if (bu and bu.euiClean) then return bu.border end
 
   -- Icon
   local name = bu:GetName()
@@ -222,7 +222,7 @@ function applyEuiButtonSkin(bu, icon, isLeaveButton)
 end
 
 function applyEuiBackdrop(b, frame)
-  if (b.rillyClean) then return end
+  if (b.euiClean) then return end
 
   local frame = CreateFrame("Frame", nil, (frame or b))
 
@@ -241,7 +241,7 @@ function applyEuiBackdrop(b, frame)
   back:SetBackdropBorderColor(0,0,0,1)
   b.bg = back
 
-  b.rillyClean = true
+  b.euiClean = true
   return back, icon
 end
 
@@ -284,7 +284,7 @@ function skinProgressBar(bar)
     bar.BarFrame:Hide()
   end
 
-  -- Rilly Clean Border
+  -- Clean Border
   if not bar.back then
     local back = CreateFrame("Frame", nil, bar, "BackdropTemplate")
     back:SetPoint("TOPLEFT", bar, "TOPLEFT", 0, 0)
@@ -298,5 +298,5 @@ function skinProgressBar(bar)
     bar.back = back
   end
 
-  bar.rillyClean = true
+  bar.euiClean = true
 end

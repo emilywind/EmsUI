@@ -104,28 +104,28 @@ CF:SetScript("OnEvent", function(self, event)
 		GameTooltip.NineSlice:SetCenterColor(0.08,0.08,0.08) -- Simpler and themed BG color
 		GameTooltip.NineSlice:SetBorderColor(0,0,0,0)
 
-		local RillyCleanToolTipBorder = _G["RillyCleanToolTipBorder"]
+		local EUIToolTipBorder = _G["EUIToolTipBorder"]
 
-		if (RillyCleanToolTipBorder == nil) then
-			RillyCleanToolTipBorder = CreateFrame("Frame", "RillyCleanToolTipBorder", GameTooltip, "BackdropTemplate")
-			RillyCleanToolTipBorder:SetFrameLevel(0)
-			RillyCleanToolTipBorder:SetFrameStrata("TOOLTIP")
-			RillyCleanToolTipBorder:SetPoint("CENTER",0,0)
-			RillyCleanToolTipBorder:SetScale(1)
+		if (EUIToolTipBorder == nil) then
+			EUIToolTipBorder = CreateFrame("Frame", "EUIToolTipBorder", GameTooltip, "BackdropTemplate")
+			EUIToolTipBorder:SetFrameLevel(0)
+			EUIToolTipBorder:SetFrameStrata("TOOLTIP")
+			EUIToolTipBorder:SetPoint("CENTER",0,0)
+			EUIToolTipBorder:SetScale(1)
 
-			RillyCleanToolTipBorder.backdropInfo = {
+			EUIToolTipBorder.backdropInfo = {
 				bgFile = SQUARE_TEXTURE,
 				tile = false, tileSize = 0, edgeSize = 0,
 				insets = { left = 1, right = 1, top = 1, bottom = 1 }
 			}
-			RillyCleanToolTipBorder:ApplyBackdrop()
-			RillyCleanToolTipBorder:SetBackdropColor(0,0,0,1)
-			RillyCleanToolTipBorder:SetBackdropBorderColor(0,0,0,1)
-			RillyCleanToolTipBorder:Show()
+			EUIToolTipBorder:ApplyBackdrop()
+			EUIToolTipBorder:SetBackdropColor(0,0,0,1)
+			EUIToolTipBorder:SetBackdropBorderColor(0,0,0,1)
+			EUIToolTipBorder:Show()
 		end
 
-		RillyCleanToolTipBorder:SetHeight(GameTooltip:GetHeight() - 4)
-		RillyCleanToolTipBorder:SetWidth(GameTooltip:GetWidth() - 4)
+		EUIToolTipBorder:SetHeight(GameTooltip:GetHeight() - 4)
+		EUIToolTipBorder:SetWidth(GameTooltip:GetWidth() - 4)
 	end)
 
 	GameTooltipStatusBar:HookScript("OnValueChanged", function(self, hp)

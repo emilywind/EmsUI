@@ -1,5 +1,5 @@
 function applyAuraSkin(b)
-  if not b or (b and b.rillyClean) then return end
+  if not b or (b and b.euiClean) then return end
 
   --icon
   local icon = b.Icon
@@ -40,7 +40,7 @@ function applyAuraSkin(b)
   back:ApplyBackdrop()
   back:SetBackdropBorderColor(0,0,0,1)
 
-  b.rillyClean = true
+  b.euiClean = true
 end
 
 -- local CF=CreateFrame("Frame")
@@ -60,7 +60,7 @@ end
 
 -- 			for i = 1, 20 do
 -- 				local b = _G[prefix .. "Buff" .. i]
---         if b and not b.rillyClean then
+--         if b and not b.euiClean then
 --           local name = b:GetName()
 
 --           --icon
@@ -87,7 +87,7 @@ end
 --           -- back:ApplyBackdrop()
 --           -- back:SetBackdropBorderColor(0,0,0,1)
 
---           b.rillyClean = true
+--           b.euiClean = true
 --         end
 --       end
 --     end

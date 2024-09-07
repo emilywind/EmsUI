@@ -1,7 +1,7 @@
 -- Media
 local LSM = LibStub("LibSharedMedia-3.0")
 
-LSM:Register ("statusbar", "RillyClean", [[Interface\AddOns\EmsUI\media\textures\status-bar.tga]])
+LSM:Register ("statusbar", "Em's UI", [[Interface\AddOns\EmsUI\media\textures\status-bar.tga]])
 
 LSM:Register ("font", "Andika", [[Interface\AddOns\EmsUI\media\fonts\Andika.ttf]])
 LSM:Register ("font", "Marmelad", [[Interface\AddOns\EmsUI\media\fonts\Marmelad.ttf]])

@@ -1,5 +1,5 @@
 local function applySkin(b)
-  if not b or (b and b.rillyClean) then return end
+  if not b or (b and b.euiClean) then return end
 
   --icon
   local icon = b.Icon
@@ -35,7 +35,7 @@ local function applySkin(b)
   end
 
   --set button styled variable
-  b.rillyClean = true
+  b.euiClean = true
 end
 
 local function updateAuras(self)

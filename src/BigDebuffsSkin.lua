@@ -1,7 +1,7 @@
-RillyCleanBigDebuffs = CreateFrame("Frame", "RillyCleanBigDebuffs")
-RillyCleanBigDebuffs:RegisterEvent("PLAYER_LOGIN")
+EUIBigDebuffs = CreateFrame("Frame", "EUIBigDebuffs")
+EUIBigDebuffs:RegisterEvent("PLAYER_LOGIN")
 
-RillyCleanBigDebuffs:SetScript("OnEvent", function()
+EUIBigDebuffs:SetScript("OnEvent", function()
   if ( not C_AddOns.IsAddOnLoaded('BigDebuffs') ) then return end
 
   -- Nameplates

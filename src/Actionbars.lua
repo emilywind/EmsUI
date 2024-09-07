@@ -20,7 +20,7 @@ local function init()
 
   --style extraactionbutton
   local function styleExtraActionButton(bu)
-    if not bu or (bu and bu.rillyClean) then
+    if not bu or (bu and bu.euiClean) then
       return
     end
     local name = bu:GetName() or bu:GetParent():GetName()
@@ -46,7 +46,7 @@ local function init()
 
   --initial style func
   local function styleActionButton(bu)
-    if not bu or (bu and bu.rillyClean) then
+    if not bu or (bu and bu.euiClean) then
       return
     end
     local action = bu.action
@@ -108,7 +108,7 @@ local function init()
 
   -- style leave button
   local function styleLeaveButton(bu)
-    if not bu or (bu and bu.rillyClean) then
+    if not bu or (bu and bu.euiClean) then
       return
     end
 
@@ -117,7 +117,7 @@ local function init()
 
   --style pet buttons
   local function stylePetButton(bu)
-    if not bu or (bu and bu.rillyClean) then
+    if not bu or (bu and bu.euiClean) then
       return
     end
     local name = bu:GetName()
@@ -135,7 +135,7 @@ local function init()
 
   -- Style stance buttons
   local function styleStanceButton(bu)
-    if not bu or (bu and bu.rillyClean) then
+    if not bu or (bu and bu.euiClean) then
       return
     end
     local name = bu:GetName()
@@ -152,7 +152,7 @@ local function init()
 
   -- Style possess buttons
   local function stylePossessButton(bu)
-    if not bu or (bu and bu.rillyClean) then
+    if not bu or (bu and bu.euiClean) then
       return
     end
     local name = bu:GetName()
