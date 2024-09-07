@@ -46,7 +46,12 @@ local function makeRillyCleanPortrait(frame)
     if ( UnitIsPlayer(unit) ) then
       local t = CLASS_ICON_TCOORDS[select(2, UnitClass(unit))]
       if t then
-        frame.portrait:SetTexture(RILLY_CLEAN_TEXTURES.classCircles)
+        local _, playerClass = UnitClass("player")
+        if playerClass == 'EVOKER' then
+          frame.portrait:SetTexture("Interface\\TargetingFrame\\UI-Classes-Circles")
+        else
+          frame.portrait:SetTexture(RILLY_CLEAN_TEXTURES.classCircles)
+        end
         frame.portrait:SetTexCoord(unpack(t))
         makePortraitBG(frame,0.05,0.05,0.05)
       end
