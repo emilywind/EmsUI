@@ -1,3 +1,5 @@
+local LSM = LibStub("LibSharedMedia-3.0")
+
 -- This table defines the addon's default settings:
 local name, EUI = ...
 EUIDBDefaults = {
@@ -38,7 +40,7 @@ EUIDBDefaults = {
   dampeningDisplay = true,
 }
 
-local function rcui_defaults()
+local function eui_defaults()
   -- This function copies values from one table into another:
   local function copyDefaults(src, dst)
     -- If no source (defaults) is specified, return an empty table:
@@ -66,12 +68,12 @@ local function rcui_defaults()
 
   EUIDB = copyDefaults(EUIDBDefaults, EUIDB)
 
-  rcui = {}
+  eui = {}
 end
 
 local rc_catch = CreateFrame("Frame")
 rc_catch:RegisterEvent("PLAYER_LOGIN")
-rc_catch:SetScript("OnEvent", rcui_defaults)
+rc_catch:SetScript("OnEvent", eui_defaults)
 
 local onShow = function(frame)
 
@@ -85,22 +87,22 @@ local makePanel = function(frameName, mainpanel, panelName)
   Settings.RegisterCanvasLayoutSubcategory(category, panel, panelName)
 end
 
-local function openRcuiConfig()
-  Settings.OpenToCategory(rcuiPanel)
-  Settings.OpenToCategory(rcuiPanel)
+local function openEuiConfig()
+  Settings.OpenToCategory(euiPanel)
+  Settings.OpenToCategory(euiPanel)
 end
 
-local function rcui_options()
+local function eui_options()
   -- Creation of the options menu
-  rcui.panel = CreateFrame( "Frame", "rcuiPanel", UIParent )
-  rcui.panel.name = "EmsUI";
-  local category = Settings.RegisterCanvasLayoutCategory(rcui.panel, "Em's UI")
+  eui.panel = CreateFrame( "Frame", "euiPanel", UIParent )
+  eui.panel.name = "EmsUI";
+  local category = Settings.RegisterCanvasLayoutCategory(eui.panel, "Em's UI")
   category.ID = "EmsUI"
   Settings.RegisterAddOnCategory(category)
 
   local function newCheckbox(label, description, initialValue, onChange, relativeEl, frame)
     if ( not frame ) then
-      frame = rcui.panel
+      frame = eui.panel
     end
 
     local check = CreateFrame("CheckButton", "RCUICheck" .. label, frame, "InterfaceOptionsCheckButtonTemplate")
@@ -127,10 +129,10 @@ local function rcui_options()
   end
 
   local function newDropdown(label, options, initialValue, width, onChange)
-    local dropdownText = rcui.panel:CreateFontString(nil, "ARTWORK", "GameFontNormal")
+    local dropdownText = eui.panel:CreateFontString(nil, "ARTWORK", "GameFontNormal")
     dropdownText:SetText(label)
 
-    local dropdown = CreateFrame("Frame", "RCUIDropdown" .. label, rcui.panel, "UIDropdownMenuTemplate")
+    local dropdown = CreateFrame("Frame", "RCUIDropdown" .. label, eui.panel, "UIDropdownMenuTemplate")
     _G[dropdown:GetName() .. "Middle"]:SetWidth(width)
     dropdown:SetPoint("TOPLEFT", dropdownText, "BOTTOMLEFT", 0, -8)
     local displayText = _G[dropdown:GetName() .. "Text"]
@@ -177,7 +179,7 @@ local function rcui_options()
 
   local version = C_AddOns.GetAddOnMetadata("EmsUI", "Version")
 
-  local rcuiTitle = rcui.panel:CreateFontString(nil, "ARTWORK", "GameFontNormalLarge")
+  local rcuiTitle = eui.panel:CreateFontString(nil, "ARTWORK", "GameFontNormalLarge")
   rcuiTitle:SetPoint("TOPLEFT", 16, -16)
   rcuiTitle:SetText("Em's UI ("..version..")")
 
@@ -246,7 +248,7 @@ local function rcui_options()
 
   local fontChooser = newDropdown(
     "Font",
-    tableToWowDropdown(RILLY_CLEAN_FONTS),
+    tableToWowDropdown(LSM:HashTable('font')),
     EUIDB.font,
     100,
     function(value)
@@ -278,9 +280,9 @@ local function rcui_options()
   ----------------
   -- Action Bars --
   ----------------
-  makePanel("RCUI_ActionBars", rcui.panel, "Action Bars")
+  makePanel("EUI_ActionBars", eui.panel, "Action Bars")
 
-  local actionbarText = RCUI_ActionBars:CreateFontString(nil, "ARTWORK", "GameFontNormal")
+  local actionbarText = EUI_ActionBars:CreateFontString(nil, "ARTWORK", "GameFontNormal")
   actionbarText:SetText("Action Bars")
   actionbarText:SetPoint("TOPLEFT", 16, -16)
 
@@ -292,7 +294,7 @@ local function rcui_options()
       EUIDB.skinActionBars = value
     end,
     actionbarText,
-    RCUI_ActionBars
+    EUI_ActionBars
   )
 
   local hideHotkeys = newCheckbox(
@@ -303,7 +305,7 @@ local function rcui_options()
       EUIDB.hideHotkeys = value
     end,
     skinActionBars,
-    RCUI_ActionBars
+    EUI_ActionBars
   )
 
   local hideMacroText = newCheckbox(
@@ -314,15 +316,15 @@ local function rcui_options()
       EUIDB.hideMacroText = value
     end,
     hideHotkeys,
-    RCUI_ActionBars
+    EUI_ActionBars
   )
 
   ----------------
   -- Nameplates --
   ----------------
-  makePanel("RCUI_Nameplates", rcui.panel, "Nameplates")
+  makePanel("EUI_Nameplates", eui.panel, "Nameplates")
 
-  local nameplateText = RCUI_Nameplates:CreateFontString(nil, "ARTWORK", "GameFontNormal")
+  local nameplateText = EUI_Nameplates:CreateFontString(nil, "ARTWORK", "GameFontNormal")
   nameplateText:SetText("Nameplates")
   nameplateText:SetPoint("TOPLEFT", 16, -16)
 
@@ -333,7 +335,7 @@ local function rcui_options()
     6,
     20,
     nameplateText,
-    RCUI_Nameplates
+    EUI_Nameplates
   )
 
   local nameplateNameLength = newCheckbox(
@@ -348,7 +350,7 @@ local function rcui_options()
       end
     end,
     nameplateFontSlider,
-    RCUI_Nameplates
+    EUI_Nameplates
   )
 
   local nameplateHideServerNames = newCheckbox(
@@ -359,7 +361,7 @@ local function rcui_options()
       EUIDB.nameplateHideServerNames = value
     end,
     nameplateNameLength,
-    RCUI_Nameplates
+    EUI_Nameplates
   )
 
   local nameplateFriendlyNamesClassColor = newCheckbox(
@@ -370,7 +372,7 @@ local function rcui_options()
       EUIDB.nameplateFriendlyNamesClassColor = value
     end,
     nameplateHideServerNames,
-    RCUI_Nameplates
+    EUI_Nameplates
   )
 
   local nameplateFriendlySmall = newCheckbox(
@@ -382,7 +384,7 @@ local function rcui_options()
       SetFriendlyNameplateSize(true)
     end,
     nameplateFriendlyNamesClassColor,
-    RCUI_Nameplates
+    EUI_Nameplates
   )
 
   local nameplateShowLevel = newCheckbox(
@@ -393,7 +395,7 @@ local function rcui_options()
       EUIDB.nameplateShowLevel = value
     end,
     nameplateFriendlySmall,
-    RCUI_Nameplates
+    EUI_Nameplates
   )
 
   local nameplateShowHealth = newCheckbox(
@@ -404,7 +406,7 @@ local function rcui_options()
       EUIDB.nameplateHealthPercent = value
     end,
     nameplateShowLevel,
-    RCUI_Nameplates
+    EUI_Nameplates
   )
 
   local nameplateHideCastText = newCheckbox(
@@ -415,15 +417,15 @@ local function rcui_options()
       EUIDB.nameplateHideCastText = value
     end,
     nameplateShowHealth,
-    RCUI_Nameplates
+    EUI_Nameplates
   )
 
   ----------------
   --     PvP    --
   ----------------
-  makePanel("RCUI_PvP", rcui.panel, "PvP")
+  makePanel("EUI_PvP", eui.panel, "PvP")
 
-  local pvpText = RCUI_PvP:CreateFontString(nil, "ARTWORK", "GameFontNormal")
+  local pvpText = EUI_PvP:CreateFontString(nil, "ARTWORK", "GameFontNormal")
   pvpText:SetText("PvP")
   pvpText:SetPoint("TOPLEFT", 16, -16)
 
@@ -435,7 +437,7 @@ local function rcui_options()
       EUIDB.safeQueue = value
     end,
     pvpText,
-    RCUI_PvP
+    EUI_PvP
   )
 
   local dampeningDisplay = newCheckbox(
@@ -446,7 +448,7 @@ local function rcui_options()
       EUIDB.dampeningDisplay = value
     end,
     safeQueue,
-    RCUI_PvP
+    EUI_PvP
   )
 
   local tabBinder = newCheckbox(
@@ -457,7 +459,7 @@ local function rcui_options()
       EUIDB.tabBinder = value
     end,
     dampeningDisplay,
-    RCUI_PvP
+    EUI_PvP
   )
 
   local arenaNumbers = newCheckbox(
@@ -468,14 +470,22 @@ local function rcui_options()
       EUIDB.arenaNumbers = value
     end,
     tabBinder,
-    RCUI_PvP
+    EUI_PvP
   )
 
   ------------------
-  --Reload Button --
+  --Reload Buttons --
   ------------------
-  local reload = CreateFrame("Button", "reload", rcui.panel, "UIPanelButtonTemplate")
-  reload:SetPoint("BOTTOMRIGHT", rcui.panel, "BOTTOMRIGHT", -10, 10)
+  local reload = CreateFrame("Button", "reload", eui.panel, "UIPanelButtonTemplate")
+  reload:SetPoint("BOTTOMRIGHT", eui.panel, "BOTTOMRIGHT", -10, 10)
+  reload:SetSize(100,22)
+  reload:SetText("Reload")
+  reload:SetScript("OnClick", function()
+    ReloadUI()
+  end)
+
+  local reload = CreateFrame("Button", "reload", eui.panel, "UIPanelButtonTemplate")
+  reload:SetPoint("BOTTOMRIGHT", eui.panel, "BOTTOMRIGHT", -10, 10)
   reload:SetSize(100,22)
   reload:SetText("Reload")
   reload:SetScript("OnClick", function()
@@ -485,10 +495,10 @@ local function rcui_options()
   SLASH_emsui1 = "/emsui"
 
   SlashCmdList["emsui"] = function()
-    openRcuiConfig()
+    openEuiConfig()
   end
 end
 
 local rc_catch = CreateFrame("Frame")
 rc_catch:RegisterEvent("PLAYER_LOGIN")
-rc_catch:SetScript("OnEvent", rcui_options)
+rc_catch:SetScript("OnEvent", eui_options)
