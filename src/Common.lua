@@ -17,7 +17,7 @@ RILLY_CLEAN_TEXTURES = {
 
   auraBorder = TextureDir.."\\aura-border",
 
-  classCircles = TextureDir.."\\targetingframe\\UI-CLASSES-CIRCLES"
+  classCircles = TextureDir.."\\targetingframe\\UI-CLASSES-CIRCLES",
 
   circleTexture = TextureDir.."\\Portrait-ModelBack",
   portraitModelFront = TextureDir.."\\portrait-modelfront",
