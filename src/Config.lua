@@ -196,14 +196,14 @@ local function rcui_options()
     "Class Portrait Pack",
     CLASS_PORTRAIT_PACKS,
     EUIDB.classPortraitPack,
-    100,
+    200,
     function(value)
       EUIDB.classPortraitPack = value
     end
   )
-  classPortraitPack:SetPoint("TOPLEFT", rcuiTitle, "BOTTOMLEFT", 100, -16)
+  classPortraitPack:SetPoint("LEFT", portraitSelect, "RIGHT", 50, 0)
 
-  local tooltipAnchor = newDropdown(
+  local tooltipAnchor, tooltipDropdown = newDropdown(
     "Tooltip Cursor Anchor",
     {["ANCHOR_CURSOR_LEFT"] = "Bottom Right", ["ANCHOR_CURSOR_RIGHT"] = "Bottom Left", ['DEFAULT'] = 'Disabled'},
     EUIDB.tooltipAnchor,
@@ -212,7 +212,7 @@ local function rcui_options()
       EUIDB.tooltipAnchor = value
     end
   )
-  tooltipAnchor:SetPoint("LEFT", portraitSelect, "RIGHT", 220, 0)
+  tooltipAnchor:SetPoint("TOPLEFT", portraitDropdown, "BOTTOMLEFT", 0, -16)
 
   local lootSpecDisplay = newCheckbox(
     "Display Loot Spec Indicator",
@@ -221,7 +221,7 @@ local function rcui_options()
     function(self, value)
       EUIDB.lootSpecDisplay = value
     end,
-    portraitDropdown
+    tooltipDropdown
   )
 
   local hideAltPower = newCheckbox(

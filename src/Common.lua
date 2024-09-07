@@ -111,7 +111,7 @@ CLASS_PORTRAIT_PACKS = {}
 local classInfo = FABLED_CLASS_CIRCLES_DATA.class
 
 for iconStyle, data in next, classInfo.styles do
-  CLASS_PORTRAIT_PACKS[format('%s%s', classInfo.path, iconStyle)] = data.name
+  CLASS_PORTRAIT_PACKS[format('%s%s', classInfo.path, iconStyle)] = format('%s (by %s)', data.name, data.artist)
 end
 
 RILLY_CLEAN_FONTS = {
