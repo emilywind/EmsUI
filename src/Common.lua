@@ -17,7 +17,7 @@ EUI_TEXTURES = {
 
   auraBorder = TextureDir.."\\aura-border.tga",
 
-  classCircles = TextureDir.."\\class\\fabled.tga",
+  classCircles = TextureDir.."\\class\\fabled",
 
   circleTexture = TextureDir.."\\Portrait-ModelBack.tga",
   portraitModelFront = TextureDir.."\\portrait-modelfront.tga",
