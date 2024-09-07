@@ -277,7 +277,7 @@ function skinProgressBar(bar)
     bar.BorderRight:SetAlpha(0)
   end
 
-  bar:SetStatusBarTexture(EUIDB.statusTexture)
+  bar:SetStatusBarTexture(EUIDB.statusBarTexture)
 
   if bar.BarBG then
     bar.BarBG:Hide()

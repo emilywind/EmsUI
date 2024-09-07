@@ -53,9 +53,9 @@ end
 
 -- 			_G[prefix .. "Texture"]:SetTexture(TextureDir .. "\\UI-PartyFrame")
 -- 			_G[prefix.."Flash"]:SetTexture(TextureDir .. "\\UI-PARTYFRAME-FLASH")
--- 			_G[prefix.."HealthBar"]:SetStatusBarTexture(EUIDB.statusTexture)
+-- 			_G[prefix.."HealthBar"]:SetStatusBarTexture(EUIDB.statusBarTexture)
 -- 			_G[prefix.."HealthBar"]:SetHeight(6)
--- 			_G[prefix.."ManaBar"]:SetStatusBarTexture(EUIDB.statusTexture)
+-- 			_G[prefix.."ManaBar"]:SetStatusBarTexture(EUIDB.statusBarTexture)
 -- 			_G[prefix.."ManaBar"]:SetHeight(6)
 
 -- 			for i = 1, 20 do

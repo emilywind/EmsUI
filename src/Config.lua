@@ -9,7 +9,7 @@ EUIDBDefaults = {
   skinActionBars = true,
   darkMinimap = false,
 
-  statusTexture = EUI_TEXTURES.statusBar,
+  statusBarTexture = EUI_TEXTURES.statusBar,
 
   hideAltPower = false,
   lootSpecDisplay = true, -- Display loot spec icon in the player frame
@@ -236,10 +236,10 @@ local function eui_options()
   local statusBarChooser = newDropdown(
     "Status Bar Texture",
     tableToWowDropdown(LSM:HashTable('statusbar')),
-    EUIDB.statusTexture,
+    EUIDB.statusBarTexture,
     200,
     function(value)
-      EUIDB.statusTexture = value
+      EUIDB.statusBarTexture = value
     end
   )
   statusBarChooser:SetPoint("LEFT", lootSpecDisplay, "RIGHT", 300, 32)

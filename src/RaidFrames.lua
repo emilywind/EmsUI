@@ -7,12 +7,12 @@ local function updateTextures(self)
     local name = self:GetName()
     if name and name:match("^Compact") then
       if self:IsForbidden() then return end
-      self.healthBar:SetStatusBarTexture(EUIDB.statusTexture)
+      self.healthBar:SetStatusBarTexture(EUIDB.statusBarTexture)
       self.healthBar:GetStatusBarTexture():SetDrawLayer("BORDER")
-      self.powerBar:SetStatusBarTexture(EUIDB.statusTexture)
+      self.powerBar:SetStatusBarTexture(EUIDB.statusBarTexture)
       self.powerBar:GetStatusBarTexture():SetDrawLayer("BORDER")
-      self.myHealPrediction:SetTexture(EUIDB.statusTexture)
-      self.otherHealPrediction:SetTexture(EUIDB.statusTexture)
+      self.myHealPrediction:SetTexture(EUIDB.statusBarTexture)
+      self.otherHealPrediction:SetTexture(EUIDB.statusBarTexture)
 
       self.vertLeftBorder:Hide()
       self.vertRightBorder:Hide()

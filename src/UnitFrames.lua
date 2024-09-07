@@ -26,9 +26,9 @@ EmsUIUnitFrames:SetScript("OnEvent", function()
 
   local function healthTexture(self, event)
     if event == "PLAYER_ENTERING_WORLD" then
-        self.healthbar:SetStatusBarTexture(EUIDB.statusTexture)
+        self.healthbar:SetStatusBarTexture(EUIDB.statusBarTexture)
         self.healthbar:GetStatusBarTexture():SetDrawLayer("BORDER")
-        self.healthbar.AnimatedLossBar:SetStatusBarTexture(EUIDB.statusTexture)
+        self.healthbar.AnimatedLossBar:SetStatusBarTexture(EUIDB.statusBarTexture)
         self.healthbar.AnimatedLossBar:GetStatusBarTexture():SetDrawLayer("BORDER")
     end
   end
@@ -39,7 +39,7 @@ EmsUIUnitFrames:SetScript("OnEvent", function()
       local powerColor = PowerBarColor[self.manabar.powerType]
 
       -- Set Texture
-      self.manabar.texture:SetTexture(EUIDB.statusTexture)
+      self.manabar.texture:SetTexture(EUIDB.statusBarTexture)
 
       -- Set Power Color
       if self.manabar.powerType == 0 then
@@ -57,7 +57,7 @@ EmsUIUnitFrames:SetScript("OnEvent", function()
 
   PetFrame:HookScript("OnEvent", function(self, event)
     if event == "PLAYER_ENTERING_WORLD" then
-      self.healthbar:SetStatusBarTexture(EUIDB.statusTexture)
+      self.healthbar:SetStatusBarTexture(EUIDB.statusBarTexture)
       self.healthbar:GetStatusBarTexture():SetDrawLayer("BORDER")
     end
   end)
@@ -69,10 +69,10 @@ EmsUIUnitFrames:SetScript("OnEvent", function()
     if self:IsForbidden() then return end
 
     -- Set Textures
-    self.healthbar:SetStatusBarTexture(EUIDB.statusTexture)
+    self.healthbar:SetStatusBarTexture(EUIDB.statusBarTexture)
     self.healthbar:GetStatusBarTexture():SetDrawLayer("BORDER")
     if self.myHealPrediction then
-        self.myHealPredictionBar:SetTexture(EUIDB.statusTexture)
+        self.myHealPredictionBar:SetTexture(EUIDB.statusBarTexture)
     end
   end
 
@@ -109,7 +109,7 @@ EmsUIUnitFrames:SetScript("OnEvent", function()
   function SkinBossFrames(self, event)
       if self then
           if self.healthbar then
-              self.healthbar:SetStatusBarTexture(EUIDB.statusTexture)
+              self.healthbar:SetStatusBarTexture(EUIDB.statusBarTexture)
           end
 
           if self.TargetFrameContent.TargetFrameContentMain.ReputationColor then
@@ -149,7 +149,7 @@ EmsUIUnitFrames:SetScript("OnEvent", function()
           local powerColor = PowerBarColor[self.powerType]
 
           -- Set Texture
-          self.texture:SetTexture(EUIDB.statusTexture)
+          self.texture:SetTexture(EUIDB.statusBarTexture)
 
           -- Set Power Color
           if self.unitFrame and self.unitFrame.manabar then
@@ -166,7 +166,7 @@ EmsUIUnitFrames:SetScript("OnEvent", function()
   local function alternatePowerTexture(self)
     if self then
       local powerColor = PowerBarColor[self.powerType]
-      self:SetStatusBarTexture(EUIDB.statusTexture)
+      self:SetStatusBarTexture(EUIDB.statusBarTexture)
       if self.powerType and self.powerType == 0 then
         self:SetStatusBarColor(0, 0.5, 1)
       elseif self.powerType and self.powerType ~= 0 then

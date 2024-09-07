@@ -72,14 +72,14 @@ EmsUINameplates:SetScript("OnEvent", function()
       if (nameplate.UnitFrame) then
         nameplate.UnitFrame.isNameplate = true
       end
-    end);
+    end)
 
     local function modifyNamePlates(frame, options)
       if ( frame:IsForbidden() ) then return end
       if ( not frame.isNameplate ) then return end
 
       local healthBar = frame.healthBar
-      healthBar:SetStatusBarTexture(EUIDB.statusTexture)
+      healthBar:SetStatusBarTexture(EUIDB.statusBarTexture)
 
       local castBar = frame.castBar
       if (castBar) then

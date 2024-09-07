@@ -57,7 +57,7 @@ CF:SetScript("OnEvent", function(self, event)
 	bar.lockShow = 1
 
 	-- Gametooltip statusbar
-	GameTooltipStatusBar:SetStatusBarTexture(EUIDB.statusTexture)
+	GameTooltipStatusBar:SetStatusBarTexture(EUIDB.statusBarTexture)
 	GameTooltipStatusBar:ClearAllPoints()
 	GameTooltipStatusBar:SetPoint("LEFT", 3, 0)
 	GameTooltipStatusBar:SetPoint("RIGHT", -3, 0)
