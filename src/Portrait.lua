@@ -30,8 +30,8 @@ local function make3DPortraitFG(frame)
   frame.portraitFG:SetPoint("BOTTOMRIGHT", frame.portrait, "BOTTOMRIGHT", 0, -1)
   local foreground = frame.portraitFG:CreateTexture("foreLayer", "OVERLAY", nil)
   foreground:Hide()
-  foreground:SetTexture("Interface\\AddOns\\EmsUI\\media\\textures\\portrait-modelfront")
-  -- foreground:SetVertexColor(0, 0, 0)
+  foreground:SetTexture(RILLY_CLEAN_TEXTURES.portraitModelFront)
+  foreground:SetVertexColor(0, 0, 0)
   foreground:SetAllPoints(frame.portraitFG)
   foreground:Show()
   frame.portraitFG.forelayer = foreground
@@ -46,7 +46,7 @@ local function makeRillyCleanPortrait(frame)
     if ( UnitIsPlayer(unit) ) then
       local t = CLASS_ICON_TCOORDS[select(2, UnitClass(unit))]
       if t then
-        frame.portrait:SetTexture("Interface\\TargetingFrame\\UI-Classes-Circles")
+        frame.portrait:SetTexture(RILLY_CLEAN_TEXTURES.classCircles)
         frame.portrait:SetTexCoord(unpack(t))
         makePortraitBG(frame,0.05,0.05,0.05)
       end

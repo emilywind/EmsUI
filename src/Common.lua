@@ -14,38 +14,22 @@ RILLY_CLEAN_TEXTURES = {
   },
 
   statusBar = TextureDir.."\\status-bar",
-  targetFrame = TextureDir.."\\target-frame",
-  targetFrameFlash = TextureDir.."\\UI-TARGETINGFRAME-FLASH",
-  targetFrameSmall = TextureDir.."\\target-frame-small",
-  targetSmallNoMana = TextureDir.."\\target-small-nomana",
-  targetOfTarget = TextureDir.."\\target-of-target",
+
+  auraBorder = TextureDir.."\\aura-border",
+
+  classCircles = TextureDir.."\\targetingframe\\UI-CLASSES-CIRCLES"
 
   circleTexture = TextureDir.."\\Portrait-ModelBack",
+  portraitModelFront = TextureDir.."\\portrait-modelfront",
 
   minimap = {
     dungeonDifficulty = TextureDir.."\\minimap\\UI-DungeonDifficulty-Button"
-  },
-
-  nameplates = {
-    border = TextureDir.."\\nameplates\\border",
-    glow = TextureDir.."\\nameplates\\glow",
-  },
-
-  characterframe = {
-    stateIcon = TextureDir.."\\characterframe\\UI-StateIcon",
-    totemBorder = TextureDir.."\\characterframe\\TotemBorder",
   },
 
   lfg = {
     portraitRoles = TextureDir.."\\lfgframe\\UI-LFG-ICON-PORTRAITROLES",
     roles = TextureDir.."\\lfgframe\\UI-LFG-ICON-ROLES"
   },
-
-  castBorder = TextureDir.."\\UI-CastingBar-Border",
-  castFlash = TextureDir.."\\UI-CastingBar-Flash",
-  castSpark = TextureDir.."\\UI-CastingBar-Spark",
-
-  clock = TextureDir.."\\clock-bg"
 }
 
 RILLY_CLEAN_FONTS = {
