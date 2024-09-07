@@ -1,8 +1,10 @@
-local function applySkin(b)
-  if not b or (b and b.euiClean) then return end
+local function applySkin(aura, isDebuff)
+  if aura.euiClean then return end
+
+  if aura.TempEnchantBorder then aura.TempEnchantBorder:Hide() end
 
   --icon
-  local icon = b.Icon
+  local icon = aura.Icon
   if consolidated then
     if select(1,UnitFactionGroup("player")) == "Alliance" then
       icon:SetTexture(select(3,C_Spell.GetSpellInfo(61573)))
@@ -16,37 +18,43 @@ local function applySkin(b)
   icon:SetTexCoord(0.1,0.94,0.1,0.94)
 
   --border
-  local border = b:CreateTexture("AuraBorder", "BACKGROUND", nil, -7)
+  local border = aura:CreateTexture("AuraBorder", "BACKGROUND", nil, -7)
   border:SetTexture(EUI_TEXTURES.auraBorder)
   border:SetDrawLayer("OVERLAY")
 
-  if b.Border then
-    border:SetVertexColor(b.Border:GetVertexColor())
-    b.Border:Hide()
+  if aura.Border then
+    border:SetVertexColor(aura.Border:GetVertexColor())
+    aura.Border:Hide()
   else
     border:SetVertexColor(0,0,0)
   end
 
-  border:SetAllPoints(icon)
-  b.border = border
+  if isDebuff then
+    border:SetVertexColor(aura.DebuffBorder:GetVertexColor())
+    aura.DebuffBorder:SetAlpha(0)
+  end
 
-  if b.duration then
-    b.duration:SetDrawLayer("OVERLAY")
+  border:SetAllPoints(icon)
+  aura.border = border
+
+  if aura.duration then
+    aura.duration:SetDrawLayer("OVERLAY")
   end
 
   --set button styled variable
-  b.euiClean = true
+  aura.euiClean = true
 end
 
-local function updateAuras(self)
+local function updateAuras(self, isDebuff)
   local auras = self.auraFrames
 
-  --loop on all active buff buttons
-  for index, aura in ipairs(auras) do
-    --apply skin
-    applySkin(aura)
+  for index, aura in pairs(auras) do
+    local frame = select(index, self.AuraContainer:GetChildren())
+    if not frame then return end
+
+    applySkin(frame, isDebuff)
   end
 end
 
-hooksecurefunc(BuffFrame, "UpdateAuraButtons", updateAuras)
-hooksecurefunc(DebuffFrame, "UpdateAuraButtons", updateAuras)
+hooksecurefunc(BuffFrame, "UpdateAuraButtons", function(self) updateAuras(self, false) end)
+hooksecurefunc(DebuffFrame, "UpdateAuraButtons", function(self) updateAuras(self, true) end)
