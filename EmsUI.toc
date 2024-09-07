@@ -1,5 +1,5 @@
 ## Interface: 110002
-## Title: EmsUI
+## Title: Em's UI
 ## Notes: Simple skinnning modifications and quality of life features for the default interface to make it cleaner looking.
 ## Author: Emily
 ## Version: 5.1.0
