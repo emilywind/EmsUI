@@ -13,7 +13,7 @@ RillyCleanBigDebuffs:SetScript("OnEvent", function()
     local bdbNameplate = bdbFrame.BigDebuffs
 
     if (bdbNameplate) then
-      applyRillyCleanBackdrop(bdbNameplate)
+      applyEuiBackdrop(bdbNameplate)
     end
   end)
 end)

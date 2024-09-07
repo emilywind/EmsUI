@@ -17,7 +17,7 @@ local function applySkin(b)
 
   --border
   local border = b:CreateTexture("AuraBorder", "BACKGROUND", nil, -7)
-  border:SetTexture(RILLY_CLEAN_TEXTURES.auraBorder)
+  border:SetTexture(EUI_TEXTURES.auraBorder)
   border:SetDrawLayer("OVERLAY")
 
   if b.Border then

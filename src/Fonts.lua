@@ -7,7 +7,7 @@ local RCUI=CreateFrame("Frame")
 RCUI:RegisterEvent("ADDON_LOADED")
 RCUI:SetScript("OnEvent", function(self, event)
   if EUIDB.damageFont then
-    DAMAGE_TEXT_FONT          = RILLY_CLEAN_DAMAGE_FONT
+    DAMAGE_TEXT_FONT          = EUIDB.damageFontChosen
   end
 
   if not EUIDB.customFonts then return end

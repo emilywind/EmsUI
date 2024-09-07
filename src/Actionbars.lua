@@ -15,7 +15,7 @@ local function init()
   end
 
   local function skinButton(bu, icon, isLeaveButton)
-    applyRillyCleanButtonSkin(bu, icon, isLeaveButton)
+    applyEuiButtonSkin(bu, icon, isLeaveButton)
   end
 
   --style extraactionbutton

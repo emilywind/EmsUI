@@ -5,7 +5,7 @@ MediaDir = AddonDir.."\\media"
 FontsDir = MediaDir.."\\fonts"
 TextureDir = MediaDir.."\\textures"
 
-RILLY_CLEAN_TEXTURES = {
+EUI_TEXTURES = {
   buttons = {
     normal = TextureDir.."\\button-normal",
     pushed = TextureDir.."\\buttons\\button-pressed",
@@ -114,11 +114,12 @@ for iconStyle, data in next, classInfo.styles do
   CLASS_PORTRAIT_PACKS[format('%s%s', classInfo.path, iconStyle)] = format('%s (by %s)', data.name, data.artist)
 end
 
-RILLY_CLEAN_FONTS = {
+EUI_FONTS = {
   Andika = FontsDir.."\\Andika.ttf",
   Fira = FontsDir.."\\FiraSans.ttf",
   SourceSans = FontsDir.."\\SourceSans3.ttf",
   Marmelad = FontsDir.."\\Marmelad.ttf",
+  Bangers = FontsDir.."\\Bangers-Regular.ttf",
 }
 
 function tableToWowDropdown(table)
@@ -130,37 +131,9 @@ function tableToWowDropdown(table)
   return wowTable
 end
 
-RILLY_CLEAN_DAMAGE_FONT = FontsDir.."\\Bangers-Regular.ttf"
+EUI_DAMAGE_FONT = FontsDir.."\\Bangers-Regular.ttf"
 
-RILLY_CLEAN_BACKDROP = {
-  bgFile = SQUARE_TEXTURE,
-  edgeFile = SQUARE_TEXTURE,
-  tile = false,
-  tileSize = 0,
-  edgeSize = 0,
-  insets = {
-    left = -1,
-    right = -1,
-    top = -1,
-    bottom = -1
-  }
-}
-
-RILLY_CLEAN_CIRCLE_BORDER = {
-  bgFile = RILLY_CLEAN_TEXTURES.circleTexture,
-  -- edgeFile = RILLY_CLEAN_TEXTURES.circleTexture,
-  tile = false,
-  tileSize = 0,
-  edgeSize = 0,
-  insets = {
-    left = 0,
-    right = 0,
-    top = 0,
-    bottom = 0
-  }
-}
-
-RILLY_CLEAN_BORDER = {
+EUI_BORDER = {
   bgFile = nil,
   edgeFile = SQUARE_TEXTURE,
   tile = false,
@@ -174,7 +147,7 @@ RILLY_CLEAN_BORDER = {
   },
 }
 
-RILLY_CLEAN_BUFF_BORDER = {
+EUI_BUFF_BORDER = {
   bgFile = nil,
   edgeFile = SQUARE_TEXTURE,
   tile = false,
@@ -210,7 +183,7 @@ function styleIcon(ic, bu)
   ic:SetTexCoord(0.1, 0.9, 0.1, 0.9)
 end
 
-function applyRillyCleanButtonSkin(bu, icon, isLeaveButton)
+function applyEuiButtonSkin(bu, icon, isLeaveButton)
   if not bu then return end
   if (bu and bu.rillyClean) then return bu.border end
 
@@ -218,7 +191,7 @@ function applyRillyCleanButtonSkin(bu, icon, isLeaveButton)
   local name = bu:GetName()
   icon = icon or bu.icon or bu.Icon or _G[name.."Icon"]
 
-  bu:SetHighlightTexture(RILLY_CLEAN_TEXTURES.buttons.hover)
+  bu:SetHighlightTexture(EUI_TEXTURES.buttons.hover)
 
   local nt = bu:GetNormalTexture()
 
@@ -229,18 +202,18 @@ function applyRillyCleanButtonSkin(bu, icon, isLeaveButton)
     nt:SetTexCoord(0.2, 0.8, 0.2, 0.8)
   else
     -- Simple button border
-    nt:SetTexture(RILLY_CLEAN_TEXTURES.buttons.normal)
+    nt:SetTexture(EUI_TEXTURES.buttons.normal)
     nt:SetDrawLayer("ARTWORK")
 
     local pt = bu:GetPushedTexture()
     pt:SetAllPoints(bu)
-    pt:SetTexture(RILLY_CLEAN_TEXTURES.buttons.pushed)
+    pt:SetTexture(EUI_TEXTURES.buttons.pushed)
     pt:SetDrawLayer("OVERLAY")
 
     if bu.SetCheckedTexture ~= nil then
       local ct = bu:GetCheckedTexture()
       ct:SetAllPoints(bu)
-      ct:SetTexture(RILLY_CLEAN_TEXTURES.buttons.checked)
+      ct:SetTexture(EUI_TEXTURES.buttons.checked)
       ct:SetDrawLayer("OVERLAY")
     end
   end
@@ -248,7 +221,7 @@ function applyRillyCleanButtonSkin(bu, icon, isLeaveButton)
   return border, icon
 end
 
-function applyRillyCleanBackdrop(b, frame)
+function applyEuiBackdrop(b, frame)
   if (b.rillyClean) then return end
 
   local frame = CreateFrame("Frame", nil, (frame or b))
@@ -263,41 +236,13 @@ function applyRillyCleanBackdrop(b, frame)
   back:SetPoint("TOPLEFT", b, "TOPLEFT", -2, 2)
   back:SetPoint("BOTTOMRIGHT", b, "BOTTOMRIGHT", 2, -2)
   back:SetFrameLevel(frame:GetFrameLevel())
-  back.backdropInfo = RILLY_CLEAN_BORDER
+  back.backdropInfo = EUI_BORDER
   back:ApplyBackdrop()
   back:SetBackdropBorderColor(0,0,0,1)
   b.bg = back
 
   b.rillyClean = true
   return back, icon
-end
-
-ARA_FACTION_COLORS = {
-  { r= .54, g= 0,   b= 0   }, -- hated
-  { r= 1,   g= .10, b= .1  }, -- hostile
-  { r= 1,   g= .55, b= 0   }, -- unfriendly
-  { r= .87, g= .87, b= .87 }, -- neutral
-  { r= 1,   g= 1,   b= 0   }, -- friendly
-  { r= .1,  g= .9,  b= .1  }, -- honored
-  { r= .25, g= .41, b= .88 }, -- revered
-  { r= .6,  g= .2,  b= .8  }, -- exalted
-  { r= .4,  g= 0,   b= .6  }, -- past exalted
-}
-
--- FACTION_BAR_COLORS = ARA_FACTION_COLORS
-
-function setFontOutline(textObject, outlinestyle)
-  local font, size, flags = textObject:GetFont()
-
-  if not outlinestyle then outlinestyle = "THINOUTLINE" end
-
-  textObject:SetFont(font, size, outlinestyle)
-end
-
-function setFontSize(textObject, size)
-  local font, _, flags = textObject:GetFont()
-
-  textObject:SetFont(font, size, flags)
 end
 
 function setDefaultFont(textObject, size, outlinestyle)
@@ -307,50 +252,6 @@ function setDefaultFont(textObject, size, outlinestyle)
   if not outlinestyle then outlinestyle = "THINOUTLINE" end
 
   textObject:SetFont(EUIDB.font, size, outlinestyle)
-end
-
-xpColors = {
-  normal = { r = 0.58, g = 0.0, b = 0.55 },
-  rested = { r = 0.0, g = 0.39, b = 0.88 },
-}
-
-function addStatusBarToFrame(frame, name, color)
-  local statusBar = CreateFrame("StatusBar", (name .. "Bar"), frame)
-	statusBar:SetOrientation("Vertical")
-	statusBar:SetPoint("CENTER", 0, 0)
-	local tex = statusBar:CreateTexture()
-	tex:SetTexture(RILLY_CLEAN_TEXTURES.statusBar)
-	statusBar:SetStatusBarTexture(tex)
-	statusBar:SetSize(frame:GetWidth() - 4, frame:GetHeight() - 2)
-	statusBar:SetStatusBarColor(color.r, color.g, color.b, color.a or 1)
-
-	local bg = statusBar:CreateTexture(nil, "BACKGROUND")
-	bg:SetAllPoints(statusBar)
-  bg:SetColorTexture(0, 0, 0, 0.7)
-
-  return statusBar
-end
-
-function createStatusBar(name, parentFrame, width, height, color)
-  local barBorder = CreateFrame("Frame", (name .. "Border"), parentFrame, "BackdropTemplate")
-	barBorder:SetFrameLevel(0)
-	barBorder:SetFrameStrata("low")
-	barBorder:SetSize(width, height)
-	barBorder:SetScale(1)
-
-	barBorder.backdropInfo = {
-		edgeFile = SQUARE_TEXTURE,
-		tile = false, tileSize = 0, edgeSize = 2,
-		insets = { left = 0, right = 0, top = 0, bottom = 0 }
-  }
-  barBorder:ApplyBackdrop()
-	barBorder:SetBackdropBorderColor(0,0,0,1)
-	barBorder:Show()
-
-  local statusBar = addStatusBarToFrame(barBorder, name, color)
-
-  barBorder.Status = statusBar
-  return barBorder
 end
 
 local cleanBarBackdrop = {
@@ -376,7 +277,7 @@ function skinProgressBar(bar)
     bar.BorderRight:SetAlpha(0)
   end
 
-  bar:SetStatusBarTexture(RILLY_CLEAN_TEXTURES.statusBar)
+  bar:SetStatusBarTexture(EUI_TEXTURES.statusBar)
 
   if bar.BarBG then
     bar.BarBG:Hide()
@@ -398,39 +299,4 @@ function skinProgressBar(bar)
   end
 
   bar.rillyClean = true
-end
-
-function round(what, precision)
-  return math.floor(what*math.pow(10,precision)+0.5) / math.pow(10,precision)
-end
-
-function abbrNumber(number)
-  local punit={"","K","M","B","T","Q"};
-  local unitcp = 1;
-  while number > 1000 do
-      number = number / 1000;
-      unitcp = unitcp + 1
-  end
-
-  return round(number, 1) .. punit[unitcp]
-end
-
-function copyTable(t)
-  local t2 = {}
-  for k,v in pairs(t) do
-    t2[k] = v
-  end
-  return t2
-end
-
-function addCastbarTimer(castingFrame, fontSize, xOffset, yOffset, point, relativePoint)
-  if ( not point ) then point = "LEFT" end
-  if ( not relativePoint ) then relativePoint = "RIGHT" end
-
-  castingFrame.timer = castingFrame:CreateFontString(nil)
-  setDefaultFont(castingFrame.timer, fontSize)
-  castingFrame.timer:SetPoint(point, castingFrame, relativePoint, xOffset, yOffset)
-  castingFrame.update = 0.1
-
-  castingFrame:HookScript("OnUpdate", CastingBarFrame_OnUpdate_Hook)
 end

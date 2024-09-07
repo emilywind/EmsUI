@@ -36,7 +36,7 @@ function applyAuraSkin(b)
   back:SetPoint("TOPLEFT", b, "TOPLEFT", 0, 0)
   back:SetPoint("BOTTOMRIGHT", b, "BOTTOMRIGHT", 0, 0)
   back:SetFrameLevel(b:GetFrameLevel() - 1)
-  back.backdropInfo = RILLY_CLEAN_BUFF_BORDER
+  back.backdropInfo = EUI_BUFF_BORDER
   back:ApplyBackdrop()
   back:SetBackdropBorderColor(0,0,0,1)
 
@@ -53,9 +53,9 @@ end
 
 -- 			_G[prefix .. "Texture"]:SetTexture(TextureDir .. "\\UI-PartyFrame")
 -- 			_G[prefix.."Flash"]:SetTexture(TextureDir .. "\\UI-PARTYFRAME-FLASH")
--- 			_G[prefix.."HealthBar"]:SetStatusBarTexture(RILLY_CLEAN_TEXTURES.statusBar)
+-- 			_G[prefix.."HealthBar"]:SetStatusBarTexture(EUI_TEXTURES.statusBar)
 -- 			_G[prefix.."HealthBar"]:SetHeight(6)
--- 			_G[prefix.."ManaBar"]:SetStatusBarTexture(RILLY_CLEAN_TEXTURES.statusBar)
+-- 			_G[prefix.."ManaBar"]:SetStatusBarTexture(EUI_TEXTURES.statusBar)
 -- 			_G[prefix.."ManaBar"]:SetHeight(6)
 
 -- 			for i = 1, 20 do
@@ -83,7 +83,7 @@ end
 --           -- back:SetPoint("TOPLEFT", b, "TOPLEFT", 0, 0)
 --           -- back:SetPoint("BOTTOMRIGHT", b, "BOTTOMRIGHT", 0, 0)
 --           -- back:SetFrameLevel(b:GetFrameLevel() - 1)
---           -- back.backdropInfo = RILLY_CLEAN_BUFF_BORDER
+--           -- back.backdropInfo = EUI_BUFF_BORDER
 --           -- back:ApplyBackdrop()
 --           -- back:SetBackdropBorderColor(0,0,0,1)
 

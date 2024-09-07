@@ -79,7 +79,7 @@ RillyCleanNameplates:SetScript("OnEvent", function()
       if ( not frame.isNameplate ) then return end
 
       local healthBar = frame.healthBar
-      healthBar:SetStatusBarTexture(RILLY_CLEAN_TEXTURES.statusBar)
+      healthBar:SetStatusBarTexture(EUI_TEXTURES.statusBar)
 
       local castBar = frame.castBar
       if (castBar) then
@@ -91,7 +91,7 @@ RillyCleanNameplates:SetScript("OnEvent", function()
 
         setDefaultFont(castBar.Text, EUIDB.nameplateNameFontSize - 1)
 
-        applyRillyCleanBackdrop(castBar.Icon, castBar)
+        applyEuiBackdrop(castBar.Icon, castBar)
 
         castBar.rillyClean = true
       end

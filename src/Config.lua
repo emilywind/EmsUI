@@ -13,8 +13,9 @@ EUIDBDefaults = {
   lootSpecDisplay = true, -- Display loot spec icon in the player frame
 
   damageFont = true, -- Change damage font to something cooler
+  damageFontChosen = EUI_FONTS.Bangers,
   customFonts = true, -- Update all fonts to something cooler
-  font = RILLY_CLEAN_FONTS.Andika,
+  font = EUI_FONTS.Andika,
 
   tooltipAnchor = "ANCHOR_CURSOR_LEFT",
 
@@ -32,7 +33,7 @@ EUIDBDefaults = {
   nameplateShowCastTime = true,
 
   portraitStyle = "3D", -- 3D, 2D, or class (for class icons)
-  classPortraitPack = RILLY_CLEAN_TEXTURES.classCircles,
+  classPortraitPack = EUI_TEXTURES.classCircles,
 
   -- PvP Settings
   safeQueue = true,
@@ -255,17 +256,28 @@ local function eui_options()
       EUIDB.font = value
     end
   )
-  fontChooser:SetPoint("LEFT", customFonts, "RIGHT", 300, 0)
+  fontChooser:SetPoint("LEFT", hideAltPower, "RIGHT", 300, 0)
 
   local damageFont = newCheckbox(
     "Use Custom Damage Font",
-    "Use custom damage font, ZCOOL KuaiLe. Replace font file in Addons/EmsUI/fonts to customise.",
+    "Use custom damage font, Bangers.",
     EUIDB.damageFont,
     function(self, value)
       EUIDB.damageFont = value
     end,
     customFonts
   )
+
+  local damageFontChooser = newDropdown(
+    "Damage Font",
+    tableToWowDropdown(LSM:HashTable('font')),
+    EUIDB.damageFontChosen,
+    200,
+    function(value)
+      EUIDB.damageFontChosen = value
+    end
+  )
+  damageFontChooser:SetPoint("LEFT", damageFont, "RIGHT", 300, 0)
 
   local darkMinimap = newCheckbox(
     "Dark Minimap",
