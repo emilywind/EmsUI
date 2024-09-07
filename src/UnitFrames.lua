@@ -15,7 +15,8 @@ EmsUIUnitFrames:SetScript("OnEvent", function()
 			RuneFrame,
 			ComboPointPlayerFrame,
 			WarlockPowerFrame,
-			TotemFrame
+			TotemFrame,
+      EssencePlayerFrame,
 		}
 
 		for _, altPowerBar in pairs(altPowerBars) do
@@ -25,15 +26,17 @@ EmsUIUnitFrames:SetScript("OnEvent", function()
 	end
 
   local function healthTexture(self, event)
-    if event == "PLAYER_ENTERING_WORLD" then
-      self.healthbar:SetStatusBarTexture(EUIDB.statusBarTexture)
-      self.healthbar:GetStatusBarTexture():SetDrawLayer("BORDER")
-      self.healthbar.AnimatedLossBar:SetStatusBarTexture(EUIDB.statusBarTexture)
-      self.healthbar.AnimatedLossBar:GetStatusBarTexture():SetDrawLayer("BORDER")
-    end
+    if event ~= "PLAYER_ENTERING_WORLD" then return end
+
+    self.healthbar:SetStatusBarTexture(EUIDB.statusBarTexture)
+    self.healthbar:GetStatusBarTexture():SetDrawLayer("BORDER")
+    self.healthbar.AnimatedLossBar:SetStatusBarTexture(EUIDB.statusBarTexture)
+    self.healthbar.AnimatedLossBar:GetStatusBarTexture():SetDrawLayer("BORDER")
   end
 
-  local function manaTexture(self)
+  local function manaTexture(self, event)
+    if event ~= 'PLAYER_ENTERING_WORLD' then return end
+
     if self and self.manabar then
       -- Get Power Color
       local powerColor = PowerBarColor[self.manabar.powerType]
@@ -188,31 +191,31 @@ EmsUIUnitFrames:SetScript("OnEvent", function()
   FocusFrame.TargetFrameContent.TargetFrameContentMain.ReputationColor:Hide()
 
   function SetUnitColour(healthbar, unit)
-      healthbar:SetStatusBarDesaturated(1)
-      if UnitIsPlayer(unit) and UnitIsConnected(unit) and UnitClass(unit) then
-          _, class = UnitClass(unit)
-          local color = RAID_CLASS_COLORS[class]
-          healthbar:SetStatusBarColor(color.r, color.g, color.b)
-      elseif UnitIsPlayer(unit) and (not UnitIsConnected(unit)) then
-          healthbar:SetStatusBarColor(0.5, 0.5, 0.5);
-      else
-          if UnitExists(unit) then
-              if (UnitIsTapDenied(unit)) and not UnitPlayerControlled(unit) then
-                  healthbar:SetStatusBarColor(0.5, 0.5, 0.5)
-              elseif (not UnitIsTapDenied(unit)) then
-                  local reaction = FACTION_BAR_COLORS[UnitReaction(unit, "player")];
-                  if reaction then
-                      healthbar:SetStatusBarColor(reaction.r, reaction.g, reaction.b);
-                  end
-              end
+    healthbar:SetStatusBarDesaturated(1)
+    if UnitIsPlayer(unit) and UnitIsConnected(unit) and UnitClass(unit) then
+      _, class = UnitClass(unit)
+      local color = RAID_CLASS_COLORS[class]
+      healthbar:SetStatusBarColor(color.r, color.g, color.b)
+    elseif UnitIsPlayer(unit) and (not UnitIsConnected(unit)) then
+      healthbar:SetStatusBarColor(0.5, 0.5, 0.5);
+    else
+      if UnitExists(unit) then
+        if (UnitIsTapDenied(unit)) and not UnitPlayerControlled(unit) then
+          healthbar:SetStatusBarColor(0.5, 0.5, 0.5)
+        elseif (not UnitIsTapDenied(unit)) then
+          local reaction = FACTION_BAR_COLORS[UnitReaction(unit, "player")];
+          if reaction then
+            healthbar:SetStatusBarColor(reaction.r, reaction.g, reaction.b);
           end
+        end
       end
+    end
   end
 
   hooksecurefunc("UnitFrameHealthBar_Update", function(self)
-      SetUnitColour(self, self.unit)
+    SetUnitColour(self, self.unit)
   end)
   hooksecurefunc("HealthBar_OnValueChanged", function(self)
-      SetUnitColour(self, self.unit)
+    SetUnitColour(self, self.unit)
   end)
 end)
