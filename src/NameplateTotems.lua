@@ -74,7 +74,7 @@ loadFrame:SetScript('OnEvent', function()
     icon:SetAllPoints()
 
     local bg = frame:CreateTexture(nil, "BACKGROUND")
-    bg:SetTexture("Interface\\BUTTONS\\WHITE8X8")
+    bg:SetTexture(SQUARE_TEXTURE)
     bg:SetVertexColor(0, 0, 0, 0.5)
     bg:SetPoint("TOPLEFT", frame, "TOPLEFT", -2, 2)
     bg:SetPoint("BOTTOMRIGHT", frame, "BOTTOMRIGHT", 2, -2)
