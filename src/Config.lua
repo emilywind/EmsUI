@@ -232,7 +232,7 @@ local function eui_options()
       EUIDB.statusTexture = value
     end
   )
-  statusBarChooser:SetPoint("LEFT", tooltipAnchor, "RIGHT", 200, 0)
+  statusBarChooser:SetPoint("LEFT", tooltipAnchor, "RIGHT", 198, 0)
 
   local lootSpecDisplay = newCheckbox(
     "Display Loot Spec Indicator",
