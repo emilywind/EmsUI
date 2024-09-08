@@ -101,7 +101,7 @@ CF:SetScript("OnEvent", function(self, event)
 		GameTooltip:AddLine(' ')
 	end
 
-  Processor.AddTooltipPostCall(Enum.TooltipDataType.Unit, OnTooltipSetUnit)
+  TooltipDataProcessor.AddTooltipPostCall(Enum.TooltipDataType.Unit, OnTooltipSetUnit)
 
 	GameTooltip:HookScript("OnUpdate", function(tooltip)
 		skinNineSlice(GameTooltip.NineSlice)
