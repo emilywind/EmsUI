@@ -68,7 +68,7 @@ EmsUIUnitFrames:SetScript("OnEvent", function()
     end
   end
 
-  hooksecurefunc(TargetFrame, "Update", function(self)
+  hooksecurefunc(TargetFrame, "OnEvent", function(self)
     skinTargetHealthbar(self)
 
     -- Style Buffs & Debuffs
@@ -77,7 +77,7 @@ EmsUIUnitFrames:SetScript("OnEvent", function()
     end
   end)
 
-  hooksecurefunc(FocusFrame, "Update", function(self)
+  hooksecurefunc(FocusFrame, "OnEvent", function(self)
     -- Set Health Texture
     skinTargetHealthbar(self)
 

@@ -1,3 +1,6 @@
+----------------------------------
+-- Buffs/Debuffs on Unit Frames --
+----------------------------------
 function applyAuraSkin(aura)
   if aura.euiClean then return end
 
@@ -14,7 +17,14 @@ function applyAuraSkin(aura)
   border:SetTexture(SQUARE_TEXTURE)
   border:SetTexCoord(0,1,0,1)
   border:SetDrawLayer("BACKGROUND",-7)
-  border:SetVertexColor(0,0,0)
+
+  if aura.Border then
+    border:SetVertexColor(aura.Border:GetVertexColor())
+    aura.Border:SetAlpha(0)
+  else
+    border:SetVertexColor(0,0,0)
+  end
+
   border:ClearAllPoints()
   border:SetAllPoints(aura)
   aura.border = border
