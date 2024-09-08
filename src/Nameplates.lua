@@ -17,6 +17,8 @@ EmsUINameplates:SetScript("OnEvent", function()
   -- Red color when below 30% on Personal Resource Bar --
   -------------------------------------------------------
   hooksecurefunc("CompactUnitFrame_UpdateHealth", function(frame)
+    if frame:IsForbidden() then return end
+
     local healthPercentage = ceil((UnitHealth(frame.displayedUnit) / UnitHealthMax(frame.displayedUnit) * 100))
     local isPersonal = C_NamePlate.GetNamePlateForUnit(frame.unit) == C_NamePlate.GetNamePlateForUnit("player")
 
@@ -37,19 +39,19 @@ EmsUINameplates:SetScript("OnEvent", function()
       end
     end
 
-    if frame.isNameplate and not frame:IsForbidden() then
-      if not frame.healthPercentage then
-        frame.healthPercentage = frame.healthBar:CreateFontString(frame.healthPercentage, "OVERLAY", "GameFontNormalSmall")
-        setDefaultFont(frame.healthPercentage, EUIDB.nameplateNameFontSize - 1)
-        frame.healthPercentage:SetTextColor( 1, 1, 1 )
-        frame.healthPercentage:SetPoint("CENTER", frame.healthBar, "CENTER", 0, 0)
-      end
+    if not frame.isNameplate then return end
 
-      if EUIDB.nameplateHealthPercent and healthPercentage ~= 100 then
-        frame.healthPercentage:SetText(healthPercentage .. '%')
-      else
-        frame.healthPercentage:SetText('')
-      end
+    if not frame.healthPercentage then
+      frame.healthPercentage = frame.healthBar:CreateFontString(frame.healthPercentage, "OVERLAY", "GameFontNormalSmall")
+      setDefaultFont(frame.healthPercentage, EUIDB.nameplateNameFontSize - 1)
+      frame.healthPercentage:SetTextColor( 1, 1, 1 )
+      frame.healthPercentage:SetPoint("CENTER", frame.healthBar, "CENTER", 0, 0)
+    end
+
+    if EUIDB.nameplateHealthPercent and healthPercentage ~= 100 then
+      frame.healthPercentage:SetText(healthPercentage .. '%')
+    else
+      frame.healthPercentage:SetText('')
     end
   end)
 
