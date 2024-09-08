@@ -63,7 +63,7 @@ local function copyDefaults(src, dst)
   return dst
 end
 
-local function eui_defaults()
+local function euDefaults()
   -- Copy the values from the defaults table into the saved variables table
   -- if it exists, and assign the result to the saved variable:
   EUIDB = copyDefaults(EUIDBDefaults, EUIDB)
@@ -71,14 +71,14 @@ local function eui_defaults()
   eui = {}
 end
 
-local function reset_defaults()
+local function resetToDefaults()
   EUIDB = {}
   EUIDB = copyDefaults(EUIDBDefaults, EUIDB)
 end
 
-local rc_catch = CreateFrame("Frame")
-rc_catch:RegisterEvent("PLAYER_LOGIN")
-rc_catch:SetScript("OnEvent", eui_defaults)
+local euiOptionsEventFrame = CreateFrame("Frame")
+euiOptionsEventFrame:RegisterEvent("PLAYER_LOGIN")
+euiOptionsEventFrame:SetScript("OnEvent", euDefaults)
 
 local onShow = function(frame)
 
@@ -93,11 +93,11 @@ local makePanel = function(frameName, mainpanel, panelName)
 end
 
 local function openEuiConfig()
-  Settings.OpenToCategory(euiPanel)
-  Settings.OpenToCategory(euiPanel)
+  Settings.OpenToCategory('EmsUI')
+  -- Settings.OpenToCategory(euiPanel)
 end
 
-local function eui_options()
+local function euiOptions()
   -- Creation of the options menu
   eui.panel = CreateFrame( "Frame", "euiPanel", UIParent )
   eui.panel.name = "EmsUI";
@@ -519,7 +519,7 @@ local function eui_options()
   reload:SetSize(120,22)
   reload:SetText("Reset to Defaults")
   reload:SetScript("OnClick", function()
-    reset_defaults()
+    resetToDefaults()
     ReloadUI()
   end)
   local reload = CreateFrame("Button", "reload", eui.panel, "UIPanelButtonTemplate")
@@ -539,4 +539,4 @@ end
 
 local eui_catch = CreateFrame("Frame")
 eui_catch:RegisterEvent("PLAYER_LOGIN")
-eui_catch:SetScript("OnEvent", eui_options)
+eui_catch:SetScript("OnEvent", euiOptions)
