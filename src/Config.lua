@@ -63,7 +63,7 @@ local function copyDefaults(src, dst)
   return dst
 end
 
-local function euDefaults()
+local function euiDefaults()
   -- Copy the values from the defaults table into the saved variables table
   -- if it exists, and assign the result to the saved variable:
   EUIDB = copyDefaults(EUIDBDefaults, EUIDB)
@@ -78,7 +78,7 @@ end
 
 local euiOptionsEventFrame = CreateFrame("Frame")
 euiOptionsEventFrame:RegisterEvent("PLAYER_LOGIN")
-euiOptionsEventFrame:SetScript("OnEvent", euDefaults)
+euiOptionsEventFrame:SetScript("OnEvent", euiDefaults)
 
 local onShow = function(frame)
 
