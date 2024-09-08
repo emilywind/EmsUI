@@ -80,14 +80,9 @@ local euiOptionsEventFrame = CreateFrame("Frame")
 euiOptionsEventFrame:RegisterEvent("PLAYER_LOGIN")
 euiOptionsEventFrame:SetScript("OnEvent", euiDefaults)
 
-local onShow = function(frame)
-
-end
-
 local makePanel = function(frameName, mainpanel, panelName)
   local panel = CreateFrame("Frame", frameName, mainpanel)
   panel.name, panel.parent = panelName, name
-  panel:SetScript("OnShow", onShow)
   local category = Settings.GetCategory("EmsUI")
   Settings.RegisterCanvasLayoutSubcategory(category, panel, panelName)
 end
@@ -97,6 +92,8 @@ local function openEuiConfig()
 end
 
 local function setupEuiOptions()
+  LSM_STATUSBAR = tableToWowDropdown(LSM:HashTable('statusbar'))
+  LSM_FONTS = tableToWowDropdown(LSM:HashTable('font'))
   -- Creation of the options menu
   eui.panel = CreateFrame( "Frame", "euiPanel", UIParent )
   eui.panel.name = "EmsUI";
@@ -232,7 +229,7 @@ local function setupEuiOptions()
 
   local statusBarChooser = newDropdown(
     "Status Bar Texture",
-    tableToWowDropdown(LSM:HashTable('statusbar')),
+    LSM_STATUSBAR,
     EUIDB.statusBarTexture,
     200,
     function(value)
@@ -263,7 +260,7 @@ local function setupEuiOptions()
 
   local fontChooser = newDropdown(
     "Font",
-    tableToWowDropdown(LSM:HashTable('font')),
+    LSM_FONTS,
     EUIDB.font,
     200,
     function(value)
@@ -284,7 +281,7 @@ local function setupEuiOptions()
 
   local damageFontChooser = newDropdown(
     "Damage Font",
-    tableToWowDropdown(LSM:HashTable('font')),
+    LSM_FONTS,
     EUIDB.damageFontChosen,
     200,
     function(value)
@@ -544,5 +541,5 @@ local function setupEuiOptions()
 end
 
 local eui_catch = CreateFrame("Frame")
-eui_catch:RegisterEvent("PLAYER_LOGIN")
+eui_catch:RegisterEvent("PLAYER_ENTERING_WORLD")
 eui_catch:SetScript("OnEvent", setupEuiOptions)
