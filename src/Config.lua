@@ -94,10 +94,9 @@ end
 
 local function openEuiConfig()
   Settings.OpenToCategory('EmsUI')
-  -- Settings.OpenToCategory(euiPanel)
 end
 
-local function euiOptions()
+local function setupEuiOptions()
   -- Creation of the options menu
   eui.panel = CreateFrame( "Frame", "euiPanel", UIParent )
   eui.panel.name = "EmsUI";
@@ -539,4 +538,4 @@ end
 
 local eui_catch = CreateFrame("Frame")
 eui_catch:RegisterEvent("PLAYER_LOGIN")
-eui_catch:SetScript("OnEvent", euiOptions)
+eui_catch:SetScript("OnEvent", setupEuiOptions)
