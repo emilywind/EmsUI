@@ -1,4 +1,10 @@
 local function applySkin(aura, isDebuff)
+  if isDebuff and aura.border then
+    aura.DebuffBorder:SetAlpha(1)
+    aura.border:SetVertexColor(aura.DebuffBorder:GetVertexColor())
+    aura.DebuffBorder:SetAlpha(0)
+  end
+
   if aura.euiClean then return end
 
   if aura.TempEnchantBorder then aura.TempEnchantBorder:Hide() end
