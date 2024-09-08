@@ -25,6 +25,3 @@ end
 hooksecurefunc("CompactUnitFrame_UpdateAll", function(self)
   updateTextures(self)
 end)
-
--- Hide Titles
-CompactPartyFrameTitle:Hide()
