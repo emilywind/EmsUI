@@ -65,7 +65,9 @@ CF:SetScript("OnEvent", function(self, event)
 	GameTooltipStatusBar:SetHeight(10)
 
 	-- Class colours
-	hooksecurefunc(GameTooltip, "SetUnit", function()
+	function onTooltipSetUnit(self)
+    if self ~= _G.GameTooltip then return end
+
     local tooltip = GameTooltip
 		local _, unit = tooltip:GetUnit()
 		if  not unit then return end
@@ -97,7 +99,9 @@ CF:SetScript("OnEvent", function(self, event)
 		end
 
 		GameTooltip:AddLine(' ')
-	end)
+	end
+
+  Processor.AddTooltipPostCall(Enum.TooltipDataType.Unit, OnTooltipSetUnit)
 
 	GameTooltip:HookScript("OnUpdate", function(tooltip)
 		skinNineSlice(GameTooltip.NineSlice)
