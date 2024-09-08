@@ -1,31 +1,32 @@
 --------------------------------------
 -- Shows dampening display in arena --
 --------------------------------------
-local frame = CreateFrame("Frame", nil , UIParent)
+local frame = CreateFrame("Frame", "Dampening_Display", UIParent, "UIWidgetTemplateIconAndText")
 local _
-local FindAuraByName = AuraUtil.FindAuraByName
 local dampeningtext = C_Spell.GetSpellInfo(110310)
+local widgetSetID = C_UIWidgetManager.GetTopCenterWidgetSetID()
+local widgetSetInfo = C_UIWidgetManager.GetWidgetSetInfo(widgetSetID)
+local C_Commentator_GetDampeningPercent = C_Commentator.GetDampeningPercent
 
 frame:SetScript("OnEvent", function(self, event, ...) self[event](self, ...) end)
 frame:RegisterEvent("PLAYER_ENTERING_WORLD")
-frame:SetPoint("TOP", UIWidgetTopCenterContainerFrame, "BOTTOM", 0, 0)
-frame:SetSize(200, 11.38) --11,38 is the height of the remaining time
-frame.text = frame:CreateFontString(nil, "BACKGROUND")
-frame.text:SetFontObject(GameFontNormalSmall)
-frame.text:SetAllPoints()
+frame:SetPoint(UIWidgetTopCenterContainerFrame.verticalAnchorPoint, UIWidgetTopCenterContainerFrame,
+	UIWidgetTopCenterContainerFrame.verticalRelativePoint, 0, widgetSetInfo.verticalPadding)
+frame.Text:SetParent(frame)
+frame:SetWidth(200)
+frame.Text:SetAllPoints()
+frame.Text:SetJustifyH("CENTER")
 
 function frame:UNIT_AURA(unit)
-	local name, icon, count, debuffType, duration, expirationTime, source, isStealable, nameplateShowPersonal, spellID, canApplyAura, isBossDebuff, nameplateShowAll, noIdea, timeMod , percentage = FindAuraByName(dampeningtext, unit, "HARMFUL")
-
-	if percentage then
+	local percentage = C_Commentator_GetDampeningPercent()
+	if percentage and percentage > 0 then
 		if not self:IsShown() then
 			self:Show()
 		end
 		if self.dampening ~= percentage then
 			self.dampening = percentage
-			self.text:SetText(dampeningtext..": "..percentage.."%")
+			self.Text:SetText(dampeningtext.name .. ": " .. percentage .. "%")
 		end
-
 	elseif self:IsShown() then
 		self:Hide()
 	end
@@ -38,5 +39,6 @@ function frame:PLAYER_ENTERING_WORLD()
 		self:RegisterUnitEvent("UNIT_AURA", "player")
 	else
 		self:UnregisterEvent("UNIT_AURA")
+		self:Hide()
 	end
 end
