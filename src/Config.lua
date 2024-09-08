@@ -541,5 +541,5 @@ local function setupEuiOptions()
 end
 
 local eui_catch = CreateFrame("Frame")
-eui_catch:RegisterEvent("PLAYER_ENTERING_WORLD")
+eui_catch:RegisterEvent("PLAYER_LOGIN")
 eui_catch:SetScript("OnEvent", setupEuiOptions)

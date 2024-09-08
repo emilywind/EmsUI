@@ -14,11 +14,6 @@ local function updateTextures(self)
       self.myHealPrediction:SetTexture(EUIDB.statusBarTexture)
       self.otherHealPrediction:SetTexture(EUIDB.statusBarTexture)
 
-      local roleIcon = _G[name..'RoleIcon']
-      if roleIcon then
-        roleIcon:SetTexture(EUI_TEXTURES.lfg.portraitRoles)
-      end
-
       self.vertLeftBorder:Hide()
       self.vertRightBorder:Hide()
       self.horizTopBorder:Hide()
@@ -27,6 +22,4 @@ local function updateTextures(self)
   end
 end
 
-hooksecurefunc("CompactUnitFrame_UpdateAll", function(self)
-  updateTextures(self)
-end)
+hooksecurefunc("CompactUnitFrame_UpdateAll", updateTextures)
