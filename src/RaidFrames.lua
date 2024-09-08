@@ -22,6 +22,4 @@ local function updateTextures(self)
   end
 end
 
-hooksecurefunc("CompactUnitFrame_UpdateAll", function(self)
-  updateTextures(self)
-end)
+hooksecurefunc("CompactUnitFrame_UpdateAll", updateTextures)
