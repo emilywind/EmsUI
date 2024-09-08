@@ -521,6 +521,7 @@ local function setupEuiOptions()
     resetToDefaults()
     ReloadUI()
   end)
+
   local reload = CreateFrame("Button", "reload", eui.panel, "UIPanelButtonTemplate")
   reload:SetPoint("BOTTOMRIGHT", eui.panel, "BOTTOMRIGHT", -10, 10)
   reload:SetSize(100,22)
@@ -534,6 +535,12 @@ local function setupEuiOptions()
   SlashCmdList["emsui"] = function()
     openEuiConfig()
   end
+
+  local function EmsUIGameMenuButton(self)
+    self:AddSection()
+    self:AddButton("Em's UI", openEuiConfig)
+  end
+  hooksecurefunc(GameMenuFrame, "InitButtons", EmsUIGameMenuButton)
 end
 
 local eui_catch = CreateFrame("Frame")
