@@ -25,7 +25,7 @@ EmsUIUnitFrames:SetScript("OnEvent", function()
 		end
 	end
 
-  local function skinPlayerFrameBars(self, event)
+  local function skinPlayerFrameBars(self)
     self.healthbar:SetStatusBarTexture(EUIDB.statusBarTexture)
     self.healthbar:GetStatusBarTexture():SetDrawLayer("BORDER")
     self.healthbar.AnimatedLossBar:SetStatusBarTexture(EUIDB.statusBarTexture)
@@ -58,7 +58,7 @@ EmsUIUnitFrames:SetScript("OnEvent", function()
   -- Target Frame --
   ------------------
   local function skinTargetHealthbar(self)
-    if self:IsForbidden() then return end
+    if not self or self:IsForbidden() then return end
 
     -- Set Textures
     self.healthbar:SetStatusBarTexture(EUIDB.statusBarTexture)
@@ -95,14 +95,14 @@ EmsUIUnitFrames:SetScript("OnEvent", function()
   -- Boss Frames --
   -----------------
   function skinBossFrames(self)
-    if self then
-      if self.healthbar then
-        self.healthbar:SetStatusBarTexture(EUIDB.statusBarTexture)
-      end
+    if not self then return end
 
-      if self.TargetFrameContent.TargetFrameContentMain.ReputationColor then
-        self.TargetFrameContent.TargetFrameContentMain.ReputationColor:SetVertexColor(0, 0, 0)
-      end
+    if self.healthbar then
+      self.healthbar:SetStatusBarTexture(EUIDB.statusBarTexture)
+    end
+
+    if self.TargetFrameContent.TargetFrameContentMain.ReputationColor then
+      self.TargetFrameContent.TargetFrameContentMain.ReputationColor:SetVertexColor(0, 0, 0)
     end
   end
 
@@ -114,7 +114,7 @@ EmsUIUnitFrames:SetScript("OnEvent", function()
   -- Mana and Alt Power --
   ------------------------
   local function skinManaBar(self)
-    if not self.powerType then return end
+    if not self or not self.powerType then return end
 
     if self.unit ~= 'player' then
       -- Get Power Color
