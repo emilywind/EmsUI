@@ -84,22 +84,19 @@ CF:SetScript("OnEvent", function(self, event)
 			GameTooltipTextLeft1:SetFormattedText("|cff%02x%02x%02x%s|r", r * 255, g * 255, b * 255, text:match("|cff\x\x\x\x\x\x(.+)|r") or text)
 
 			local guild, guildRank = GetGuildInfo(unit)
-			local PlayerInfoLine = GameTooltipTextLeft2
 			if (guild) then
-				PlayerInfoLine = GameTooltipTextLeft3
+				guildLine = GameTooltipTextLeft2
+				guildLine:SetText(guild .. " - " .. guildRank)
 			end
-			PlayerInfoLine:SetText(level .. " " .. race .. " " .. className)
 		end
 
 		local family = UnitCreatureFamily(unit)
 		if (family) then -- UnitIsBattlePetCompanion(unit);
 			GameTooltipTextLeft2:SetText(level .. " " .. family)
 		end
-
-		GameTooltip:AddLine(' ')
 	end
 
-  TooltipDataProcessor.AddTooltipPostCall(Enum.TooltipDataType.Unit, OnTooltipSetUnit)
+  TooltipDataProcessor.AddTooltipPostCall(Enum.TooltipDataType.Unit, onTooltipSetUnit)
 
 	GameTooltip:HookScript("OnUpdate", function(tooltip)
 		skinNineSlice(GameTooltip.NineSlice)
