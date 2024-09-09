@@ -76,6 +76,12 @@ EmsUINameplates:SetScript("OnEvent", function()
     end
   end)
 
+  local function setTrue(table, member)
+    TextureLoadingGroupMixin.AddTexture(
+      { textures = table }, member
+    )
+  end
+
   local function modifyNamePlates(frame, options)
     if ( frame:IsForbidden() ) then return end
 
@@ -105,9 +111,14 @@ EmsUINameplates:SetScript("OnEvent", function()
   hooksecurefunc("DefaultCompactNamePlateFrameSetup", modifyNamePlates)
 
   hooksecurefunc("CompactUnitFrame_UpdateName", function(frame)
-    if ( not frame.unit ) or ( not frame.isNameplate ) or ( frame:IsForbidden() ) then
-      return
+    if not frame.unit or not frame.isNameplate then return end
+
+    local isFriendlyPlayer = UnitIsPlayer(frame.unit) and UnitIsFriend("player", frame.unit)
+    if isFriendlyPlayer and EUIDB.nameplateHideFriendlyHealthbars then
+      setTrue(DefaultCompactNamePlateFrameSetUpOptions, 'hideHealthbar')
     end
+
+    if frame:IsForbidden() then return end
 
     local isPersonal = UnitIsUnit(frame.displayedUnit, "player")
     if ( isPersonal ) then

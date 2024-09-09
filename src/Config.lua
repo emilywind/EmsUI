@@ -31,6 +31,7 @@ EUIDBDefaults = {
   nameplateShowLevel = true,
   nameplateHealthPercent = true,
   nameplateTotems = true,
+  nameplateHideFriendlyHealthbars = false,
 
   portraitStyle = "3D", -- 3D, 2D, or class (for class icons)
   classPortraitPack = EUI_TEXTURES.classCircles,
@@ -451,6 +452,17 @@ local function setupEuiOptions()
       EUIDB.nameplateHideCastText = value
     end,
     nameplateTotems,
+    EUI_Nameplates
+  )
+
+  local nameplateHideFriendlyHealthbars = newCheckbox(
+    "Hide Friendly Health Bars",
+    "Hide health bars for friendly players.",
+    EUIDB.nameplateHideFriendlyHealthbars,
+    function(self, value)
+      EUIDB.nameplateHideFriendlyHealthbars = value
+    end,
+    nameplateHideCastText,
     EUI_Nameplates
   )
 
