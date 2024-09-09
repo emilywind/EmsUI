@@ -27,6 +27,10 @@ local function getUnitHealthColor(unit)
 	return r, g, b
 end
 
+local colours = {
+  guildColour = { 0.74, 0.55, 0.95 },
+}
+
 local CF=CreateFrame("Frame")
 CF:RegisterEvent("PLAYER_LOGIN")
 CF:SetScript("OnEvent", function(self, event)
@@ -83,10 +87,11 @@ CF:SetScript("OnEvent", function(self, event)
 			local text = GameTooltipTextLeft1:GetText()
 			GameTooltipTextLeft1:SetFormattedText("|cff%02x%02x%02x%s|r", r * 255, g * 255, b * 255, text:match("|cff\x\x\x\x\x\x(.+)|r") or text)
 
-			local guild, guildRank = GetGuildInfo(unit)
-			if (guild) then
+			local guildName, guildRank = GetGuildInfo(unit)
+			if (guildName) then
 				guildLine = GameTooltipTextLeft2
-				guildLine:SetText(guild .. " - " .. guildRank)
+				guildLine:SetText(guildName .. ' - ' .. guildRank)
+        guildLine:SetTextColor(unpack(colours.guildColour))
 			end
 		end
 
