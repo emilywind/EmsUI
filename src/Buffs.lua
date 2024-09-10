@@ -21,8 +21,6 @@ local function applySkin(aura, isDebuff)
 
   if not icon.SetTexCoord then return end
 
-  icon:SetTexCoord(0.1,0.94,0.1,0.94)
-
   --border
   local border = aura:CreateTexture(aura.border, "OVERLAY")
   border:SetTexture(EUI_TEXTURES.auraBorder)
