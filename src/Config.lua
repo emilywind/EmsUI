@@ -7,7 +7,6 @@ EUIDBDefaults = {
   hideMacroText = true,
   arenaNumbers = false,
   skinActionBars = true,
-  actionbarsClassColour = false,
   darkMinimap = false,
 
   statusBarTexture = EUI_TEXTURES.statusBar,
@@ -341,17 +340,6 @@ local function setupEuiOptions()
       EUIDB.hideMacroText = value
     end,
     hideHotkeys,
-    EUI_ActionBars
-  )
-
-  local classColours = newCheckbox(
-    'Class coloured button borders',
-    'Class coloured button borders',
-    EUIDB.actionbarsClassColour,
-    function(self, value)
-      EUIDB.actionbarsClassColour = value
-    end,
-    hideMacroText,
     EUI_ActionBars
   )
 
