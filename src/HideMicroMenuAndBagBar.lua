@@ -14,7 +14,7 @@ function setMicroMenuVisibility()
 end
 
 function setBagBarVisibility()
-    local bagsVisible = not EUIDB.hideBags
+    local bagsVisible = not EUIDB.hideBagBar
     MainMenuBarBackpackButton:SetShown(bagsVisible)
     BagBarExpandToggle:SetShown(bagsVisible)
     for i = 0, 3 do

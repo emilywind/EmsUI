@@ -9,7 +9,7 @@ EUIDBDefaults = {
   skinActionBars = true,
   darkMinimap = false,
   hideMicroMenu = false,
-  hideBags = false,
+  hideBagBar = false,
 
   statusBarTexture = EUI_TEXTURES.statusBar,
 
@@ -313,9 +313,9 @@ local function setupEuiOptions()
   local hideBagBar = newCheckbox(
     'Hide Bag Bar',
     'Hides the bag bar',
-    EUIDB.hideBags,
+    EUIDB.hideBagBar,
     function(self, value)
-      EUIDB.hideBags = value
+      EUIDB.hideBagBar = value
       setBagBarVisibility()
     end,
     hideMicroMenu
