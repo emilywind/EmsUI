@@ -39,7 +39,7 @@ frame:SetScript('OnEvent', function()
     QueueStatusButton:SetFrameLevel(1)
     QueueStatusButton:SetScale(0.8, 0.8)
     QueueStatusButton:ClearAllPoints()
-    QueueStatusButton:SetPoint(EUIDB.queueicon.point, UIParent, EUIDB.queueicon.point, EUIDB.queueicon.x, EUIDB.queueicon.y)
+    QueueStatusButton:SetPoint(db.queueicon.point, UIParent, db.queueicon.point, db.queueicon.x, db.queueicon.y)
   end
 
   hooksecurefunc(QueueStatusButton, "UpdatePosition", function()
