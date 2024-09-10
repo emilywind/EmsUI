@@ -24,9 +24,8 @@ local function applySkin(aura, isDebuff)
   icon:SetTexCoord(0.1,0.94,0.1,0.94)
 
   --border
-  local border = aura:CreateTexture("AuraBorder", "BACKGROUND", nil, -7)
+  local border = aura:CreateTexture(aura.border, "OVERLAY")
   border:SetTexture(EUI_TEXTURES.auraBorder)
-  border:SetDrawLayer("OVERLAY")
 
   if aura.Border then
     border:SetVertexColor(aura.Border:GetVertexColor())
