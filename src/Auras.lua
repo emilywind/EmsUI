@@ -2,6 +2,12 @@
 -- Buffs/Debuffs on Unit Frames --
 ----------------------------------
 function applyAuraSkin(aura)
+  if aura.border then
+    aura.Border:SetAlpha(1)
+    aura.border:SetVertexColor(aura.Border:GetVertexColor())
+    aura.Border:SetAlpha(0)
+  end
+
   if aura.euiClean then return end
 
   --icon
