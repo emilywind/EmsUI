@@ -44,8 +44,8 @@ EUIDBDefaults = {
   dampeningDisplay = true,
 
   queueicon = {
-    point = 'CENTER',
-    x = 0,
+    point = 'TOPRIGHT',
+    x = -300,
     y = 0,
   },
 }
