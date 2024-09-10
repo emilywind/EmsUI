@@ -18,7 +18,13 @@ function setBagBarVisibility()
     MainMenuBarBackpackButton:SetShown(bagsVisible)
     BagBarExpandToggle:SetShown(bagsVisible)
     for i = 0, 3 do
-      _G['CharacterBag' .. i .. 'Slot']:SetShown(bagsVisible)
+      local bagButton =_G['CharacterBag' .. i .. 'Slot']
+      -- Bag buttons have a strange interaction that causes them to show when hovering over NPCs unless done this way
+      if not bagsVisible then
+        RegisterStateDriver(bagButton, "visibility", "hide")
+      else
+        RegisterStateDriver(bagButton, "visibility", "show")
+      end
     end
     CharacterReagentBag0Slot:SetShown(bagsVisible)
 end
