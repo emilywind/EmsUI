@@ -29,6 +29,7 @@ src\NameplateTotems.lua
 src\Tooltips.lua
 src\LootSpecDisplay.lua
 src\UnitFrames.lua
+src\HideMicroMenuAndBags.lua
 src\DarkenUnitFrames.lua
 src\Portrait.lua
 src\RaidFrames.lua
