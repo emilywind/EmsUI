@@ -37,6 +37,7 @@ EmsUIUnitFrames:SetScript("OnEvent", function()
 
       -- Set Texture
       self.manabar.texture:SetTexture(EUIDB.statusBarTexture)
+      self.manabar.FeedbackFrame.BarTexture:SetTexture(EUIDB.statusBarTexture)
 
       -- Set Power Color
       if self.manabar.powerType == 0 then
