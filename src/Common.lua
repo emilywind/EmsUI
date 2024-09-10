@@ -191,7 +191,7 @@ function applyEuiButtonSkin(bu, icon, isLeaveButton)
   local name = bu:GetName()
   icon = icon or bu.icon or bu.Icon or _G[name.."Icon"]
 
-  bu:SetHighlightTexture(EUI_TEXTURES.buttons.hover)
+  bu:SetHighlightTexture(EUI_TEXTURES.buttons.normal)
 
   local nt = bu:GetNormalTexture()
 
@@ -204,15 +204,7 @@ function applyEuiButtonSkin(bu, icon, isLeaveButton)
   else
     -- Simple button border
     nt:SetTexture(EUI_TEXTURES.buttons.normal)
-
-    if EUIDB.actionbarsClassColour then
-      local _, class = UnitClass('player')
-      local colour = RAID_CLASS_COLORS[class]
-      nt:SetVertexColor(colour.r, colour.g, colour.b)
-      nt:SetDrawLayer("ARTWORK")
-    else
-      nt:SetVertexColor(0, 0, 0)
-    end
+    nt:SetVertexColor(0, 0, 0)
 
     local pt = bu:GetPushedTexture()
     pt:SetAllPoints(bu)
