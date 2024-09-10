@@ -9,7 +9,6 @@ EUI_TEXTURES = {
   buttons = {
     normal = TextureDir.."\\buttons\\button-normal.tga",
     pushed = TextureDir.."\\buttons\\button-pressed.tga",
-    hover = TextureDir.."\\buttons\\ButtonHilight-Square.tga",
     checked = TextureDir.."\\buttons\\button-checked.tga"
   },
 
