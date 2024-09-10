@@ -32,4 +32,17 @@ frame:SetScript('OnEvent', function()
   LEM:RegisterCallback('layout', function(layoutName)
     QueueStatusButton:SetPoint(db.queueicon.point, UIParent, db.queueicon.point, db.queueicon.x, db.queueicon.y)
   end)
+
+  local function QueueStatusButton_Reposition()
+    if C_AddOns.IsAddOnLoaded("EditModeExpanded") then return end
+    QueueStatusButton:SetParent(UIParent)
+    QueueStatusButton:SetFrameLevel(1)
+    QueueStatusButton:SetScale(0.8, 0.8)
+    QueueStatusButton:ClearAllPoints()
+    QueueStatusButton:SetPoint(EUIDB.queueicon.point, UIParent, EUIDB.queueicon.point, EUIDB.queueicon.x, EUIDB.queueicon.y)
+  end
+
+  hooksecurefunc(QueueStatusButton, "UpdatePosition", function()
+    QueueStatusButton_Reposition()
+  end)
 end)

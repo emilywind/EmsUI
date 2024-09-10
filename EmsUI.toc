@@ -16,6 +16,7 @@ lib\embeds.xml
 
 src\Media.lua
 src\Common.lua
+src\MoveQueueStatus.lua
 src\Config.lua
 src\Fonts.lua
 src\Actionbars.lua
@@ -30,7 +31,6 @@ src\Tooltips.lua
 src\LootSpecDisplay.lua
 src\UnitFrames.lua
 src\HideMicroMenuAndBags.lua
-src\MoveQueueStatus.lua
 src\DarkenUnitFrames.lua
 src\Portrait.lua
 src\RaidFrames.lua
