@@ -7,7 +7,7 @@ TextureDir = MediaDir.."\\textures"
 
 EUI_TEXTURES = {
   buttons = {
-    normal = TextureDir.."\\button-normal.tga",
+    normal = TextureDir.."\\buttons\\button-normal.tga",
     pushed = TextureDir.."\\buttons\\button-pressed.tga",
     hover = TextureDir.."\\buttons\\ButtonHilight-Square.tga",
     checked = TextureDir.."\\buttons\\button-checked.tga"
@@ -200,10 +200,19 @@ function applyEuiButtonSkin(bu, icon, isLeaveButton)
 
   if (isLeaveButton) then
     nt:SetTexCoord(0.2, 0.8, 0.2, 0.8)
+    applyEuiBackdrop(nt, bu)
   else
     -- Simple button border
     nt:SetTexture(EUI_TEXTURES.buttons.normal)
-    nt:SetDrawLayer("ARTWORK")
+
+    if EUIDB.actionbarsClassColour then
+      local _, class = UnitClass('player')
+      local colour = RAID_CLASS_COLORS[class]
+      nt:SetVertexColor(colour.r, colour.g, colour.b)
+      nt:SetDrawLayer("ARTWORK")
+    else
+      nt:SetVertexColor(0, 0, 0)
+    end
 
     local pt = bu:GetPushedTexture()
     pt:SetAllPoints(bu)
