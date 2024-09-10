@@ -293,27 +293,27 @@ local function setupEuiOptions()
   )
   damageFontChooser:SetPoint("LEFT", damageFont, "RIGHT", 300, 0)
 
-  local hideMicroMenu = newCheckbox(
-    'Hide Micro Menu',
-    'Hides the micro menu, preserving the queue status icon',
-    EUIDB.hideMicroMenu,
-    function(self, value)
-      EUIDB.hideMicroMenu = value
-      setMicroMenuVisibility()
-    end,
-    damageFont
-  )
+  -- local hideMicroMenu = newCheckbox(
+  --   'Hide Micro Menu',
+  --   'Hides the micro menu, preserving the queue status icon',
+  --   EUIDB.hideMicroMenu,
+  --   function(self, value)
+  --     EUIDB.hideMicroMenu = value
+  --     setMicroMenuVisibility()
+  --   end,
+  --   damageFont
+  -- )
 
-  local hideBagBar = newCheckbox(
-    'Hide Bag Bar',
-    'Hides the bag bar',
-    EUIDB.hideBags,
-    function(self, value)
-      EUIDB.hideBags = value
-      setBagBarVisibility()
-    end,
-    hideMicroMenu
-  )
+  -- local hideBagBar = newCheckbox(
+  --   'Hide Bag Bar',
+  --   'Hides the bag bar',
+  --   EUIDB.hideBags,
+  --   function(self, value)
+  --     EUIDB.hideBags = value
+  --     setBagBarVisibility()
+  --   end,
+  --   hideMicroMenu
+  -- )
 
   local darkMinimap = newCheckbox(
     "Dark Minimap",
@@ -322,7 +322,7 @@ local function setupEuiOptions()
     function(self, value)
       EUIDB.darkMinimap = value
     end,
-    hideBagBar
+    damageFont
   )
 
   ----------------
