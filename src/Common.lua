@@ -198,8 +198,11 @@ function applyEuiButtonSkin(bu, icon, isLeaveButton)
   nt:SetAllPoints(bu)
 
   if (isLeaveButton) then
-    nt:SetTexCoord(0.2, 0.8, 0.2, 0.8)
-    applyEuiBackdrop(nt, bu)
+    local border = bu:CreateTexture(bu.border, "OVERLAY")
+    border:SetTexture(EUI_TEXTURES.buttons.normal)
+    border:SetVertexColor(0, 0, 0)
+    border:SetDrawLayer("OVERLAY")
+    border:SetAllPoints(bu)
   else
     -- Simple button border
     nt:SetTexture(EUI_TEXTURES.buttons.normal)
