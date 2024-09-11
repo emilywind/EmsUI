@@ -234,18 +234,16 @@ function applyEuiBackdrop(b, frame)
   local icon = b.icon or b.Icon or (name and _G[name.."Icon"]) or b
   styleIcon(icon, b)
 
-  -- border
-  local back = CreateFrame("Frame", nil, frame, "BackdropTemplate")
-  back:SetPoint("TOPLEFT", b, "TOPLEFT", -2, 2)
-  back:SetPoint("BOTTOMRIGHT", b, "BOTTOMRIGHT", 2, -2)
-  back:SetFrameLevel(frame:GetFrameLevel())
-  back.backdropInfo = EUI_BORDER
-  back:ApplyBackdrop()
-  back:SetBackdropBorderColor(0,0,0,1)
-  b.bg = back
+  local border = frame:CreateTexture(b.border, "OVERLAY")
+  border:SetTexture(EUI_TEXTURES.auraBorder)
+  border:SetVertexColor(0, 0, 0)
+  border:SetDrawLayer("OVERLAY")
+  border:SetPoint("TOPLEFT", b, "TOPLEFT", -2, 2)
+  border:SetPoint("BOTTOMRIGHT", b, "BOTTOMRIGHT", 2, -2)
+
+  b.border = border
 
   b.euiClean = true
-  return back, icon
 end
 
 function setDefaultFont(textObject, size, outlinestyle)
