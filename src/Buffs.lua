@@ -11,13 +11,6 @@ local function applySkin(aura, isDebuff)
 
   --icon
   local icon = aura.Icon
-  if consolidated then
-    if select(1,UnitFactionGroup("player")) == "Alliance" then
-      icon:SetTexture(select(3,C_Spell.GetSpellInfo(61573)))
-    elseif select(1,UnitFactionGroup("player")) == "Horde" then
-      icon:SetTexture(select(3,C_Spell.GetSpellInfo(61574)))
-    end
-  end
 
   if not icon.SetTexCoord then return end
 
