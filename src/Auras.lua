@@ -12,6 +12,7 @@ function applyAuraSkin(aura)
 
   --icon
   local icon = aura.Icon
+  styleIcon(icon)
 
   --border
   local border = aura:CreateTexture(aura.border, "OVERLAY")
@@ -25,7 +26,8 @@ function applyAuraSkin(aura)
   end
 
   border:ClearAllPoints()
-  border:SetAllPoints(aura)
+  border:SetPoint("TOPLEFT", aura, "TOPLEFT", -1, 1)
+  border:SetPoint("BOTTOMRIGHT", aura, "BOTTOMRIGHT", 1, -1)
   aura.border = border
 
   aura.euiClean = true

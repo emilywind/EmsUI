@@ -11,6 +11,7 @@ local function applySkin(aura, isDebuff)
 
   --icon
   local icon = aura.Icon
+  styleIcon(icon)
 
   if not icon.SetTexCoord then return end
 
@@ -30,11 +31,13 @@ local function applySkin(aura, isDebuff)
     aura.DebuffBorder:SetAlpha(0)
   end
 
-  border:SetAllPoints(icon)
+  border:SetPoint("TOPLEFT", icon, "TOPLEFT", -2, 2)
+  border:SetPoint("BOTTOMRIGHT", icon, "BOTTOMRIGHT", 2, -2)
   aura.border = border
 
-  if aura.duration then
-    aura.duration:SetDrawLayer("OVERLAY")
+  local duration = aura.Duration
+  if duration then
+    duration:SetDrawLayer("OVERLAY")
   end
 
   --set button styled variable
