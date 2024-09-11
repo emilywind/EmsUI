@@ -14,10 +14,6 @@ local function init()
     return
   end
 
-  local function skinButton(bu, icon, isLeaveButton)
-    applyEuiButtonSkin(bu, icon, isLeaveButton)
-  end
-
   --style extraactionbutton
   local function styleExtraActionButton(bu)
     if not bu or (bu and bu.euiClean) then
@@ -41,7 +37,7 @@ local function init()
     end
 
     --apply background
-    skinButton(bu, icon)
+    applyEuiButtonSkin(bu, icon)
   end
 
   --initial style func
@@ -93,7 +89,7 @@ local function init()
       nt = bu:GetNormalTexture()
     end
 
-    skinButton(bu, ic)
+    applyEuiButtonSkin(bu, ic)
 
     if bartender4 then --fix the normaltexture
       nt:SetTexCoord(0, 1, 0, 1)
@@ -112,25 +108,22 @@ local function init()
       return
     end
 
-    skinButton(bu, nil, true)
+    applyEuiButtonSkin(bu, nil, true)
   end
 
   --style pet buttons
   local function stylePetButton(bu)
-    if not bu or (bu and bu.euiClean) then
-      return
-    end
+    if not bu or (bu and bu.euiClean) then return end
+
     local name = bu:GetName()
     local ic = _G[name .. "Icon"]
-    local fl = _G[name .. "Flash"]
-    local nt = _G[name .. "NormalTexture2"]
     local cd = _G[name .. "Cooldown"]
 
     --adjust the cooldown frame
     cd:SetPoint("TOPLEFT", bu, "TOPLEFT", 1, -1)
     cd:SetPoint("BOTTOMRIGHT", bu, "BOTTOMRIGHT", -1, 1)
 
-    skinButton(bu, ic)
+    applyEuiButtonSkin(bu, ic)
   end
 
   -- Style stance buttons
@@ -143,7 +136,7 @@ local function init()
     local fl = _G[name .. "Flash"]
     local nt = _G[name .. "NormalTexture2"]
 
-    skinButton(bu, ic)
+    applyEuiButtonSkin(bu, ic)
   end
 
   for i = 1, StanceBar.numButtons do
@@ -161,7 +154,7 @@ local function init()
     local nt = _G[name .. "NormalTexture"]
     nt:SetAllPoints(bu)
 
-    skinButton(bu, ic)
+    applyEuiButtonSkin(bu, ic)
   end
 
   --update hotkey func
