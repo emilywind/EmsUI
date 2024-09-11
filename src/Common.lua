@@ -190,7 +190,9 @@ function applyEuiButtonSkin(bu, icon, isLeaveButton)
   local name = bu:GetName()
   icon = icon or bu.icon or bu.Icon or _G[name.."Icon"]
 
-  bu:SetHighlightTexture(EUI_TEXTURES.buttons.normal)
+  local ht = bu:GetHighlightTexture()
+  ht:SetTexture(EUI_TEXTURES.buttons.normal)
+  ht:SetAllPoints(bu)
 
   local nt = bu:GetNormalTexture()
 
