@@ -219,11 +219,9 @@ function applyEuiButtonSkin(bu, icon, isLeaveButton)
       local ct = bu:GetCheckedTexture()
       ct:SetAllPoints(bu)
       ct:SetTexture(EUI_TEXTURES.buttons.checked)
-      ct:SetDrawLayer("OVERLAY")
+      ct:SetDrawLayer("OVERLAY", 7)
     end
   end
-
-  return border, icon
 end
 
 function applyEuiBackdrop(b, frame)

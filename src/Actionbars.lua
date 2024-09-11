@@ -16,9 +16,8 @@ local function init()
 
   --style extraactionbutton
   local function styleExtraActionButton(bu)
-    if not bu or (bu and bu.euiClean) then
-      return
-    end
+    if not bu or (bu and bu.euiClean) then return end
+
     local name = bu:GetName() or bu:GetParent():GetName()
     local style = bu.style or bu.Style
     local icon = bu.icon or bu.Icon
