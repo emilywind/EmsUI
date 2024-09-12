@@ -3,42 +3,38 @@
 local CF=CreateFrame("Frame")
 CF:RegisterEvent("PLAYER_LOGIN")
 CF:SetScript("OnEvent", function(self, event)
+	if not EUIDB.tabBinder then return end
 
-local CreateFrame = CreateFrame
-local GetBindingKey = GetBindingKey
-local GetCurrentBindingSet = GetCurrentBindingSet
-local IsInInstance = IsInInstance
-local GetZonePVPInfo = GetZonePVPInfo
-local GetBindingAction = GetBindingAction
+	local CreateFrame = CreateFrame
+	local GetBindingKey = GetBindingKey
+	local GetCurrentBindingSet = GetCurrentBindingSet
+	local IsInInstance = IsInInstance
+	local GetZonePVPInfo = GetZonePVPInfo
+	local GetBindingAction = GetBindingAction
 
-local TabBinder = CreateFrame("Frame")
-TabBinder:RegisterEvent("PLAYER_ENTERING_WORLD")
-TabBinder:RegisterEvent("ZONE_CHANGED_NEW_AREA")
-TabBinder:RegisterEvent("PLAYER_REGEN_ENABLED")
-TabBinder:RegisterEvent("DUEL_REQUESTED")
-TabBinder:RegisterEvent("DUEL_FINISHED")
-TabBinder:RegisterEvent("CHAT_MSG_SYSTEM")
+	local TabBinder = CreateFrame("Frame")
+	TabBinder:RegisterEvent("PLAYER_ENTERING_WORLD")
+	TabBinder:RegisterEvent("ZONE_CHANGED_NEW_AREA")
+	TabBinder:RegisterEvent("PLAYER_REGEN_ENABLED")
+	TabBinder:RegisterEvent("DUEL_REQUESTED")
+	TabBinder:RegisterEvent("DUEL_FINISHED")
+	TabBinder:RegisterEvent("CHAT_MSG_SYSTEM")
 
-local RTB_Fail, RTB_DefaultKey, RTB_LastTargetKey, RTB_TargetKey, RTB_CurrentBind, RTB_Success = false, true
+	local RTB_Fail, RTB_DefaultKey, RTB_LastTargetKey, RTB_TargetKey, RTB_CurrentBind, RTB_Success = false, true
 
-TabBinder:SetScript(
-	"OnEvent",
-	function(self, event, ...)
-		if not EUIDB.tabBinder then return end
-
+	TabBinder:SetScript("OnEvent", function(self, event, ...)
 		if event == "CHAT_MSG_SYSTEM" then
 			local RTBChatMessage = ...
 			if RTBChatMessage == ERR_DUEL_REQUESTED then
 				event = "DUEL_REQUESTED"
 			end
-		elseif
-			event == "ZONE_CHANGED_NEW_AREA" or event == "PLAYER_ENTERING_WORLD" or
-				(event == "PLAYER_REGEN_ENABLED" and RTB_Fail) or
-				event == "DUEL_REQUESTED" or
-				event == "DUEL_FINISHED"
-		 then
+		elseif event == "ZONE_CHANGED_NEW_AREA" or event == "PLAYER_ENTERING_WORLD" or
+			(event == "PLAYER_REGEN_ENABLED" and RTB_Fail) or
+			event == "DUEL_REQUESTED" or
+			event == "DUEL_FINISHED"
+		then
 			local RTB_BindSet = GetCurrentBindingSet()
-			local RTB_PVPType = GetZonePVPInfo()
+			local RTB_PVPType = C_PvP.GetZonePVPInfo()
 			local _, RTB_ZoneType = IsInInstance()
 
 			RTB_TargetKey = GetBindingKey("TARGETNEARESTENEMYPLAYER")
@@ -61,7 +57,8 @@ TabBinder:SetScript(
 				RTB_CurrentBind = GetBindingAction(RTB_TargetKey)
 			end
 
-			if RTB_ZoneType == "arena" or RTB_PVPType == "combat" or RTB_ZoneType == "pvp" or event == "DUEL_REQUESTED" then
+			if RTB_ZoneType == "arena" or RTB_PVPType == "combat" or RTB_ZoneType == "pvp" or
+				event == "DUEL_REQUESTED" then
 				if RTB_CurrentBind ~= "TARGETNEARESTENEMYPLAYER" then
 					if RTB_TargetKey == nil then
 						RTB_Success = 1
@@ -97,7 +94,5 @@ TabBinder:SetScript(
 				end
 			end
 		end
-	end
-)
-
+	end)
 end)
