@@ -114,7 +114,7 @@ CF:SetScript("OnEvent", function(self, event)
 		local unit = "mouseover"
 	  local focus = GetMouseFoci()
 	  if (focus and focus.unit) then
-	      unit = focus.unit
+      unit = focus.unit
 	  end
 
 		local value = UnitHealth(unit)
@@ -122,7 +122,6 @@ CF:SetScript("OnEvent", function(self, event)
 
     local textString = self.TextString
 		textString:UpdateTextStringWithValues(textString, value, 0, valueMax)
-    textString:Show()
 
 	  local r, g, b = getUnitHealthColor(unit)
 
