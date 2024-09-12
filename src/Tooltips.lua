@@ -1,18 +1,3 @@
-local function GetDifficultyLevelColor(level)
-	level = (level - tt.playerLevel);
-	if (level > 4) then
-		return "|cffff2020"; -- red
-	elseif (level > 2) then
-		return "|cffff8040"; -- orange
-	elseif (level >= -2) then
-		return "|cffffff00"; -- yellow
-	elseif (level >= -GetQuestGreenRange()) then
-		return "|cff40c040"; -- green
-	else
-		return "|cff808080"; -- gray
-	end
-end
-
 local function getUnitHealthColor(unit)
 	local r, g, b
 
@@ -29,6 +14,7 @@ end
 
 function skinGameTooltip()
   local ns = GameTooltip.NineSlice
+
   local nsPoints = {
     "TopLeftCorner",
     "TopRightCorner",
@@ -95,8 +81,9 @@ CF:SetScript("OnEvent", function(self, event)
 	  GameTooltip.NineSlice:SetBorderColor(0, 0, 0, 0)
 
     local tooltip = GameTooltip
-		local _, unit = tooltip:GetUnit()
-		if  not unit then return end
+		local unit = select(2, tooltip:GetUnit())
+		if not unit then return end
+
 		local level = UnitEffectiveLevel(unit)
 		local r, g, b = getUnitHealthColor(unit)
 
