@@ -49,9 +49,10 @@ CF:SetScript("OnEvent", function(self, event)
 
 	local bar = GameTooltipStatusBar
 	bar.bg = bar:CreateTexture(nil, "BACKGROUND")
-	bar.bg:SetAllPoints(GameTooltipStatusBar)
-	bar.bg:SetColorTexture(1, 1, 1)
-	bar.bg:SetVertexColor(0, 0, 0)
+	bar.bg:SetAllPoints(bar)
+	bar.bg:SetTexture(SQUARE_TEXTURE)
+	bar.bg:SetVertexColor(0.2, 0.2, 0.2)
+
 	bar.TextString = bar:CreateFontString('GameToolTipTextStatus', "OVERLAY", "TextStatusBar")
 	bar.TextString:SetPoint("CENTER")
 	setDefaultFont(bar.TextString, 11)
@@ -59,12 +60,12 @@ CF:SetScript("OnEvent", function(self, event)
 	bar.TextString.lockShow = 1
 
 	-- Gametooltip statusbar
-	GameTooltipStatusBar:SetStatusBarTexture(EUIDB.statusBarTexture)
-	GameTooltipStatusBar:ClearAllPoints()
-	GameTooltipStatusBar:SetPoint("LEFT", 3, 0)
-	GameTooltipStatusBar:SetPoint("RIGHT", -3, 0)
-	GameTooltipStatusBar:SetPoint("BOTTOM", 0, -5)
-	GameTooltipStatusBar:SetHeight(10)
+	bar:SetStatusBarTexture(EUIDB.statusBarTexture)
+	bar:ClearAllPoints()
+	bar:SetPoint("LEFT", 3, 0)
+	bar:SetPoint("RIGHT", -3, 0)
+	bar:SetPoint("BOTTOM", 0, -7)
+	bar:SetHeight(10)
 
 	-- Class colours
 	function onTooltipSetUnit(self)
@@ -105,31 +106,8 @@ CF:SetScript("OnEvent", function(self, event)
 
 	GameTooltip:HookScript("OnUpdate", function(tooltip)
 		skinNineSlice(GameTooltip.NineSlice)
-		GameTooltip.NineSlice:SetCenterColor(0.08,0.08,0.08) -- Simpler and themed BG color
-		GameTooltip.NineSlice:SetBorderColor(0,0,0,0)
-
-		local EUIToolTipBorder = _G["EUIToolTipBorder"]
-
-		if (EUIToolTipBorder == nil) then
-			EUIToolTipBorder = CreateFrame("Frame", "EUIToolTipBorder", GameTooltip, "BackdropTemplate")
-			EUIToolTipBorder:SetFrameLevel(0)
-			EUIToolTipBorder:SetFrameStrata("TOOLTIP")
-			EUIToolTipBorder:SetPoint("CENTER",0,0)
-			EUIToolTipBorder:SetScale(1)
-
-			EUIToolTipBorder.backdropInfo = {
-				bgFile = SQUARE_TEXTURE,
-				tile = false, tileSize = 0, edgeSize = 0,
-				insets = { left = 1, right = 1, top = 1, bottom = 1 }
-			}
-			EUIToolTipBorder:ApplyBackdrop()
-			EUIToolTipBorder:SetBackdropColor(0,0,0,1)
-			EUIToolTipBorder:SetBackdropBorderColor(0,0,0,1)
-			EUIToolTipBorder:Show()
-		end
-
-		EUIToolTipBorder:SetHeight(GameTooltip:GetHeight() - 4)
-		EUIToolTipBorder:SetWidth(GameTooltip:GetWidth() - 4)
+		GameTooltip.NineSlice:SetCenterColor(0.08, 0.08, 0.08) -- Simpler and themed BG color
+		GameTooltip.NineSlice:SetBorderColor(0, 0, 0, 0)
 	end)
 
 	GameTooltipStatusBar:HookScript("OnValueChanged", function(self, hp)
