@@ -102,7 +102,7 @@ CF:SetScript("OnEvent", function(self, event)
 			local guildName, guildRank = GetGuildInfo(unit)
 			if (guildName) then
 				guildLine = GameTooltipTextLeft2
-				guildLine:SetText('|cff' .. colours.guildName .. '<' .. guildName .. '> |r' .. '|cff' .. colours.guildRank .. '(' .. guildRank .. ')|r')
+				guildLine:SetText('|cff' .. colours.guildName .. guildName .. '|r' .. '|cff' .. colours.guildRank .. ' (' .. guildRank .. ')|r')
 			end
 		end
 
