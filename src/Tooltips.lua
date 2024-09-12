@@ -115,11 +115,7 @@ CF:SetScript("OnEvent", function(self, event)
   TooltipDataProcessor.AddTooltipPostCall(Enum.TooltipDataType.Unit, onTooltipSetUnit)
 
 	GameTooltipStatusBar:HookScript("OnValueChanged", function(self, hp)
-		local unit = "mouseover"
-	  local focus = GetMouseFoci()
-	  if (focus and focus.unit) then
-      unit = focus.unit
-	  end
+		local unit = select(2, GameTooltip:GetUnit())
 
 		local value = UnitHealth(unit)
 		local valueMax = UnitHealthMax(unit)
