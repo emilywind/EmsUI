@@ -33,7 +33,8 @@ function skinGameTooltip()
 end
 
 local colours = {
-  guildColour = { 0.74, 0.55, 0.95 },
+  guildName = 'f232e7',
+  guildRank = 'bd8cf2',
 }
 
 local CF=CreateFrame("Frame")
@@ -101,8 +102,7 @@ CF:SetScript("OnEvent", function(self, event)
 			local guildName, guildRank = GetGuildInfo(unit)
 			if (guildName) then
 				guildLine = GameTooltipTextLeft2
-				guildLine:SetText(guildName .. ' - ' .. guildRank)
-        guildLine:SetTextColor(unpack(colours.guildColour))
+				guildLine:SetText('|cff' .. colours.guildName .. '<' .. guildName .. '> |r' .. '|cff' .. colours.guildRank .. '(' .. guildRank .. ')|r')
 			end
 		end
 
