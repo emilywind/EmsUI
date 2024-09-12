@@ -158,17 +158,18 @@ EmsUINameplates:SetScript("OnEvent", function()
       frame.unitLevel = UnitEffectiveLevel(frame.unit)
       local c = GetCreatureDifficultyColor(frame.unitLevel)
       local unitClassification = UnitClassification(frame.unit)
-      if (unitClassification == 'rare' or unitClassification == 'rareelite') then
+      if unitClassification == 'rare' or unitClassification == 'rareelite' then
         c = {
           r = 0.8,
           g = 0.8,
           b = 0.8
         }
       end
+
       local levelText = frame.unitLevel
       local levelSuffix = ''
       if (levelText < 0) then
-        levelText = '??'
+        levelText = '|TInterface\\TargetingFrame\\UI-TargetingFrame-Skull:12|t'
       else
         if (unitClassification == 'elite') then
           levelSuffix = '+'
