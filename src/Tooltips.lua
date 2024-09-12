@@ -48,7 +48,7 @@ CF:SetScript("OnEvent", function(self, event)
 	end)
 
 	local bar = GameTooltipStatusBar
-	bar.bg = bar:CreateTexture(nil, "BACKGROUND")
+	bar.bg = bar:CreateTexture('GameTooltipStatusBarBackground', "BACKGROUND")
 	bar.bg:SetAllPoints(bar)
 	bar.bg:SetTexture(SQUARE_TEXTURE)
 	bar.bg:SetVertexColor(0.2, 0.2, 0.2)
@@ -66,6 +66,9 @@ CF:SetScript("OnEvent", function(self, event)
 	bar:SetPoint("RIGHT", -3, 0)
 	bar:SetPoint("BOTTOM", 0, -7)
 	bar:SetHeight(10)
+
+  GameTooltip.NineSlice:SetCenterColor(0.08, 0.08, 0.08)
+	GameTooltip.NineSlice:SetBorderColor(0, 0, 0, 0)
 
 	-- Class colours
 	function onTooltipSetUnit(self)
@@ -106,8 +109,6 @@ CF:SetScript("OnEvent", function(self, event)
 
 	GameTooltip:HookScript("OnUpdate", function(tooltip)
 		skinNineSlice(GameTooltip.NineSlice)
-		GameTooltip.NineSlice:SetCenterColor(0.08, 0.08, 0.08) -- Simpler and themed BG color
-		GameTooltip.NineSlice:SetBorderColor(0, 0, 0, 0)
 	end)
 
 	GameTooltipStatusBar:HookScript("OnValueChanged", function(self, hp)
