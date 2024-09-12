@@ -86,15 +86,15 @@ CF:SetScript("OnEvent", function(self, event)
 		if not unit then return end
 
 		local level = UnitEffectiveLevel(unit)
+    if (level < 0) then
+      level = "??"
+    end
+
 		local r, g, b = getUnitHealthColor(unit)
 
 		if UnitIsPlayer(unit) then
 			local className, class = UnitClass(unit)
 			local race = UnitRace(unit)
-
-			if (level < 0) then
-				level = "??"
-			end
 
 			local text = GameTooltipTextLeft1:GetText()
 			GameTooltipTextLeft1:SetFormattedText("|cff%02x%02x%02x%s|r", r * 255, g * 255, b * 255, text:match("|cff\x\x\x\x\x\x(.+)|r") or text)
@@ -116,6 +116,13 @@ CF:SetScript("OnEvent", function(self, event)
 
 	GameTooltipStatusBar:HookScript("OnValueChanged", function(self, hp)
 		local unit = select(2, GameTooltip:GetUnit())
+    if not unit then
+      unit = "mouseover"
+	    local focus = GetMouseFoci()
+	    if (focus and focus.unit) then
+        unit = focus.unit
+	    end
+    end
 
 		local value = UnitHealth(unit)
 		local valueMax = UnitHealthMax(unit)
