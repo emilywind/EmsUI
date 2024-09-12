@@ -67,12 +67,13 @@ CF:SetScript("OnEvent", function(self, event)
 	bar:SetPoint("BOTTOM", 0, -7)
 	bar:SetHeight(10)
 
-  GameTooltip.NineSlice:SetCenterColor(0.08, 0.08, 0.08)
-	GameTooltip.NineSlice:SetBorderColor(0, 0, 0, 0)
-
 	-- Class colours
 	function onTooltipSetUnit(self)
-    if self ~= _G.GameTooltip then return end
+    if self ~= GameTooltip then return end
+
+    skinNineSlice(GameTooltip.NineSlice)
+    GameTooltip.NineSlice:SetCenterColor(0.08, 0.08, 0.08)
+	  GameTooltip.NineSlice:SetBorderColor(0, 0, 0, 0)
 
     local tooltip = GameTooltip
 		local _, unit = tooltip:GetUnit()
@@ -106,10 +107,6 @@ CF:SetScript("OnEvent", function(self, event)
 	end
 
   TooltipDataProcessor.AddTooltipPostCall(Enum.TooltipDataType.Unit, onTooltipSetUnit)
-
-	GameTooltip:HookScript("OnUpdate", function(tooltip)
-		skinNineSlice(GameTooltip.NineSlice)
-	end)
 
 	GameTooltipStatusBar:HookScript("OnValueChanged", function(self, hp)
 		local unit = "mouseover"
