@@ -160,24 +160,6 @@ EUI_BUFF_BORDER = {
   },
 }
 
-function skinNineSlice(ns)
-  local nsPoints = {
-    "TopLeftCorner",
-    "TopRightCorner",
-    "BottomLeftCorner",
-    "BottomRightCorner",
-    "TopEdge",
-    "BottomEdge",
-    "LeftEdge",
-    "RightEdge",
-    "Center"
-  }
-
-  for _, nsPoint in pairs(nsPoints) do
-    ns[nsPoint]:SetTexture(SQUARE_TEXTURE)
-  end
-end
-
 function styleIcon(ic, bu)
   ic:SetTexCoord(0.1, 0.9, 0.1, 0.9)
 end

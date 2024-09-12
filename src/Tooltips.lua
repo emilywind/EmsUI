@@ -27,6 +27,25 @@ local function getUnitHealthColor(unit)
 	return r, g, b
 end
 
+function skinGameTooltip()
+  local ns = GameTooltip.NineSlice
+  local nsPoints = {
+    "TopLeftCorner",
+    "TopRightCorner",
+    "BottomLeftCorner",
+    "BottomRightCorner",
+    "TopEdge",
+    "BottomEdge",
+    "LeftEdge",
+    "RightEdge",
+    "Center"
+  }
+
+  for _, nsPoint in pairs(nsPoints) do
+    ns[nsPoint]:SetTexture(SQUARE_TEXTURE)
+  end
+end
+
 local colours = {
   guildColour = { 0.74, 0.55, 0.95 },
 }
@@ -71,7 +90,7 @@ CF:SetScript("OnEvent", function(self, event)
 	function onTooltipSetUnit(self)
     if self ~= GameTooltip then return end
 
-    skinNineSlice(GameTooltip.NineSlice)
+    skinGameTooltip()
     GameTooltip.NineSlice:SetCenterColor(0.08, 0.08, 0.08)
 	  GameTooltip.NineSlice:SetBorderColor(0, 0, 0, 0)
 
