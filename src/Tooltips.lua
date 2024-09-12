@@ -123,8 +123,6 @@ CF:SetScript("OnEvent", function(self, event)
     local textString = self.TextString
 		textString:UpdateTextStringWithValues(textString, value, 0, valueMax)
 
-	  local r, g, b = getUnitHealthColor(unit)
-
-	  self:SetStatusBarColor(r, g, b)
+	  self:SetStatusBarColor(getUnitHealthColor(unit))
 	end)
 end)
