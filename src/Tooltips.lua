@@ -59,11 +59,9 @@ CF:SetScript("OnEvent", function(self, event)
 	bar.bg:SetTexture(SQUARE_TEXTURE)
 	bar.bg:SetVertexColor(0.2, 0.2, 0.2)
 
-	bar.TextString = bar:CreateFontString('GameToolTipTextStatus', "OVERLAY", "TextStatusBar")
+	bar.TextString = bar:CreateFontString('GameToolTipTextStatus', "OVERLAY")
 	bar.TextString:SetPoint("CENTER")
 	setDefaultFont(bar.TextString, 11)
-	bar.TextString.capNumericDisplay = true
-	bar.TextString.lockShow = 1
 
 	-- Gametooltip statusbar
 	bar:SetStatusBarTexture(EUIDB.statusBarTexture)
@@ -125,10 +123,11 @@ CF:SetScript("OnEvent", function(self, event)
     end
 
 		local value = UnitHealth(unit)
-		local valueMax = UnitHealthMax(unit)
+		local maxValue = UnitHealthMax(unit)
+    local percent = math.floor(value / maxValue * 100)
 
     local textString = self.TextString
-		textString:UpdateTextStringWithValues(textString, value, 0, valueMax)
+		textString:SetText('(' .. percent .. '%) ' .. AbbreviateLargeNumbers(value) .. ' / ' .. AbbreviateLargeNumbers(maxValue))
 
 	  self:SetStatusBarColor(getUnitHealthColor(unit))
 	end)
