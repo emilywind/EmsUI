@@ -42,6 +42,7 @@ EUIDBDefaults = {
   safeQueue = true,
   tabBinder = true,
   dampeningDisplay = true,
+  hideObjectiveTracker = true,
 
   queueicon = {
     point = 'TOPRIGHT',
@@ -546,6 +547,17 @@ local function setupEuiOptions()
       EUIDB.arenaNumbers = value
     end,
     tabBinder,
+    EUI_PvP
+  )
+
+  local hideObjectiveTracker = newCheckbox(
+    "Hide Objective Tracker in Battlegrounds",
+    "",
+    EUIDB.hideObjectiveTracker,
+    function(self, value)
+      EUIDB.hideObjectiveTracker = value
+    end,
+    arenaNumbers,
     EUI_PvP
   )
 
