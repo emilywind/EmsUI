@@ -23,7 +23,7 @@ end)
 ----------------------
 -- Target and Focus --
 ----------------------
-function skinCastBar(self)
+local function skinCastBar(self)
   if self:IsForbidden() then return end
   if InCombatLockdown() then return end
 
@@ -33,7 +33,7 @@ function skinCastBar(self)
   applyEuiBackdrop(self.Icon, self)
   self.BorderShield:ClearAllPoints()
   self.BorderShield:SetPoint("CENTER", self.Icon, "CENTER", 0, -2.5)
-  self:SetSize(150, 12)
+  -- self:SetSize(150, 12)
   self.TextBorder:ClearAllPoints()
   self.TextBorder:SetAlpha(0)
   self.Text:ClearAllPoints()
@@ -50,6 +50,10 @@ function skinCastBar(self)
       self.Text:SetText(newCastText .. "...")
     end
   end
+end
+
+for i = 1, 3 do
+  _G['CompactArenaFrameMember' .. i].CastingBarFrame:HookScript("OnEvent", skinCastBar)
 end
 
 TargetFrameSpellBar:HookScript("OnEvent", skinCastBar)
