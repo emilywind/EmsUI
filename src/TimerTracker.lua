@@ -2,7 +2,7 @@ local frame = CreateFrame("Frame")
 frame:RegisterEvent("PLAYER_LOGIN")
 frame:SetScript("OnEvent", function()
   TimerTracker:HookScript("OnEvent", function(self, event, timerType, timeSeconds, totalTime)
-    if event ~= "START_TIMER" then return; end
+    if event ~= "START_TIMER" then return end
 
     for i = 1, #self.timerList do
       local prefix = 'TimerTrackerTimer'..i
