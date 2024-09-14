@@ -14,8 +14,6 @@ EUI_TEXTURES = {
 
   statusBar = TextureDir.."\\status-bar.tga",
 
-  auraBorder = TextureDir.."\\aura-border.tga",
-
   classCircles = TextureDir.."\\class\\fabled",
 
   circleTexture = TextureDir.."\\Portrait-ModelBack.tga",
@@ -178,6 +176,20 @@ function applyEuiButtonSkin(bu, icon, isLeaveButton)
   end
 end
 
+local EUI_BORDER = {
+  bgFile = nil,
+  edgeFile = SQUARE_TEXTURE,
+  tile = false,
+  tileSize = 32,
+  edgeSize = 1,
+  insets = {
+    left = 0,
+    right = 0,
+    top = 0,
+    bottom = 0
+  },
+}
+
 function applyEuiBackdrop(b, frame)
   if (b.euiClean) then return end
 
@@ -188,13 +200,14 @@ function applyEuiBackdrop(b, frame)
   local icon = b.icon or b.Icon or (name and _G[name.."Icon"]) or b
   styleIcon(icon, b)
 
-  local border = frame:CreateTexture(b.border, "OVERLAY")
-  border:SetTexture(EUI_TEXTURES.auraBorder)
-  border:SetVertexColor(0, 0, 0)
-  border:SetDrawLayer("OVERLAY")
-  border:SetPoint("TOPLEFT", b, "TOPLEFT", -2, 2)
-  border:SetPoint("BOTTOMRIGHT", b, "BOTTOMRIGHT", 2, -2)
-
+  local border = CreateFrame('Frame', nil, frame, "BackdropTemplate")
+  border:SetAllPoints(b)
+  border:SetFrameLevel(frame:GetFrameLevel() - 1)
+  border.backdropInfo = EUI_BORDER
+  border:ApplyBackdrop()
+  border:SetBackdropBorderColor(0,0,0,1)
+  border:SetPoint("TOPLEFT", icon, "TOPLEFT", -1, 1)
+  border:SetPoint("BOTTOMRIGHT", icon, "BOTTOMRIGHT", 1, -1)
   b.border = border
 
   b.euiClean = true
