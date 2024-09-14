@@ -47,7 +47,7 @@ EmsUIUnitFrames:SetScript("OnEvent", function()
     end
   end
 
-  -- PlayerFrame:HookScript('OnEvent', skinPlayerFrameBars)
+  PlayerFrame:HookScript('OnEvent', skinPlayerFrameBars)
 
   PetFrame:HookScript('OnEvent', function(self)
     self.healthbar:SetStatusBarTexture(EUIDB.statusBarTexture)
