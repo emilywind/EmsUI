@@ -1,6 +1,5 @@
 EmsUIUnitFrames = CreateFrame("Frame", "EmsUIUnitFrames")
 EmsUIUnitFrames:RegisterEvent("PLAYER_LOGIN")
-
 EmsUIUnitFrames:SetScript("OnEvent", function()
 	-------------------------
 	-- Hide Alt Power bars --
@@ -48,7 +47,7 @@ EmsUIUnitFrames:SetScript("OnEvent", function()
     end
   end
 
-  PlayerFrame:HookScript('OnEvent', skinPlayerFrameBars)
+  -- PlayerFrame:HookScript('OnEvent', skinPlayerFrameBars)
 
   PetFrame:HookScript('OnEvent', function(self)
     self.healthbar:SetStatusBarTexture(EUIDB.statusBarTexture)
