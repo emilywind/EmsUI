@@ -37,6 +37,11 @@ local function applyEuiButtonSkin(bu, icon, isLeaveButton)
       ct:SetTexture(EUI_TEXTURES.buttons.checked)
       ct:SetDrawLayer("OVERLAY", 7)
     end
+
+    if bu.SpellCastAnimFrame then
+      local glow = bu.SpellCastAnimFrame.Fill.InnerGlowTexture
+      glow:SetAllPoints(bu)
+    end
   end
 end
 

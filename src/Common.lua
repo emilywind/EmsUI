@@ -9,7 +9,7 @@ EUI_TEXTURES = {
   buttons = {
     normal = TextureDir.."\\buttons\\button-normal.tga",
     pushed = TextureDir.."\\buttons\\button-pressed.tga",
-    checked = TextureDir.."\\buttons\\button-checked.tga"
+    checked = TextureDir.."\\buttons\\button-checked.tga",
   },
 
   statusBar = TextureDir.."\\status-bar.tga",
