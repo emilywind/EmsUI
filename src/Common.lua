@@ -232,7 +232,7 @@ function skinProgressBar(bar)
   end
 
   bar:SetStatusBarTexture(PlayerCastingBarFrame:GetStatusBarTexture())
-  bar:GetStatusBarTexture():SetVertexColor(1, 0.1, 0)
+  bar:GetStatusBarTexture():SetVertexColor(0.8, 0, 0)
 
   if bar.BarBG then
     bar.BarBG:Hide()
