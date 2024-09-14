@@ -73,19 +73,9 @@ SafeQueue:SetScript("OnUpdate", function(self)
 	if not timerBar then
 		timerBar = CreateFrame("StatusBar", nil, PVPReadyDialog)
 		timerBar:SetPoint("TOP", PVPReadyDialog, "BOTTOM", 0, -5)
-		local tex = timerBar:CreateTexture()
-		tex:SetTexture(EUIDB.statusBarTexture)
-		timerBar:SetStatusBarTexture(tex, "BORDER")
-		timerBar:SetStatusBarColor(1, 0.1, 0)
 		timerBar:SetSize(194, 14)
 
 		skinProgressBar(timerBar)
-
-		timerBar.Spark = timerBar:CreateTexture(nil, "OVERLAY")
-		timerBar.Spark:SetTexture(EUI_TEXTURES.castSpark)
-		timerBar.Spark:SetSize(32, 32)
-		timerBar.Spark:SetBlendMode("ADD")
-		timerBar.Spark:SetPoint("LEFT", timerBar:GetStatusBarTexture(), "RIGHT", -15, 3)
 
 		timerBar.Text = timerBar:CreateFontString(nil, "OVERLAY")
 		timerBar.Text:SetFontObject(GameFontHighlight)
