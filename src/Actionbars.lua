@@ -1,3 +1,45 @@
+local function applyEuiButtonSkin(bu, icon, isLeaveButton)
+  if not bu then return end
+  if (bu and bu.euiClean) then return bu.border end
+
+  -- Icon
+  local name = bu:GetName()
+  icon = icon or bu.icon or bu.Icon or _G[name.."Icon"]
+
+  local ht = bu:GetHighlightTexture()
+  ht:SetTexture(EUI_TEXTURES.buttons.normal)
+  ht:SetAllPoints(bu)
+
+  local nt = bu:GetNormalTexture()
+
+  if not nt then return end
+  nt:SetAllPoints(bu)
+
+  if (isLeaveButton) then
+    local border = bu:CreateTexture(bu.border, "OVERLAY")
+    border:SetTexture(EUI_TEXTURES.buttons.normal)
+    border:SetVertexColor(0, 0, 0)
+    border:SetDrawLayer("OVERLAY")
+    border:SetAllPoints(bu)
+  else
+    -- Simple button border
+    nt:SetTexture(EUI_TEXTURES.buttons.normal)
+    nt:SetVertexColor(0, 0, 0)
+
+    local pt = bu:GetPushedTexture()
+    pt:SetAllPoints(bu)
+    pt:SetTexture(EUI_TEXTURES.buttons.pushed)
+    pt:SetDrawLayer("OVERLAY")
+
+    if bu.SetCheckedTexture ~= nil then
+      local ct = bu:GetCheckedTexture()
+      ct:SetAllPoints(bu)
+      ct:SetTexture(EUI_TEXTURES.buttons.checked)
+      ct:SetDrawLayer("OVERLAY", 7)
+    end
+  end
+end
+
 local function init()
   if not EUIDB.skinActionBars then
     return
