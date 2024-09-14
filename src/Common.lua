@@ -132,34 +132,6 @@ end
 
 EUI_DAMAGE_FONT = FontsDir.."\\Bangers-Regular.ttf"
 
-EUI_BORDER = {
-  bgFile = nil,
-  edgeFile = SQUARE_TEXTURE,
-  tile = false,
-  tileSize = 32,
-  edgeSize = 2,
-  insets = {
-    left = 1,
-    right = -1,
-    top = 1,
-    bottom = -1
-  },
-}
-
-EUI_BUFF_BORDER = {
-  bgFile = nil,
-  edgeFile = SQUARE_TEXTURE,
-  tile = false,
-  tileSize = 32,
-  edgeSize = 1,
-  insets = {
-  left = 0,
-  right = 0,
-  top = 0,
-  bottom = 0,
-  },
-}
-
 function styleIcon(ic, bu)
   ic:SetTexCoord(0.1, 0.9, 0.1, 0.9)
 end
@@ -270,8 +242,7 @@ function skinProgressBar(bar)
   -- Clean Border
   if not bar.back then
     local back = CreateFrame("Frame", nil, bar, "BackdropTemplate")
-    back:SetPoint("TOPLEFT", bar, "TOPLEFT", 0, 0)
-    back:SetPoint("BOTTOMRIGHT", bar, "BOTTOMRIGHT", 0, 0)
+    back:SetAllPoints(bar)
     back:SetFrameLevel(bar:GetFrameLevel() - 1)
     back.backdropInfo = cleanBarBackdrop
     back:ApplyBackdrop()
