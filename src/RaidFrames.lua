@@ -20,6 +20,10 @@ local function updateTextures(self)
       self.horizBottomBorder:Hide()
       self.background:SetTexture(SQUARE_TEXTURE)
       self.background:SetVertexColor(0.15, 0.15, 0.15, 0.9)
+
+      if self.CcRemoverFrame then
+        applyEuiBackdrop(self.CcRemoverFrame)
+      end
     end
   end
 end
