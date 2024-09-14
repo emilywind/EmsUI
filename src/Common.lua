@@ -222,22 +222,8 @@ function setDefaultFont(textObject, size, outlinestyle)
   textObject:SetFont(EUIDB.font, size, outlinestyle)
 end
 
-local cleanBarBackdrop = {
-  bgFile = SQUARE_TEXTURE,
-  edgeFile = SQUARE_TEXTURE,
-  tile = false,
-  tileSize = 0,
-  edgeSize = 3,
-  insets = {
-    left = -2,
-    right = -2,
-    top = -2,
-    bottom = -2
-  }
-}
-
 function skinProgressBar(bar)
-  if not bar then return end
+  if not bar or (bar and bar.euiClean) then return end
 
   if bar.BorderMid then
     bar.BorderMid:SetAlpha(0)
@@ -245,25 +231,23 @@ function skinProgressBar(bar)
     bar.BorderRight:SetAlpha(0)
   end
 
-  bar:SetStatusBarTexture(EUIDB.statusBarTexture)
+  bar:SetStatusBarTexture(PlayerCastingBarFrame:GetStatusBarTexture())
+  bar:GetStatusBarTexture():SetVertexColor(1, 0.1, 0)
 
   if bar.BarBG then
     bar.BarBG:Hide()
     bar.BarFrame:Hide()
   end
 
-  -- Clean Border
-  if not bar.back then
-    local back = CreateFrame("Frame", nil, bar, "BackdropTemplate")
-    back:SetAllPoints(bar)
-    back:SetFrameLevel(bar:GetFrameLevel() - 1)
-    back.backdropInfo = cleanBarBackdrop
-    back:ApplyBackdrop()
-    back:SetBackdropBorderColor(0,0,0,1)
-    back:SetBackdropColor(0,0,0,1)
+  -- Border
+  local back = bar:CreateTexture(nil, "BACKGROUND")
+  back:SetTexture(PlayerCastingBarFrame.Background:GetTexture())
+  back:SetAtlas('ui-castingbar-background')
+  back:SetPoint("TOPLEFT", bar, "TOPLEFT", -2, 2)
+  back:SetPoint("BOTTOMRIGHT", bar, "BOTTOMRIGHT", 2, -2)
+  back:SetVertexColor(0, 0, 0)
 
-    bar.back = back
-  end
+  bar.back = back
 
   bar.euiClean = true
 end
