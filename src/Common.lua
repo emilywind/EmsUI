@@ -242,7 +242,7 @@ function skinProgressBar(bar)
   -- Border
   local back = bar:CreateTexture(nil, "BACKGROUND")
   back:SetTexture(PlayerCastingBarFrame.Background:GetTexture())
-  back:SetAtlas('ui-castingbar-background')
+  back:SetAtlas(PlayerCastingBarFrame.Background:GetAtlas())
   back:SetPoint("TOPLEFT", bar, "TOPLEFT", -2, 2)
   back:SetPoint("BOTTOMRIGHT", bar, "BOTTOMRIGHT", 2, -2)
   back:SetVertexColor(0, 0, 0)
