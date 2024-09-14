@@ -12,6 +12,8 @@ EUI_TEXTURES = {
     checked = TextureDir.."\\buttons\\button-checked.tga",
   },
 
+  auraBorder = TextureDir.."\\aura-border.tga",
+
   statusBar = TextureDir.."\\status-bar.tga",
 
   classCircles = TextureDir.."\\class\\fabled",
