@@ -56,6 +56,10 @@ for i = 1, 3 do
   _G['CompactArenaFrameMember' .. i].CastingBarFrame:HookScript("OnEvent", skinCastBar)
 end
 
+for i = 1, 5 do
+  _G['Boss' .. i .. 'TargetFrameSpellBar']:HookScript("OnEvent", skinCastBar)
+end
+
 TargetFrameSpellBar:HookScript("OnEvent", skinCastBar)
 FocusFrameSpellBar:HookScript("OnEvent", skinCastBar)
 
