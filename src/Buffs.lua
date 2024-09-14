@@ -16,15 +16,8 @@ local function applySkin(aura, isDebuff)
   if not icon.SetTexCoord then return end
 
   --border
-  local border = aura:CreateTexture(nil, "BACKGROUND")
-  border:SetTexture(EUI_TEXTURES.auraBorder)
-  border:SetPoint("TOPLEFT", icon, "TOPLEFT", -3, 3)
-  border:SetPoint("BOTTOMRIGHT", icon, "BOTTOMRIGHT", 3, -3)
+  local border = applyEuiBackdrop(icon, aura)
   aura.border = border
-
-  local background = aura:CreateTexture(nil, "BACKGROUND")
-  background:SetAllPoints(icon)
-  background:SetTexture(SQUARE_TEXTURE)
 
   if aura.Border then
     border:SetVertexColor(aura.Border:GetVertexColor())

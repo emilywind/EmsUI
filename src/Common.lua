@@ -12,7 +12,7 @@ EUI_TEXTURES = {
     checked = TextureDir.."\\buttons\\button-checked.tga",
   },
 
-  auraBorder = TextureDir.."\\aura-border.tga",
+  roundedBorder = TextureDir.."\\rounded-border.tga",
 
   statusBar = TextureDir.."\\status-bar.tga",
 
@@ -136,20 +136,6 @@ function styleIcon(ic, bu)
   ic:SetTexCoord(0.1, 0.9, 0.1, 0.9)
 end
 
-local EUI_BORDER = {
-  bgFile = nil,
-  edgeFile = SQUARE_TEXTURE,
-  tile = false,
-  tileSize = 32,
-  edgeSize = 2,
-  insets = {
-    left = 0,
-    right = 0,
-    top = 0,
-    bottom = 0
-  },
-}
-
 function applyEuiBackdrop(b, frame)
   if (b.euiClean) then return end
 
@@ -160,17 +146,16 @@ function applyEuiBackdrop(b, frame)
   local icon = b.icon or b.Icon or (name and _G[name.."Icon"]) or b
   styleIcon(icon, b)
 
-  local border = CreateFrame('Frame', nil, frame, "BackdropTemplate")
-  border:SetAllPoints(b)
-  border:SetFrameLevel(frame:GetFrameLevel() - 1)
-  border.backdropInfo = EUI_BORDER
-  border:ApplyBackdrop()
-  border:SetBackdropBorderColor(0,0,0,1)
-  border:SetPoint("TOPLEFT", icon, "TOPLEFT", -2, 2)
-  border:SetPoint("BOTTOMRIGHT", icon, "BOTTOMRIGHT", 2, -2)
-  b.border = border
+  local border = frame:CreateTexture()
+  border:SetDrawLayer("OVERLAY")
+  border:SetTexture(EUI_TEXTURES.roundedBorder)
+  border:SetPoint("TOPLEFT", icon, "TOPLEFT", -1, 1)
+  border:SetPoint("BOTTOMRIGHT", icon, "BOTTOMRIGHT", 1, -1)
+  border:SetVertexColor(0, 0, 0)
 
   b.euiClean = true
+
+  return border
 end
 
 function setDefaultFont(textObject, size, outlinestyle)
