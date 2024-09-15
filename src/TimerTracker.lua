@@ -1,6 +1,4 @@
-local frame = CreateFrame("Frame")
-frame:RegisterEvent("PLAYER_LOGIN")
-frame:SetScript("OnEvent", function()
+OnPlayerLogin(function()
   TimerTracker:HookScript("OnEvent", function(self, event, timerType, timeSeconds, totalTime)
     if event ~= "START_TIMER" then return end
 

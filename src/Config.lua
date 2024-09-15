@@ -592,4 +592,4 @@ local function setupEuiOptions()
   hooksecurefunc(GameMenuFrame, "InitButtons", EmsUIGameMenuButton)
 end
 
-OnPlayerLogin(etupEuiOptions)
+OnPlayerLogin(setupEuiOptions)
