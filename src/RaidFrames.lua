@@ -22,7 +22,7 @@ local function updateTextures(self)
       self.background:SetVertexColor(0.15, 0.15, 0.15, 0.9)
 
       if self.CcRemoverFrame then
-        applyEuiBackdrop(self.CcRemoverFrame)
+        applyEuiBackdrop(self.CcRemoverFrame, self)
       end
     end
   end
