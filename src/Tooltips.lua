@@ -37,9 +37,7 @@ local colours = {
   guildRank = 'bd8cf2',
 }
 
-local CF=CreateFrame("Frame")
-CF:RegisterEvent("PLAYER_LOGIN")
-CF:SetScript("OnEvent", function(self, event)
+OnPlayerLogin(function(self, event)
 	if C_AddOns.IsAddOnLoaded('TinyTooltip') or C_AddOns.IsAddOnLoaded('TipTac') then
 		return
 	end

@@ -1,6 +1,4 @@
-EmsUIUnitFrames = CreateFrame("Frame", "EmsUIUnitFrames")
-EmsUIUnitFrames:RegisterEvent("PLAYER_LOGIN")
-EmsUIUnitFrames:SetScript("OnEvent", function()
+OnPlayerLogin(function()
 	-------------------------
 	-- Hide Alt Power bars --
 	-------------------------

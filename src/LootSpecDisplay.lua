@@ -1,7 +1,4 @@
-EuiUnitFrames = CreateFrame("Frame", "EuiUnitFrames")
-EuiUnitFrames:RegisterEvent("PLAYER_LOGIN")
-
-EuiUnitFrames:SetScript("OnEvent", function()
+OnPlayerLogin(function()
 	-----------------------
 	-- Loot Spec Display --
 	-----------------------

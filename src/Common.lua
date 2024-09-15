@@ -113,6 +113,12 @@ for iconStyle, data in next, classInfo.styles do
   CLASS_PORTRAIT_PACKS[format('%s%s', classInfo.path, iconStyle)] = format('%s (by %s)', data.name, data.artist)
 end
 
+function OnPlayerLogin(callback)
+  local frame = CreateFrame("Frame")
+  frame:RegisterEvent("PLAYER_LOGIN")
+  frame:SetScript("OnEvent", callback)
+end
+
 EUI_FONTS = {
   Andika = FontsDir.."\\Andika.ttf",
   Fira = FontsDir.."\\FiraSans.ttf",

@@ -66,9 +66,7 @@ FocusFrameSpellBar:HookScript("OnEvent", skinCastBar)
 ------------
 -- Timers --
 ------------
-local frame = CreateFrame('Frame')
-frame:RegisterEvent('PLAYER_LOGIN')
-frame:SetScript('OnEvent', function()
+OnPlayerLogin(function()
   local format = string.format
   local max = math.max
   local FONT = EUIDB.font

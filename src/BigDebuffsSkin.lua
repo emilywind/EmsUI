@@ -1,7 +1,4 @@
-EUIBigDebuffs = CreateFrame("Frame", "EUIBigDebuffs")
-EUIBigDebuffs:RegisterEvent("PLAYER_LOGIN")
-
-EUIBigDebuffs:SetScript("OnEvent", function()
+OnPlayerLogin(function()
   if ( not C_AddOns.IsAddOnLoaded('BigDebuffs') ) then return end
 
   -- Nameplates

@@ -1,12 +1,9 @@
-EmsUINameplates = CreateFrame("Frame", "EmsUINameplates")
-EmsUINameplates:RegisterEvent("PLAYER_LOGIN")
-
-EmsUINameplates:SetScript("OnEvent", function()
+OnPlayerLogin(function()
   local defaultFriendlyWidth, defaultFriendlyHeight = C_NamePlate.GetNamePlateFriendlySize()
 
   function SetFriendlyNameplateSize(isChange)
     if EUIDB.nameplateFriendlySmall then
-      C_NamePlate.SetNamePlateFriendlySize((0.7 * defaultFriendlyWidth), defaultFriendlyHeight)
+      C_NamePlate.SetNamePlateFriendlySize((0.5 * defaultFriendlyWidth), defaultFriendlyHeight)
     elseif isChange then
       C_NamePlate.SetNamePlateFriendlySize(defaultFriendlyWidth, defaultFriendlyHeight)
     end

@@ -1,6 +1,4 @@
-local frame = CreateFrame('Frame')
-frame:RegisterEvent('PLAYER_LOGIN')
-frame:SetScript('OnEvent', function()
+OnPlayerLogin(function()
   if not C_AddOns.IsAddOnLoaded('Details') then return end
 
   local classInfo = FABLED_CLASS_CIRCLES_DATA.class

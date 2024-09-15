@@ -104,9 +104,7 @@ local function makeEUIPortrait(frame)
   end
 end
 
-local CF=CreateFrame("Frame")
-CF:RegisterEvent("PLAYER_LOGIN")
-CF:SetScript("OnEvent", function(self, event)
+OnPlayerLogin(function(self, event)
   if (EUIDB.portraitStyle == "default") then return end
 
   hooksecurefunc("UnitFramePortrait_Update", makeEUIPortrait)

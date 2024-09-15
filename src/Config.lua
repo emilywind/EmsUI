@@ -86,9 +86,7 @@ local function resetToDefaults()
   EUIDB = copyDefaults(EUIDBDefaults, EUIDB)
 end
 
-local euiOptionsEventFrame = CreateFrame("Frame")
-euiOptionsEventFrame:RegisterEvent("PLAYER_LOGIN")
-euiOptionsEventFrame:SetScript("OnEvent", euiDefaults)
+OnPlayerLogin(euiDefaults)
 
 local makePanel = function(frameName, mainpanel, panelName)
   local panel = CreateFrame("Frame", frameName, mainpanel)
@@ -594,6 +592,4 @@ local function setupEuiOptions()
   hooksecurefunc(GameMenuFrame, "InitButtons", EmsUIGameMenuButton)
 end
 
-local eui_catch = CreateFrame("Frame")
-eui_catch:RegisterEvent("PLAYER_LOGIN")
-eui_catch:SetScript("OnEvent", setupEuiOptions)
+OnPlayerLogin(etupEuiOptions)

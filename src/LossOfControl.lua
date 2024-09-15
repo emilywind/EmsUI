@@ -12,10 +12,7 @@ local cleanIconBackdrop = {
   }
 }
 
-local frame = CreateFrame("Frame")
-frame:RegisterEvent("PLAYER_LOGIN")
-
-frame:SetScript("OnEvent", function(self, event, ...)
+OnPlayerLogin(function(self, event, ...)
    -- Hide red shadow
   select(2,LossOfControlFrame:GetRegions()):SetAlpha(0)
   select(3,LossOfControlFrame:GetRegions()):SetAlpha(0)
@@ -24,12 +21,5 @@ frame:SetScript("OnEvent", function(self, event, ...)
   local icon = select(4,LossOfControlFrame:GetRegions())
 
   styleIcon(icon)
-  local iconBack = CreateFrame("Frame", nil, LossOfControlFrame, "BackdropTemplate")
-  iconBack:SetPoint("TOPLEFT", icon, "TOPLEFT", 0, 0)
-  iconBack:SetPoint("BOTTOMRIGHT", icon, "BOTTOMRIGHT", 0, 0)
-  iconBack:SetFrameLevel(LossOfControlFrame:GetFrameLevel())
-  iconBack.backdropInfo = cleanIconBackdrop
-  iconBack:ApplyBackdrop()
-  iconBack:SetBackdropBorderColor(0,0,0,1)
-  iconBack:SetBackdropColor(0,0,0,1)
+  applyEuiBackdrop(icon, LossOfControlFrame)
 end)

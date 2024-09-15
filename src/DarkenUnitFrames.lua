@@ -1,6 +1,4 @@
-local frame = CreateFrame('Frame')
-frame:RegisterEvent('PLAYER_LOGIN')
-frame:SetScript('OnEvent', function()
+OnPlayerLogin(function()
   -- Alternate Power Bar
   for i, v in ipairs({
       PlayerFrameAlternateManaBarBorder,

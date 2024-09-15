@@ -1,8 +1,6 @@
 --[[SUI TABBINDER v1.0]]
 
-local CF=CreateFrame("Frame")
-CF:RegisterEvent("PLAYER_LOGIN")
-CF:SetScript("OnEvent", function(self, event)
+OnPlayerLogin(function(self, event)
 	if not EUIDB.tabBinder then return end
 
 	local CreateFrame = CreateFrame

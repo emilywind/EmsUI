@@ -1,6 +1,4 @@
-local f = CreateFrame('Frame')
-f:RegisterEvent('PLAYER_LOGIN')
-f:SetScript('OnEvent', function()
+OnPlayerLogin(function()
   if not EUIDB.darkMinimap then return end
 
   local compass = MinimapCompassTexture

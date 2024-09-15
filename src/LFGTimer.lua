@@ -42,6 +42,4 @@ function init()
   eventFrame:SetScript("OnEvent", OnEvent)
 end
 
-local a = CreateFrame("Frame")
-a:RegisterEvent("PLAYER_LOGIN")
-a:SetScript("OnEvent", init)
+OnPlayerLogin(init)

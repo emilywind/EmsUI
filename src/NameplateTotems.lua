@@ -1,6 +1,4 @@
-local loadFrame = CreateFrame('Frame')
-loadFrame:RegisterEvent('PLAYER_LOGIN')
-loadFrame:SetScript('OnEvent', function()
+OnPlayerLogin(function()
   if not EUIDB.nameplateTotems then return end
 
   local f = CreateFrame("Frame", nil, UIParent)

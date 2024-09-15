@@ -1,6 +1,4 @@
-local frame = CreateFrame('Frame')
-frame:RegisterEvent('PLAYER_LOGIN')
-frame:SetScript('OnEvent', function()
+OnPlayerLogin(function()
   local LEM = LibStub('LibEditMode')
 
   local db = EUIDB
