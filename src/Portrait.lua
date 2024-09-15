@@ -104,7 +104,7 @@ local function makeEUIPortrait(frame)
   end
 end
 
-OnPlayerLogin(function(self, event)
+OnPlayerLogin(function()
   if (EUIDB.portraitStyle == "default") then return end
 
   hooksecurefunc("UnitFramePortrait_Update", makeEUIPortrait)

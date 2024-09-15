@@ -1,6 +1,6 @@
 --[[SUI TABBINDER v1.0]]
 
-OnPlayerLogin(function(self, event)
+OnPlayerLogin(function()
 	if not EUIDB.tabBinder then return end
 
 	local CreateFrame = CreateFrame

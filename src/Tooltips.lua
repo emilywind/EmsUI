@@ -37,7 +37,7 @@ local colours = {
   guildRank = 'bd8cf2',
 }
 
-OnPlayerLogin(function(self, event)
+OnPlayerLogin(function()
 	if C_AddOns.IsAddOnLoaded('TinyTooltip') or C_AddOns.IsAddOnLoaded('TipTac') then
 		return
 	end
