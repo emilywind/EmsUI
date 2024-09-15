@@ -20,6 +20,5 @@ OnPlayerLogin(function(self, event, ...)
   -- Style the icon
   local icon = select(4,LossOfControlFrame:GetRegions())
 
-  styleIcon(icon)
   applyEuiBackdrop(icon, LossOfControlFrame)
 end)
