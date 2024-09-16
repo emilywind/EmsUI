@@ -1,11 +1,9 @@
 OnPlayerLogin(function()
-  if C_AddOns.IsAddOnLoaded('BetterBlizzPlates') then return end
-
   local defaultFriendlyWidth, defaultFriendlyHeight = C_NamePlate.GetNamePlateFriendlySize()
 
   function SetFriendlyNameplateSize(isChange)
     if EUIDB.nameplateFriendlySmall then
-      C_NamePlate.SetNamePlateFriendlySize((0.5 * defaultFriendlyWidth), defaultFriendlyHeight)
+      C_NamePlate.SetNamePlateFriendlySize((0.6 * defaultFriendlyWidth), defaultFriendlyHeight)
     elseif isChange then
       C_NamePlate.SetNamePlateFriendlySize(defaultFriendlyWidth, defaultFriendlyHeight)
     end
