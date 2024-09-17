@@ -120,13 +120,15 @@ OnPlayerLogin(function()
 	    end
     end
 
+	  self:SetStatusBarColor(getUnitHealthColor(unit))
+
 		local value = UnitHealth(unit)
 		local maxValue = UnitHealthMax(unit)
+
+    if value == 0 and maxValue == 0 then return end
     local percent = math.floor(value / maxValue * 100)
 
     local textString = self.TextString
 		textString:SetText('(' .. percent .. '%) ' .. AbbreviateLargeNumbers(value) .. ' / ' .. AbbreviateLargeNumbers(maxValue))
-
-	  self:SetStatusBarColor(getUnitHealthColor(unit))
 	end)
 end)
