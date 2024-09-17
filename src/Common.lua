@@ -138,7 +138,7 @@ end
 
 EUI_DAMAGE_FONT = FontsDir.."\\Bangers-Regular.ttf"
 
-function styleIcon(ic, bu)
+function styleIcon(ic)
   ic:SetTexCoord(0.1, 0.9, 0.1, 0.9)
 end
 

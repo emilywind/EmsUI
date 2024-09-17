@@ -72,7 +72,7 @@ local function init()
     local ho = _G[name .. "HotKey"]
 
     --icon
-    styleIcon(icon, bu)
+    styleIcon(icon)
 
     --cooldown
     cooldown:SetAllPoints(icon)
