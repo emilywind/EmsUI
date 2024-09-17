@@ -41,6 +41,13 @@ OnPlayerLogin(function()
       end
   end)
 
+  for i = 1, 5 do
+    local bossFrame = _G['Boss'..i..'TargetFrame']
+    bossFrame:HookScript('OnEvent', function()
+      bossFrame.TargetFrameContainer.FrameTexture:SetVertexColor(0, 0, 0)
+    end)
+  end
+
   -- Class Resource Bars
   local _, playerClass = UnitClass("player")
 
