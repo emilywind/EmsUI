@@ -6,6 +6,11 @@ local function applyEuiButtonSkin(bu, icon, isLeaveButton)
   local name = bu:GetName()
   icon = icon or bu.icon or bu.Icon or _G[name.."Icon"]
 
+  if icon then
+    icon:SetPoint("TOPLEFT", bu, "TOPLEFT", 0, -1)
+    icon:SetPoint("BOTTOMRIGHT", bu, "BOTTOMRIGHT")
+  end
+
   local ht = bu:GetHighlightTexture()
   ht:SetTexture(EUI_TEXTURES.buttons.normal)
   ht:SetAllPoints(bu)
@@ -105,6 +110,10 @@ local function init()
     local fob = _G[name .. "FlyoutBorder"]
     local fobs = _G[name .. "FlyoutBorderShadow"]
 
+    if cd then
+      cd:SetPoint("TOPLEFT", bu, "TOPLEFT", 2, -2)
+      cd:SetPoint("BOTTOMRIGHT", bu, "BOTTOMRIGHT", -2, 2)
+    end
 
     if fbg then
       fbg:Hide()
