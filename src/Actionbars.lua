@@ -157,36 +157,9 @@ local function init()
     applyEuiButtonSkin(bu, nil, true)
   end
 
-  --style pet buttons
-  local function stylePetButton(bu)
-    if not bu or (bu and bu.euiClean) then return end
-
-    local name = bu:GetName()
-    local ic = _G[name .. "Icon"]
-    local cd = _G[name .. "Cooldown"]
-
-    --adjust the cooldown frame
-    cd:SetPoint("TOPLEFT", bu, "TOPLEFT", 1, -1)
-    cd:SetPoint("BOTTOMRIGHT", bu, "BOTTOMRIGHT", -1, 1)
-
-    applyEuiButtonSkin(bu, ic)
-  end
-
   -- Style stance buttons
-  local function styleStanceButton(bu)
-    if not bu or (bu and bu.euiClean) then
-      return
-    end
-    local name = bu:GetName()
-    local ic = _G[name .. "Icon"]
-    local fl = _G[name .. "Flash"]
-    local nt = _G[name .. "NormalTexture2"]
-
-    applyEuiButtonSkin(bu, ic)
-  end
-
   for i = 1, StanceBar.numButtons do
-    styleStanceButton(_G["StanceButton" .. i])
+    styleActionButton(_G["StanceButton" .. i])
   end
 
   -- Style possess buttons
@@ -251,7 +224,7 @@ local function init()
   styleLeaveButton(rABS_LeaveVehicleButton)
   --petbar buttons
   for i = 1, NUM_PET_ACTION_SLOTS do
-    stylePetButton(_G["PetActionButton" .. i])
+    styleActionButton(_G["PetActionButton" .. i])
   end
   --possess buttons
   for i = 1, NUM_POSSESS_SLOTS do
@@ -273,7 +246,7 @@ local function init()
     --print("Bartender4 found")
     for i = 1, 120 do
       styleActionButton(_G["BT4Button" .. i])
-      stylePetButton(_G["BT4PetButton" .. i])
+      styleActionButton(_G["BT4PetButton" .. i])
     end
   end
 end
