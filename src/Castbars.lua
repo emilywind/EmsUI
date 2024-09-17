@@ -33,7 +33,6 @@ local function skinCastBar(self)
   applyEuiBackdrop(self.Icon, self)
   self.BorderShield:ClearAllPoints()
   self.BorderShield:SetPoint("CENTER", self.Icon, "CENTER", 0, -2.5)
-  -- self:SetSize(150, 12)
   self.TextBorder:ClearAllPoints()
   self.TextBorder:SetAlpha(0)
   self.Text:ClearAllPoints()
@@ -41,7 +40,6 @@ local function skinCastBar(self)
   self.Text:SetFont(STANDARD_TEXT_FONT, 11, "OUTLINE")
   self.Border:SetVertexColor(0, 0, 0)
   self.Background:SetVertexColor(0, 0, 0)
-
 
   local castText = self.Text:GetText()
   if castText ~= nil then
