@@ -2,16 +2,6 @@ local function applyEuiButtonSkin(bu, icon, isLeaveButton)
   if not bu then return end
   if (bu and bu.euiClean) then return bu.border end
 
-  -- Icon
-  local name = bu:GetName()
-  icon = icon or bu.icon or bu.Icon or _G[name.."Icon"]
-
-  if icon then
-    icon:SetTexCoord(0.05, 0.95, 0.05, 0.95)
-    icon:SetPoint("TOPLEFT", bu, "TOPLEFT", 0, -2)
-    icon:SetPoint("BOTTOMRIGHT", bu, "BOTTOMRIGHT")
-  end
-
   local ht = bu:GetHighlightTexture()
   ht:SetTexture(EUI_TEXTURES.buttons.normal)
   ht:SetAllPoints(bu)
