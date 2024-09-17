@@ -7,7 +7,8 @@ local function applyEuiButtonSkin(bu, icon, isLeaveButton)
   icon = icon or bu.icon or bu.Icon or _G[name.."Icon"]
 
   if icon then
-    icon:SetPoint("TOPLEFT", bu, "TOPLEFT", 0, -1)
+    icon:SetTexCoord(0.05, 0.95, 0.05, 0.95)
+    icon:SetPoint("TOPLEFT", bu, "TOPLEFT", 0, -2)
     icon:SetPoint("BOTTOMRIGHT", bu, "BOTTOMRIGHT")
   end
 
