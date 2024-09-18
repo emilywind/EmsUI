@@ -179,4 +179,10 @@ OnPlayerLogin(function()
 
   hooksecurefunc("UnitFrameHealthBar_Update", setUnitColour)
   hooksecurefunc("HealthBar_OnValueChanged", setUnitColour)
+
+  hooksecurefunc("PlayerFrame_UpdateStatus", function(self)
+    if IsResting() then
+      PlayerFrame.PlayerFrameContent.PlayerFrameContentMain.StatusTexture:Hide()
+    end
+  end)
 end)
