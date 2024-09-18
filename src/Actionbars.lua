@@ -36,7 +36,8 @@ local function applyEuiButtonSkin(bu, icon, isLeaveButton)
 
     if bu.SpellCastAnimFrame then
       local glow = bu.SpellCastAnimFrame.Fill.InnerGlowTexture
-      glow:SetAllPoints(bu)
+      glow:SetPoint("TOPLEFT", bu, "TOPLEFT", 2, -2)
+      glow:SetPoint("BOTTOMRIGHT", bu, "BOTTOMRIGHT", -2, 2)
     end
   end
 end
