@@ -9,7 +9,7 @@ local function applyEuiButtonSkin(bu, icon, isLeaveButton)
   local nt = bu:GetNormalTexture()
 
   if not nt then return end
-  nt:SetAllPoints(bu)
+  -- nt:SetAllPoints(bu)
 
   if (isLeaveButton) then
     local border = bu:CreateTexture(bu.border, "OVERLAY")
@@ -19,26 +19,26 @@ local function applyEuiButtonSkin(bu, icon, isLeaveButton)
     border:SetAllPoints(bu)
   else
     -- Simple button border
-    nt:SetTexture(EUI_TEXTURES.buttons.normal)
-    nt:SetVertexColor(0.1, 0.1, 0.1)
+    -- nt:SetTexture(EUI_TEXTURES.buttons.normal)
+    nt:SetVertexColor(unpack(EUIDB.frameColor))
 
-    local pt = bu:GetPushedTexture()
-    pt:SetAllPoints(bu)
-    pt:SetTexture(EUI_TEXTURES.buttons.pushed)
-    pt:SetDrawLayer("OVERLAY")
+    -- local pt = bu:GetPushedTexture()
+    -- pt:SetAllPoints(bu)
+    -- pt:SetTexture(EUI_TEXTURES.buttons.pushed)
+    -- pt:SetDrawLayer("OVERLAY")
 
-    if bu.SetCheckedTexture ~= nil then
-      local ct = bu:GetCheckedTexture()
-      ct:SetAllPoints(bu)
-      ct:SetTexture(EUI_TEXTURES.buttons.checked)
-      ct:SetDrawLayer("OVERLAY", 7)
-    end
+    -- if bu.SetCheckedTexture ~= nil then
+    --   local ct = bu:GetCheckedTexture()
+    --   ct:SetAllPoints(bu)
+    --   ct:SetTexture(EUI_TEXTURES.buttons.checked)
+    --   ct:SetDrawLayer("OVERLAY", 7)
+    -- end
 
-    if bu.SpellCastAnimFrame then
-      local glow = bu.SpellCastAnimFrame.Fill.InnerGlowTexture
-      glow:SetPoint("TOPLEFT", bu, "TOPLEFT", 2, -2)
-      glow:SetPoint("BOTTOMRIGHT", bu, "BOTTOMRIGHT", -2, 2)
-    end
+    -- if bu.SpellCastAnimFrame then
+    --   local glow = bu.SpellCastAnimFrame.Fill.InnerGlowTexture
+    --   glow:SetPoint("TOPLEFT", bu, "TOPLEFT", 2, -2)
+    --   glow:SetPoint("BOTTOMRIGHT", bu, "BOTTOMRIGHT", -2, 2)
+    -- end
   end
 end
 

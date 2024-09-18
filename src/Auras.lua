@@ -4,7 +4,7 @@
 function applyAuraSkin(aura)
   if aura.border and aura.Border then
     aura.Border:SetAlpha(1)
-    aura.border:SetVertexColor(aura.Border:GetVertexColor())
+    aura.border:SetBackdropBorderColor(aura.Border:GetVertexColor())
     aura.Border:SetAlpha(0)
   end
 
@@ -19,10 +19,10 @@ function applyAuraSkin(aura)
   aura.border = border
 
   if aura.Border then
-    border:SetVertexColor(aura.Border:GetVertexColor())
+    border:SetBackdropBorderColor(aura.Border:GetVertexColor())
     aura.Border:SetAlpha(0)
   else
-    border:SetVertexColor(unpack(EUIDB.frameColor))
+    border:SetBackdropBorderColor(unpack(EUIDB.frameColor))
   end
 
   aura.euiClean = true

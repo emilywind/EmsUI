@@ -142,6 +142,12 @@ function styleIcon(ic)
   ic:SetTexCoord(0.1, 0.9, 0.1, 0.9)
 end
 
+local backdrop = {
+  edgeFile = "Interface/Tooltips/UI-Tooltip-Border",
+  tileEdge = true,
+  edgeSize = 10,
+}
+
 function applyEuiBackdrop(b, frame)
   if (b.euiClean) then return end
 
@@ -152,12 +158,18 @@ function applyEuiBackdrop(b, frame)
   local icon = b.icon or b.Icon or (name and _G[name.."Icon"]) or b
   styleIcon(icon, b)
 
-  local border = frame:CreateTexture()
-  border:SetDrawLayer("OVERLAY")
-  border:SetTexture(EUI_TEXTURES.roundedBorder)
-  border:SetPoint("TOPLEFT", icon, "TOPLEFT", -1, 1)
-  border:SetPoint("BOTTOMRIGHT", icon, "BOTTOMRIGHT", 1, -1)
-  border:SetVertexColor(0.1, 0.1, 0.1)
+  -- local border = frame:CreateTexture()
+  -- border:SetDrawLayer("OVERLAY")
+  -- border:SetTexture(EUI_TEXTURES.roundedBorder)
+  -- border:SetPoint("TOPLEFT", icon, "TOPLEFT", -1, 1)
+  -- border:SetPoint("BOTTOMRIGHT", icon, "BOTTOMRIGHT", 1, -1)
+  -- border:SetVertexColor(0.1, 0.1, 0.1)
+
+  local border = CreateFrame('Frame', nil, frame, "BackdropTemplate")
+  border:SetPoint("TOPLEFT",icon,"TOPLEFT",-2,2)
+  border:SetPoint("BOTTOMRIGHT",icon,"BOTTOMRIGHT",2,-2)
+  border:SetBackdrop(backdrop)
+  border:SetBackdropBorderColor(unpack(EUIDB.frameColor))
 
   b.euiClean = true
 

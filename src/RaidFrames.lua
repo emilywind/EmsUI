@@ -34,7 +34,7 @@ local function updateTextures(self)
 
         if debuffFrame.Border then
           debuffFrame.Border:SetAlpha(1)
-          debuffFrame.euiBorder:SetVertexColor(debuffFrame.Border:GetVertexColor())
+          debuffFrame.euiBorder:SetBackdropBorderColor(debuffFrame.Border:GetVertexColor())
           debuffFrame.Border:SetAlpha(0)
         end
       end
