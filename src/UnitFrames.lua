@@ -24,9 +24,7 @@ OnPlayerLogin(function()
 
   local function skinPlayerFrameBars(self)
     self.healthbar:SetStatusBarTexture(EUIDB.statusBarTexture)
-    self.healthbar:GetStatusBarTexture():SetDrawLayer("BORDER")
     self.healthbar.AnimatedLossBar:SetStatusBarTexture(EUIDB.statusBarTexture)
-    self.healthbar.AnimatedLossBar:GetStatusBarTexture():SetDrawLayer("BORDER")
 
     if self.manabar then
       -- Get Power Color
@@ -49,7 +47,6 @@ OnPlayerLogin(function()
 
   PetFrame:HookScript('OnEvent', function(self)
     self.healthbar:SetStatusBarTexture(EUIDB.statusBarTexture)
-    self.healthbar:GetStatusBarTexture():SetDrawLayer("BORDER")
   end)
 
   ------------------
@@ -60,7 +57,6 @@ OnPlayerLogin(function()
 
     -- Set Textures
     self.healthbar:SetStatusBarTexture(EUIDB.statusBarTexture)
-    self.healthbar:GetStatusBarTexture():SetDrawLayer("BORDER")
     if self.myHealPrediction then
       self.myHealPredictionBar:SetTexture(EUIDB.statusBarTexture)
     end
