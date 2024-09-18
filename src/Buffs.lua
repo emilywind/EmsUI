@@ -34,7 +34,10 @@ local function applySkin(aura, isDebuff)
 
   local duration = aura.Duration
   if duration then
-    duration:SetDrawLayer("OVERLAY")
+    -- duration:SetDrawLayer("OVERLAY")
+    local point, relativeTo, relativePoint, xOfs = duration:GetPoint()
+    local yOfs = point == "TOP" and -2 or 2
+    duration:SetPoint(point, relativeTo, relativePoint, xOfs, yOfs)
   end
 
   --set button styled variable
