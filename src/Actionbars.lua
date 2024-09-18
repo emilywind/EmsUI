@@ -14,13 +14,13 @@ local function applyEuiButtonSkin(bu, icon, isLeaveButton)
   if (isLeaveButton) then
     local border = bu:CreateTexture(bu.border, "OVERLAY")
     border:SetTexture(EUI_TEXTURES.buttons.normal)
-    border:SetVertexColor(0, 0, 0)
+    border:SetVertexColor(0.1, 0.1, 0.1)
     border:SetDrawLayer("OVERLAY")
     border:SetAllPoints(bu)
   else
     -- Simple button border
     nt:SetTexture(EUI_TEXTURES.buttons.normal)
-    nt:SetVertexColor(0, 0, 0)
+    nt:SetVertexColor(0.1, 0.1, 0.1)
 
     local pt = bu:GetPushedTexture()
     pt:SetAllPoints(bu)

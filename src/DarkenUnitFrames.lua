@@ -7,44 +7,44 @@ OnPlayerLogin(function()
       PetFrameTexture
   }) do
       v:SetDesaturated(true)
-      v:SetVertexColor(0, 0, 0)
+      v:SetVertexColor(unpack(EUIDB.frameColor))
   end
 
   -- Player Frame
   PlayerFrame:HookScript("OnUpdate", function()
-      PlayerFrame.PlayerFrameContainer.FrameTexture:SetVertexColor(0, 0, 0)
-      PlayerFrame.PlayerFrameContent.PlayerFrameContentContextual.PlayerPortraitCornerIcon:SetVertexColor(0, 0, 0)
-      PlayerFrame.PlayerFrameContainer.AlternatePowerFrameTexture:SetVertexColor(0, 0, 0)
+      PlayerFrame.PlayerFrameContainer.FrameTexture:SetVertexColor(unpack(EUIDB.frameColor))
+      PlayerFrame.PlayerFrameContent.PlayerFrameContentContextual.PlayerPortraitCornerIcon:SetVertexColor(unpack(EUIDB.frameColor))
+      PlayerFrame.PlayerFrameContainer.AlternatePowerFrameTexture:SetVertexColor(unpack(EUIDB.frameColor))
   end)
 
   -- Pet Frame
   PetFrame:HookScript("OnUpdate", function()
-      PetFrameTexture:SetVertexColor(0, 0, 0)
+      PetFrameTexture:SetVertexColor(unpack(EUIDB.frameColor))
   end)
 
   -- Target Frame
   TargetFrame:HookScript("OnUpdate", function()
-      TargetFrame.TargetFrameContainer.FrameTexture:SetVertexColor(0, 0, 0)
-      TargetFrameToT.FrameTexture:SetVertexColor(0, 0, 0)
+      TargetFrame.TargetFrameContainer.FrameTexture:SetVertexColor(unpack(EUIDB.frameColor))
+      TargetFrameToT.FrameTexture:SetVertexColor(unpack(EUIDB.frameColor))
   end)
 
   -- Focus Frame
   FocusFrame:HookScript("OnUpdate", function()
-      FocusFrame.TargetFrameContainer.FrameTexture:SetVertexColor(0, 0, 0)
-      FocusFrameToT.FrameTexture:SetVertexColor(0, 0, 0)
+      FocusFrame.TargetFrameContainer.FrameTexture:SetVertexColor(unpack(EUIDB.frameColor))
+      FocusFrameToT.FrameTexture:SetVertexColor(unpack(EUIDB.frameColor))
   end)
 
   -- Totem Bar
   TotemFrame:HookScript("OnEvent", function(self)
       for totem, _ in self.totemPool:EnumerateActive() do
-          totem.Border:SetVertexColor(0, 0, 0)
+          totem.Border:SetVertexColor(unpack(EUIDB.frameColor))
       end
   end)
 
   for i = 1, 5 do
     local bossFrame = _G['Boss'..i..'TargetFrame']
     bossFrame:HookScript('OnEvent', function()
-      bossFrame.TargetFrameContainer.FrameTexture:SetVertexColor(0, 0, 0)
+      bossFrame.TargetFrameContainer.FrameTexture:SetVertexColor(unpack(EUIDB.frameColor))
     end)
   end
 
@@ -55,20 +55,20 @@ OnPlayerLogin(function()
       -- Rogue
       hooksecurefunc(RogueComboPointBarFrame, "UpdatePower", function()
           for bar, _ in RogueComboPointBarFrame.classResourceButtonPool:EnumerateActive() do
-              bar.BGActive:SetVertexColor(0, 0, 0)
-              bar.BGInactive:SetVertexColor(0, 0, 0)
-              bar.BGShadow:SetVertexColor(0, 0, 0)
+              bar.BGActive:SetVertexColor(unpack(EUIDB.frameColor))
+              bar.BGInactive:SetVertexColor(unpack(EUIDB.frameColor))
+              bar.BGShadow:SetVertexColor(unpack(EUIDB.frameColor))
               if (bar.isCharged) then
-                  bar.ChargedFrameActive:SetVertexColor(0, 0, 0)
+                  bar.ChargedFrameActive:SetVertexColor(unpack(EUIDB.frameColor))
               end
           end
 
           for bar, _ in ClassNameplateBarRogueFrame.classResourceButtonPool:EnumerateActive() do
-              bar.BGActive:SetVertexColor(0, 0, 0)
-              bar.BGInactive:SetVertexColor(0, 0, 0)
-              bar.BGShadow:SetVertexColor(0, 0, 0)
+              bar.BGActive:SetVertexColor(unpack(EUIDB.frameColor))
+              bar.BGInactive:SetVertexColor(unpack(EUIDB.frameColor))
+              bar.BGShadow:SetVertexColor(unpack(EUIDB.frameColor))
               if (bar.isCharged) then
-                  bar.ChargedFrameActive:SetVertexColor(0, 0, 0)
+                  bar.ChargedFrameActive:SetVertexColor(unpack(EUIDB.frameColor))
               end
           end
       end)
@@ -76,52 +76,52 @@ OnPlayerLogin(function()
       -- Mage
       hooksecurefunc(MagePowerBar, "UpdatePower", function()
           for bar, _ in MageArcaneChargesFrame.classResourceButtonPool:EnumerateActive() do
-              bar.ArcaneBG:SetVertexColor(0, 0, 0)
-              bar.ArcaneBGShadow:SetVertexColor(0, 0, 0)
+              bar.ArcaneBG:SetVertexColor(unpack(EUIDB.frameColor))
+              bar.ArcaneBGShadow:SetVertexColor(unpack(EUIDB.frameColor))
           end
 
           for bar, _ in ClassNameplateBarMageFrame.classResourceButtonPool:EnumerateActive() do
-              bar.ArcaneBG:SetVertexColor(0, 0, 0)
-              bar.ArcaneBGShadow:SetVertexColor(0, 0, 0)
+              bar.ArcaneBG:SetVertexColor(unpack(EUIDB.frameColor))
+              bar.ArcaneBGShadow:SetVertexColor(unpack(EUIDB.frameColor))
           end
       end)
   elseif (playerClass == 'WARLOCK') then
       -- Warlock
       hooksecurefunc(WarlockPowerFrame, "UpdatePower", function()
           for bar, _ in WarlockPowerFrame.classResourceButtonPool:EnumerateActive() do
-              bar.Background:SetVertexColor(0, 0, 0)
+              bar.Background:SetVertexColor(unpack(EUIDB.frameColor))
           end
 
           for bar, _ in ClassNameplateBarWarlockFrame.classResourceButtonPool:EnumerateActive() do
-              bar.Background:SetVertexColor(0, 0, 0)
+              bar.Background:SetVertexColor(unpack(EUIDB.frameColor))
           end
       end)
   elseif (playerClass == 'DRUID') then
       -- Druid
       hooksecurefunc(DruidComboPointBarFrame, "UpdatePower", function()
           for bar, _ in DruidComboPointBarFrame.classResourceButtonPool:EnumerateActive() do
-              bar.BG_Active:SetVertexColor(0, 0, 0)
-              bar.BG_Inactive:SetVertexColor(0, 0, 0)
-              bar.BG_Shadow:SetVertexColor(0, 0, 0)
+              bar.BG_Active:SetVertexColor(unpack(EUIDB.frameColor))
+              bar.BG_Inactive:SetVertexColor(unpack(EUIDB.frameColor))
+              bar.BG_Shadow:SetVertexColor(unpack(EUIDB.frameColor))
           end
 
           for bar, _ in ClassNameplateBarFeralDruidFrame.classResourceButtonPool:EnumerateActive() do
-              bar.BG_Active:SetVertexColor(0, 0, 0)
-              bar.BG_Inactive:SetVertexColor(0, 0, 0)
-              bar.BG_Shadow:SetVertexColor(0, 0, 0)
+              bar.BG_Active:SetVertexColor(unpack(EUIDB.frameColor))
+              bar.BG_Inactive:SetVertexColor(unpack(EUIDB.frameColor))
+              bar.BG_Shadow:SetVertexColor(unpack(EUIDB.frameColor))
           end
       end)
   elseif (playerClass == 'MONK') then
       -- Monk
       hooksecurefunc(MonkHarmonyBarFrame, "UpdatePower", function()
         for bar, _ in MonkHarmonyBarFrame.classResourceButtonPool:EnumerateActive() do
-          bar.Chi_BG:SetVertexColor(0, 0, 0)
-          bar.Chi_BG_Active:SetVertexColor(0, 0, 0)
+          bar.Chi_BG:SetVertexColor(unpack(EUIDB.frameColor))
+          bar.Chi_BG_Active:SetVertexColor(unpack(EUIDB.frameColor))
         end
 
         for bar, _ in ClassNameplateBarWindwalkerMonkFrame.classResourceButtonPool:EnumerateActive() do
-          bar.Chi_BG:SetVertexColor(0, 0, 0)
-          bar.Chi_BG_Active:SetVertexColor(0, 0, 0)
+          bar.Chi_BG:SetVertexColor(unpack(EUIDB.frameColor))
+          bar.Chi_BG_Active:SetVertexColor(unpack(EUIDB.frameColor))
         end
       end)
   elseif (playerClass == 'DEATHKNIGHT') then
@@ -165,28 +165,28 @@ OnPlayerLogin(function()
         DeathKnightResourceOverlayFrame.Rune6.BG_Inactive,
         DeathKnightResourceOverlayFrame.Rune6.BG_Shadow
       }) do
-        bar:SetVertexColor(0, 0, 0)
+        bar:SetVertexColor(unpack(EUIDB.frameColor))
       end
     end)
   elseif (playerClass == 'EVOKER') then
     -- Evoker
     hooksecurefunc(EssencePlayerFrame, "UpdatePower", function()
       for bar, _ in EssencePlayerFrame.classResourceButtonPool:EnumerateActive() do
-        bar.EssenceFillDone.CircBG:SetVertexColor(0, 0, 0)
-        bar.EssenceFillDone.CircBGActive:SetVertexColor(0, 0, 0)
+        bar.EssenceFillDone.CircBG:SetVertexColor(unpack(EUIDB.frameColor))
+        bar.EssenceFillDone.CircBGActive:SetVertexColor(unpack(EUIDB.frameColor))
       end
 
       for bar, _ in ClassNameplateBarDracthyrFrame.classResourceButtonPool:EnumerateActive() do
-        bar.EssenceFillDone.CircBG:SetVertexColor(0, 0, 0)
-        bar.EssenceFillDone.CircBGActive:SetVertexColor(0, 0, 0)
+        bar.EssenceFillDone.CircBG:SetVertexColor(unpack(EUIDB.frameColor))
+        bar.EssenceFillDone.CircBGActive:SetVertexColor(unpack(EUIDB.frameColor))
       end
     end)
   elseif (playerClass == 'PALADIN') then
     -- Paladin
     hooksecurefunc(PaladinPowerBar, "UpdatePower", function()
-      PaladinPowerBarFrame.Background:SetVertexColor(0, 0, 0)
+      PaladinPowerBarFrame.Background:SetVertexColor(unpack(EUIDB.frameColor))
       PaladinPowerBarFrame.ActiveTexture:Hide()
-      ClassNameplateBarPaladinFrame.Background:SetVertexColor(0, 0, 0)
+      ClassNameplateBarPaladinFrame.Background:SetVertexColor(unpack(EUIDB.frameColor))
       ClassNameplateBarPaladinFrame.ActiveTexture:Hide()
     end)
   end

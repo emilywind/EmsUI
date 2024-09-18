@@ -13,6 +13,12 @@ EUIDBDefaults = {
 
   statusBarTexture = EUI_TEXTURES.statusBar,
 
+  frameColor = {
+    0.2,
+    0.2,
+    0.2,
+  },
+
   hideAltPower = false,
   lootSpecDisplay = true, -- Display loot spec icon in the player frame
 

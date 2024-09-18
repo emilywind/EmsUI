@@ -157,7 +157,7 @@ function applyEuiBackdrop(b, frame)
   border:SetTexture(EUI_TEXTURES.roundedBorder)
   border:SetPoint("TOPLEFT", icon, "TOPLEFT", -1, 1)
   border:SetPoint("BOTTOMRIGHT", icon, "BOTTOMRIGHT", 1, -1)
-  border:SetVertexColor(0, 0, 0)
+  border:SetVertexColor(0.1, 0.1, 0.1)
 
   b.euiClean = true
 
@@ -196,7 +196,7 @@ function skinProgressBar(bar)
   back:SetAtlas('ui-castingbar-background')
   back:SetPoint("TOPLEFT", bar, "TOPLEFT", -2, 2)
   back:SetPoint("BOTTOMRIGHT", bar, "BOTTOMRIGHT", 2, -2)
-  back:SetVertexColor(0, 0, 0)
+  back:SetVertexColor(unpack(EUIDB.frameColor))
 
   bar.back = back
 

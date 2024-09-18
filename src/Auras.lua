@@ -22,7 +22,7 @@ function applyAuraSkin(aura)
     border:SetVertexColor(aura.Border:GetVertexColor())
     aura.Border:SetAlpha(0)
   else
-    border:SetVertexColor(0,0,0)
+    border:SetVertexColor(unpack(EUIDB.frameColor))
   end
 
   aura.euiClean = true

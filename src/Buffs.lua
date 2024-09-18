@@ -23,7 +23,7 @@ local function applySkin(aura, isDebuff)
     border:SetVertexColor(aura.Border:GetVertexColor())
     aura.Border:Hide()
   else
-    border:SetVertexColor(0,0,0)
+    border:SetVertexColor(0.1, 0.1, 0.1)
   end
 
   if isDebuff then
