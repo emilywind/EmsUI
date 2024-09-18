@@ -139,7 +139,7 @@ end
 EUI_DAMAGE_FONT = FontsDir.."\\Bangers-Regular.ttf"
 
 function styleIcon(ic)
-  ic:SetTexCoord(0.1, 0.9, 0.1, 0.9)
+  ic:SetTexCoord(0.08, 0.92, 0.08, 0.92)
 end
 
 local backdrop = {
