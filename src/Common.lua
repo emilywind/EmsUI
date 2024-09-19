@@ -1,4 +1,5 @@
 SQUARE_TEXTURE = "Interface\\BUTTONS\\WHITE8X8"
+TOOLTIP_BORDER = "Interface/Tooltips/UI-Tooltip-Border"
 
 AddonDir = "Interface\\AddOns\\EmsUI"
 MediaDir = AddonDir.."\\media"
@@ -142,8 +143,8 @@ function styleIcon(ic)
   ic:SetTexCoord(0.08, 0.92, 0.08, 0.92)
 end
 
-local backdrop = {
-  edgeFile = "Interface/Tooltips/UI-Tooltip-Border",
+EUI_BACKDROP = {
+  edgeFile = TOOLTIP_BORDER,
   tileEdge = true,
   edgeSize = 10,
 }
@@ -168,7 +169,7 @@ function applyEuiBackdrop(b, frame)
   local border = CreateFrame('Frame', nil, frame, "BackdropTemplate")
   border:SetPoint("TOPLEFT",icon,"TOPLEFT",-2,2)
   border:SetPoint("BOTTOMRIGHT",icon,"BOTTOMRIGHT",2,-2)
-  border:SetBackdrop(backdrop)
+  border:SetBackdrop(EUI_BACKDROP)
   border:SetBackdropBorderColor(unpack(EUIDB.frameColor))
 
   b.euiClean = true
