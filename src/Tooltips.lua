@@ -12,26 +12,6 @@ local function getUnitHealthColor(unit)
 	return r, g, b
 end
 
-function skinGameTooltip()
-  local ns = GameTooltip.NineSlice
-
-  local nsPoints = {
-    "TopLeftCorner",
-    "TopRightCorner",
-    "BottomLeftCorner",
-    "BottomRightCorner",
-    "TopEdge",
-    "BottomEdge",
-    "LeftEdge",
-    "RightEdge",
-    "Center"
-  }
-
-  for _, nsPoint in pairs(nsPoints) do
-    ns[nsPoint]:SetTexture(SQUARE_TEXTURE)
-  end
-end
-
 local colours = {
   guildName = 'f232e7',
   guildRank = 'bd8cf2',
@@ -64,18 +44,18 @@ OnPlayerLogin(function()
 	-- Gametooltip statusbar
 	bar:SetStatusBarTexture(EUIDB.statusBarTexture)
 	bar:ClearAllPoints()
-	bar:SetPoint("LEFT", 3, 0)
-	bar:SetPoint("RIGHT", -3, 0)
-	bar:SetPoint("BOTTOM", 0, -7)
+	bar:SetPoint("LEFT", 7, 0)
+	bar:SetPoint("RIGHT", -7, 0)
+	bar:SetPoint("BOTTOM", 0, 7)
 	bar:SetHeight(10)
 
 	-- Class colours
 	function onTooltipSetUnit(self)
     if self ~= GameTooltip then return end
 
-    skinGameTooltip()
+    -- skinGameTooltip()
     GameTooltip.NineSlice:SetCenterColor(0.08, 0.08, 0.08)
-	  GameTooltip.NineSlice:SetBorderColor(0, 0, 0, 0)
+	  GameTooltip.NineSlice:SetBorderColor(unpack(EUIDB.frameColor))
 
     local tooltip = GameTooltip
 		local unit = select(2, tooltip:GetUnit())
@@ -106,6 +86,9 @@ OnPlayerLogin(function()
 		if (family) then -- UnitIsBattlePetCompanion(unit);
 			GameTooltipTextLeft2:SetText(level .. " " .. family)
 		end
+
+    -- Add room for the health bar
+    GameTooltip:AddLine(' ')
 	end
 
   TooltipDataProcessor.AddTooltipPostCall(Enum.TooltipDataType.Unit, onTooltipSetUnit)
