@@ -1,10 +1,10 @@
 local function applyEuiButtonSkin(bu, icon, isLeaveButton)
   if not bu then return end
-  if (bu and bu.euiClean) then return bu.border end
+  if bu.euiClean then return bu.border end
 
-  local ht = bu:GetHighlightTexture()
-  ht:SetTexture(EUI_TEXTURES.buttons.normal)
-  ht:SetAllPoints(bu)
+  -- local ht = bu:GetHighlightTexture()
+  -- ht:SetTexture(EUI_TEXTURES.buttons.normal)
+  -- ht:SetAllPoints(bu)
 
   local nt = bu:GetNormalTexture()
 
@@ -12,27 +12,30 @@ local function applyEuiButtonSkin(bu, icon, isLeaveButton)
   -- nt:SetAllPoints(bu)
 
   if (isLeaveButton) then
-    local border = bu:CreateTexture(bu.border, "OVERLAY")
-    border:SetTexture(EUI_TEXTURES.buttons.normal)
-    border:SetVertexColor(0.1, 0.1, 0.1)
-    border:SetDrawLayer("OVERLAY")
-    border:SetAllPoints(bu)
+    applyEuiBackdrop(nt, bu)
   else
     -- Simple button border
     -- nt:SetTexture(EUI_TEXTURES.buttons.normal)
+    nt:SetTexture()
     nt:SetVertexColor(unpack(EUIDB.frameColor))
+
+    local border = CreateFrame('Frame', nil, bu, "BackdropTemplate")
+    border:SetAllPoints(icon)
+    border:SetBackdrop(EUI_BACKDROP)
+    border:SetBackdropBorderColor(unpack(EUIDB.frameColor))
 
     -- local pt = bu:GetPushedTexture()
     -- pt:SetAllPoints(bu)
     -- pt:SetTexture(EUI_TEXTURES.buttons.pushed)
     -- pt:SetDrawLayer("OVERLAY")
 
-    -- if bu.SetCheckedTexture ~= nil then
-    --   local ct = bu:GetCheckedTexture()
-    --   ct:SetAllPoints(bu)
-    --   ct:SetTexture(EUI_TEXTURES.buttons.checked)
-    --   ct:SetDrawLayer("OVERLAY", 7)
-    -- end
+    if bu.SetCheckedTexture ~= nil then
+      local ct = bu:GetCheckedTexture()
+      ct:SetVertexColor(1, 1, 1)
+      -- ct:SetAllPoints(bu)
+      -- ct:SetTexture(EUI_TEXTURES.buttons.checked)
+      -- ct:SetDrawLayer("OVERLAY", 7)
+    end
 
     -- if bu.SpellCastAnimFrame then
     --   local glow = bu.SpellCastAnimFrame.Fill.InnerGlowTexture
