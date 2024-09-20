@@ -36,7 +36,7 @@ local function applySkin(aura, isDebuff)
   if duration then
     -- duration:SetDrawLayer("OVERLAY")
     local point, relativeTo, relativePoint, xOfs = duration:GetPoint()
-    local yOfs = point == "TOP" and -2 or 2
+    local yOfs = point == "TOP" and -3 or 3
     duration:SetPoint(point, relativeTo, relativePoint, xOfs, yOfs)
   end
 
