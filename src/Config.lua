@@ -1,8 +1,15 @@
 local LSM = LibStub("LibSharedMedia-3.0")
 
+UI_STYLES = {
+  "BetterBlizz",
+  "RillyClean",
+}
+
 -- This table defines the addon's default settings:
 local name, EUI = ...
 EUIDBDefaults = {
+  uiStyle = "BetterBlizz",
+
   hideHotkeys = true,
   hideMacroText = true,
   arenaNumbers = false,
