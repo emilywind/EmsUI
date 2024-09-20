@@ -128,15 +128,6 @@ EUI_FONTS = {
   Bangers = FontsDir.."\\Bangers-Regular.ttf",
 }
 
-function tableToWowDropdown(table)
-  local wowTable = {}
-  for k, v in pairs(table) do
-    wowTable[v] = k
-  end
-
-  return wowTable
-end
-
 EUI_DAMAGE_FONT = FontsDir.."\\Bangers-Regular.ttf"
 
 function styleIcon(ic)
@@ -159,22 +150,33 @@ function applyEuiBackdrop(b, frame)
   local icon = b.icon or b.Icon or (name and _G[name.."Icon"]) or b
   styleIcon(icon, b)
 
-  -- local border = frame:CreateTexture()
-  -- border:SetDrawLayer("OVERLAY")
-  -- border:SetTexture(EUI_TEXTURES.roundedBorder)
-  -- border:SetPoint("TOPLEFT", icon, "TOPLEFT", -1, 1)
-  -- border:SetPoint("BOTTOMRIGHT", icon, "BOTTOMRIGHT", 1, -1)
-  -- border:SetVertexColor(0.1, 0.1, 0.1)
-
-  local border = CreateFrame('Frame', nil, frame, "BackdropTemplate")
-  border:SetPoint("TOPLEFT",icon,"TOPLEFT",-2,2)
-  border:SetPoint("BOTTOMRIGHT",icon,"BOTTOMRIGHT",2,-2)
-  border:SetBackdrop(EUI_BACKDROP)
-  border:SetBackdropBorderColor(unpack(EUIDB.frameColor))
+  local border
+  if EUIDB.uiStyle == "BetterBlizz" then
+    border = CreateFrame('Frame', nil, frame, "BackdropTemplate")
+    border:SetPoint("TOPLEFT",icon,"TOPLEFT",-2,2)
+    border:SetPoint("BOTTOMRIGHT",icon,"BOTTOMRIGHT",2,-2)
+    border:SetBackdrop(EUI_BACKDROP)
+    border:SetBackdropBorderColor(unpack(EUIDB.frameColor))
+  else
+    border = frame:CreateTexture()
+    border:SetDrawLayer("OVERLAY")
+    border:SetTexture(EUI_TEXTURES.roundedBorder)
+    border:SetPoint("TOPLEFT", icon, "TOPLEFT", -1, 1)
+    border:SetPoint("BOTTOMRIGHT", icon, "BOTTOMRIGHT", 1, -1)
+    border:SetVertexColor(0.1, 0.1, 0.1)
+  end
 
   b.euiClean = true
 
   return border
+end
+
+function setEuiBorderColor(border, r, g, b)
+  if border.SetVertexColor then
+    border:SetVertexColor(r, g, b)
+  else
+    border:SetBackdropBorderColor(r, g, b)
+  end
 end
 
 function setDefaultFont(textObject, size, outlinestyle)

@@ -101,6 +101,24 @@ end
 
 OnPlayerLogin(euiDefaults)
 
+local function tableToWowDropdown(table)
+  local wowTable = {}
+  for k, v in pairs(table) do
+    wowTable[v] = k
+  end
+
+  return wowTable
+end
+
+local function flatTableToWowDropdown(table)
+  local wowTable = {}
+  for k, v in pairs(table) do
+    wowTable[v] = v
+  end
+
+  return wowTable
+end
+
 local makePanel = function(frameName, mainpanel, panelName)
   local panel = CreateFrame("Frame", frameName, mainpanel)
   panel.name, panel.parent = panelName, name
@@ -205,6 +223,17 @@ local function setupEuiOptions()
   rcuiTitle:SetPoint("TOPLEFT", 16, -16)
   rcuiTitle:SetText("Em's UI ("..version..")")
 
+  local uiStyle, uiStyleDropdown = newDropdown(
+    "UI Style",
+    flatTableToWowDropdown(UI_STYLES),
+    EUIDB.uiStyle,
+    100,
+    function(value)
+      EUIDB.uiStyle = value
+    end
+  )
+  uiStyle:SetPoint("TOPLEFT", rcuiTitle, "BOTTOMLEFT", 0, -16)
+
   local portraitSelect, portraitDropdown = newDropdown(
     "Portrait Style",
     {["3D"] = "3D", ["class"] = "Class", ["default"] = "Default"},
@@ -214,7 +243,7 @@ local function setupEuiOptions()
       EUIDB.portraitStyle = value
     end
   )
-  portraitSelect:SetPoint("TOPLEFT", rcuiTitle, "BOTTOMLEFT", 0, -16)
+  portraitSelect:SetPoint("TOPLEFT", uiStyleDropdown, "BOTTOMLEFT", 0, -16)
 
   local classPortraitPack = newDropdown(
     "Class Portrait Pack",

@@ -1,7 +1,7 @@
 local function applySkin(aura, isDebuff)
   if isDebuff and aura.border then
     aura.DebuffBorder:SetAlpha(1)
-    aura.border:SetBackdropBorderColor(aura.DebuffBorder:GetVertexColor())
+    setEuiBorderColor(aura.border, aura.DebuffBorder:GetVertexColor())
     aura.DebuffBorder:SetAlpha(0)
   end
 
@@ -21,14 +21,18 @@ local function applySkin(aura, isDebuff)
   aura.border = border
 
   if aura.Border then
-    border:SetBackdropBorderColor(aura.Border:GetVertexColor())
+    setEuiBorderColor(border, aura.Border:GetVertexColor())
     aura.Border:Hide()
   else
-    border:SetBackdropBorderColor(unpack(EUIDB.frameColor))
+    if EUIDB.uiStyle == "BetterBlizz" then
+      setEuiBorderColor(border, unpack(EUIDB.frameColor))
+    else
+      setEuiBorderColor(border, 0, 0, 0)
+    end
   end
 
   if isDebuff then
-    border:SetBackdropBorderColor(aura.DebuffBorder:GetVertexColor())
+    setEuiBorderColor(border, aura.DebuffBorder:GetVertexColor())
     aura.DebuffBorder:SetAlpha(0)
   end
 

@@ -2,46 +2,57 @@ local function applyEuiButtonSkin(bu, icon, isLeaveButton)
   if not bu then return end
   if bu.euiClean then return bu.border end
 
-  -- local ht = bu:GetHighlightTexture()
-  -- ht:SetTexture(EUI_TEXTURES.buttons.normal)
-  -- ht:SetAllPoints(bu)
+  if EUIDB.uiStyle == "RillyClean" then
+    local ht = bu:GetHighlightTexture()
+    ht:SetTexture(EUI_TEXTURES.buttons.normal)
+    ht:SetAllPoints(bu)
+  end
 
   local nt = bu:GetNormalTexture()
 
   if not nt then return end
-  -- nt:SetAllPoints(bu)
+  nt:SetAllPoints(bu)
+  local ct
+  if bu.GetCheckedTexture then
+    ct = bu:GetCheckedTexture()
+  end
 
   if (isLeaveButton) then
     applyEuiBackdrop(nt, bu)
   else
-    -- Simple button border
-    -- nt:SetTexture(EUI_TEXTURES.buttons.normal)
-    nt:SetTexture()
-    nt:SetVertexColor(unpack(EUIDB.frameColor))
+    if EUIDB.uiStyle == "RillyClean" then
+      nt:SetTexture(EUI_TEXTURES.buttons.normal)
+      nt:SetVertexColor(0, 0, 0)
 
-    local border = CreateFrame('Frame', nil, bu, "BackdropTemplate")
-    border:SetAllPoints(icon)
-    border:SetBackdrop(EUI_BACKDROP)
-    border:SetBackdropBorderColor(unpack(EUIDB.frameColor))
+      local pt = bu:GetPushedTexture()
+      pt:SetAllPoints(bu)
+      pt:SetTexture(EUI_TEXTURES.buttons.pushed)
+      pt:SetDrawLayer("OVERLAY")
 
-    -- local pt = bu:GetPushedTexture()
-    -- pt:SetAllPoints(bu)
-    -- pt:SetTexture(EUI_TEXTURES.buttons.pushed)
-    -- pt:SetDrawLayer("OVERLAY")
+      if ct then
+        ct:SetAllPoints(bu)
+        ct:SetTexture(EUI_TEXTURES.buttons.checked)
+        ct:SetDrawLayer("OVERLAY", 7)
+      end
 
-    if bu.SetCheckedTexture ~= nil then
-      local ct = bu:GetCheckedTexture()
-      ct:SetVertexColor(1, 1, 1)
-      -- ct:SetAllPoints(bu)
-      -- ct:SetTexture(EUI_TEXTURES.buttons.checked)
-      -- ct:SetDrawLayer("OVERLAY", 7)
+      if bu.SpellCastAnimFrame then
+        local glow = bu.SpellCastAnimFrame.Fill.InnerGlowTexture
+        glow:SetPoint("TOPLEFT", bu, "TOPLEFT", 2, -2)
+        glow:SetPoint("BOTTOMRIGHT", bu, "BOTTOMRIGHT", -2, 2)
+      end
+    else
+      nt:SetTexture()
+      nt:SetVertexColor(unpack(EUIDB.frameColor))
+
+      if ct then
+        ct:SetVertexColor(1, 1, 1)
+      end
+
+      local border = CreateFrame('Frame', nil, bu, "BackdropTemplate")
+      border:SetAllPoints(icon)
+      border:SetBackdrop(EUI_BACKDROP)
+      border:SetBackdropBorderColor(unpack(EUIDB.frameColor))
     end
-
-    -- if bu.SpellCastAnimFrame then
-    --   local glow = bu.SpellCastAnimFrame.Fill.InnerGlowTexture
-    --   glow:SetPoint("TOPLEFT", bu, "TOPLEFT", 2, -2)
-    --   glow:SetPoint("BOTTOMRIGHT", bu, "BOTTOMRIGHT", -2, 2)
-    -- end
   end
 end
 

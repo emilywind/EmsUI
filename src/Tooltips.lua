@@ -73,9 +73,14 @@ OnPlayerLogin(function()
 	function onTooltipSetUnit(self)
     if self ~= GameTooltip then return end
 
-    -- skinGameTooltip()
+    if EUIDB.uiStyle == "RillyClean" then
+      skinGameTooltip()
+      GameTooltip.NineSlice:SetBorderColor(0, 0, 0)
+    else
+      GameTooltip.NineSlice:SetBorderColor(unpack(EUIDB.frameColor))
+    end
     GameTooltip.NineSlice:SetCenterColor(0.08, 0.08, 0.08)
-	  GameTooltip.NineSlice:SetBorderColor(unpack(EUIDB.frameColor))
+
 
     local tooltip = GameTooltip
 		local unit = select(2, tooltip:GetUnit())
