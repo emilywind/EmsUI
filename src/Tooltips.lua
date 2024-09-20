@@ -12,6 +12,26 @@ local function getUnitHealthColor(unit)
 	return r, g, b
 end
 
+function skinGameTooltip()
+  local ns = GameTooltip.NineSlice
+
+  local nsPoints = {
+    "TopLeftCorner",
+    "TopRightCorner",
+    "BottomLeftCorner",
+    "BottomRightCorner",
+    "TopEdge",
+    "BottomEdge",
+    "LeftEdge",
+    "RightEdge",
+    "Center"
+  }
+
+  for _, nsPoint in pairs(nsPoints) do
+    ns[nsPoint]:SetTexture(SQUARE_TEXTURE)
+  end
+end
+
 local colours = {
   guildName = 'f232e7',
   guildRank = 'bd8cf2',
