@@ -62,7 +62,12 @@ OnPlayerLogin(function()
 	setDefaultFont(bar.TextString, 11)
 
 	-- Gametooltip statusbar
-	bar:SetStatusBarTexture(EUIDB.statusBarTexture)
+  if EUIDB.uiStyle == "RillyClean" then
+	  bar:SetStatusBarTexture(EUIDB.statusBarTexture)
+  else
+    local barTexture = getBetterHealthTexture(bar)
+    bar:SetStatusBarTexture(barTexture)
+  end
 	bar:ClearAllPoints()
 	bar:SetPoint("LEFT", 7, 0)
 	bar:SetPoint("RIGHT", -7, 0)

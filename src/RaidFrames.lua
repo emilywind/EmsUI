@@ -7,12 +7,24 @@ local function updateTextures(self)
     local name = self:GetName()
     if name and name:match("^Compact") then
       if self:IsForbidden() then return end
-      self.healthBar:SetStatusBarTexture(EUIDB.statusBarTexture)
-      self.healthBar:GetStatusBarTexture():SetDrawLayer("BORDER")
-      self.powerBar:SetStatusBarTexture(EUIDB.statusBarTexture)
-      self.powerBar:GetStatusBarTexture():SetDrawLayer("BORDER")
-      self.myHealPrediction:SetTexture(EUIDB.statusBarTexture)
-      self.otherHealPrediction:SetTexture(EUIDB.statusBarTexture)
+
+      if EUIDB.uiStyle == "RillyClean" then
+        self.healthBar:SetStatusBarTexture(EUIDB.statusBarTexture)
+        self.healthBar:GetStatusBarTexture():SetDrawLayer("BORDER")
+        self.powerBar:SetStatusBarTexture(EUIDB.statusBarTexture)
+        self.powerBar:GetStatusBarTexture():SetDrawLayer("BORDER")
+        self.myHealPrediction:SetTexture(EUIDB.statusBarTexture)
+        self.otherHealPrediction:SetTexture(EUIDB.statusBarTexture)
+      else
+        local healthBarTexture = getBetterHealthTexture(self)
+        self.healthBar:SetStatusBarTexture(healthBarTexture)
+        local powerBarTexture = getBetterHealthTexture(self)
+        self.powerBar:SetStatusBarTexture(powerBarTexture)
+        local healPredictTexture = getBetterHealthTexture(self)
+        self.myHealPrediction:SetTexture(healPredictTexture)
+        local otherHealPredictTexture = getBetterHealthTexture(self)
+        self.otherHealPrediction:SetTexture(otherHealPredictTexture)
+      end
 
       self.vertLeftBorder:Hide()
       self.vertRightBorder:Hide()
@@ -22,13 +34,13 @@ local function updateTextures(self)
       self.background:SetVertexColor(0.15, 0.15, 0.15, 0.9)
 
       if self.CcRemoverFrame then
-        applyEuiBackdrop(self.CcRemoverFrame, self)
+        applyEuiBackdrop(self.CcRemoverFrame.Icon, self.CcRemoverFrame)
       end
 
       local debuffFrame = self.DebuffFrame
       if debuffFrame then
         if not debuffFrame.euiBorder then
-          local border = applyEuiBackdrop(debuffFrame, self)
+          local border = applyEuiBackdrop(debuffFrame.Icon, debuffFrame)
           debuffFrame.euiBorder = border
         end
 

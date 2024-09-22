@@ -1,5 +1,14 @@
 SQUARE_TEXTURE = "Interface\\BUTTONS\\WHITE8X8"
-TOOLTIP_BORDER = "Interface/Tooltips/UI-Tooltip-Border"
+TOOLTIP_BORDER = "Interface\\Tooltips\\UI-Tooltip-Border"
+
+function getBetterHealthTexture(frame)
+  local barTexture = frame:CreateTexture()
+  barTexture:SetTexture("Interface\\HUD\\UIUnitFrame")
+  barTexture:SetAtlas(PlayerFrame.healthbar:GetStatusBarTexture():GetAtlas())
+  barTexture:SetDesaturated(1)
+
+  return barTexture
+end
 
 AddonDir = "Interface\\AddOns\\EmsUI"
 MediaDir = AddonDir.."\\media"

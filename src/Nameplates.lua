@@ -83,7 +83,11 @@ OnPlayerLogin(function()
     if ( frame:IsForbidden() ) then return end
 
     local healthBar = frame.healthBar
-    healthBar:SetStatusBarTexture(EUIDB.statusBarTexture)
+    if EUIDB.uiStyle == "BetterBlizz" then
+      healthBar:SetStatusBarTexture(getBetterHealthTexture(healthBar))
+    else
+      healthBar:SetStatusBarTexture(EUIDB.statusBarTexture)
+    end
 
     local castBar = frame.castBar
     if (castBar) then
