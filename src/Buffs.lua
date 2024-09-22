@@ -5,6 +5,13 @@ local function applySkin(aura, isDebuff)
     aura.DebuffBorder:SetAlpha(0)
   end
 
+  local duration = aura.Duration
+  if duration then
+    local point, relativeTo, relativePoint, xOfs = duration:GetPoint()
+    local yOfs = point == "TOP" and -3 or 3
+    duration:SetPoint(point, relativeTo, relativePoint, xOfs, yOfs)
+  end
+
   if aura.euiClean then return end
 
   if aura.TempEnchantBorder then aura.TempEnchantBorder:Hide() end
@@ -34,14 +41,6 @@ local function applySkin(aura, isDebuff)
   if isDebuff then
     setEuiBorderColor(border, aura.DebuffBorder:GetVertexColor())
     aura.DebuffBorder:SetAlpha(0)
-  end
-
-  local duration = aura.Duration
-  if duration then
-    -- duration:SetDrawLayer("OVERLAY")
-    local point, relativeTo, relativePoint, xOfs = duration:GetPoint()
-    local yOfs = point == "TOP" and -3 or 3
-    duration:SetPoint(point, relativeTo, relativePoint, xOfs, yOfs)
   end
 
   --set button styled variable
