@@ -65,7 +65,7 @@ EUIDBDefaults = {
 }
 
 -- This function copies values from one table into another
-local function copyDefaults(src, dst)
+local function copyTable(src, dst)
   -- If no source (defaults) is specified, return an empty table:
   if type(src) ~= "table" then return {} end
   -- If no target (saved variable) is specified, create a new table:
@@ -75,7 +75,7 @@ local function copyDefaults(src, dst)
     -- If the value is a sub-table:
     if type(v) == "table" then
       -- Recursively call the function:
-      dst[k] = copyDefaults(v, dst[k])
+      dst[k] = copyTable(v, dst[k])
     -- Or if the default value type doesn't match the existing value type:
     elseif type(v) ~= type(dst[k]) then
       -- Overwrite the existing value with the default one:
@@ -89,14 +89,14 @@ end
 local function euiDefaults()
   -- Copy the values from the defaults table into the saved variables table
   -- if it exists, and assign the result to the saved variable:
-  EUIDB = copyDefaults(EUIDBDefaults, EUIDB)
+  EUIDB = copyTable(EUIDBDefaults, EUIDB)
 
   eui = {}
 end
 
 local function resetToDefaults()
   EUIDB = {}
-  EUIDB = copyDefaults(EUIDBDefaults, EUIDB)
+  EUIDB = copyTable(EUIDBDefaults, EUIDB)
 end
 
 OnPlayerLogin(euiDefaults)
