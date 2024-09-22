@@ -4,7 +4,7 @@ TOOLTIP_BORDER = "Interface\\Tooltips\\UI-Tooltip-Border"
 function getBetterHealthTexture(frame)
   local barTexture = frame:CreateTexture()
   barTexture:SetTexture("Interface\\HUD\\UIUnitFrame")
-  barTexture:SetAtlas(PlayerFrame.healthbar:GetStatusBarTexture():GetAtlas())
+  barTexture:SetAtlas("UI-HUD-UnitFrame-Player-PortraitOn-Bar-Health")
   barTexture:SetDesaturated(1)
 
   return barTexture
