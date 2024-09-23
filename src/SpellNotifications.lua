@@ -69,7 +69,6 @@ function SpellNotifications_OnEvent(event,...)
 		end
 	end
 
-
 	if (event=="UNIT_DIED") then
 		if bit.band(destFlags, COMBATLOG_OBJECT_AFFILIATION_MINE) > 0 then
 			if bit.band(destFlags, COMBATLOG_OBJECT_TYPE_PET) > 0 then
@@ -77,9 +76,6 @@ function SpellNotifications_OnEvent(event,...)
 		end
 	end
 	end
-
-
-
 
 	if (event=="SPELL_INTERRUPT") then
 		if bit.band(sourceFlags, COMBATLOG_OBJECT_AFFILIATION_MINE) > 0 then
@@ -189,10 +185,6 @@ function SpellNotifications_OnEvent(event,...)
 		end
 	end
 
-
-
-
-
 	if (event=="SPELL_MISSED") then
 		if (bit.band(destFlags, COMBATLOG_OBJECT_AFFILIATION_MINE) > 0) then
 			local spellName,_,missType = select(13, CombatLogGetCurrentEventInfo())
@@ -211,8 +203,6 @@ function SpellNotifications_OnEvent(event,...)
 			end
 		end
 	end
-
-
 
 	if (event=="SPELL_MISSED") then
 		if bit.band(sourceFlags, COMBATLOG_OBJECT_AFFILIATION_MINE) > 0 then
@@ -273,21 +263,13 @@ function SpellNotifications_OnEvent(event,...)
 			end
 		end
 	end
-
-
-
 end
 
 -- end of SpellNotifications_OnEvent
 
-
-
-
 function SpellNotifications_Print(text,color,size)
-
 	local color = string.lower(color)
 	local size = string.lower(size)
-
 
 	if color == "blue" then
 		R = 0; G = .75; B = 1
