@@ -60,6 +60,28 @@ OnPlayerLogin(function()
     end
   end)
 
+  hooksecurefunc(TargetFrame, "OnEvent", function(self)
+    if EUIDB.uiStyle == "RillyClean" then
+      skinTargetHealthbar(self)
+    end
+
+    -- Style Buffs & Debuffs
+    for aura, _ in self.auraPools:EnumerateActive() do
+      applyAuraSkin(aura)
+    end
+  end)
+
+  hooksecurefunc(FocusFrame, "OnEvent", function(self)
+    if EUIDB.uiStyle == "RillyClean" then
+      skinTargetHealthbar(self)
+    end
+
+    -- Style Buffs & Debuffs
+    for aura, _ in self.auraPools:EnumerateActive() do
+      applyAuraSkin(aura)
+    end
+  end)
+
   if EUIDB.uiStyle == "BetterBlizz" then return end
 
   local function skinPlayerFrameBars(self)
