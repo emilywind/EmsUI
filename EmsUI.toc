@@ -42,6 +42,7 @@ src\LossOfControl.lua
 src\Range.lua
 src\SafeQueue.lua
 src\DampeningDisplay.lua
+src\SpellNotifications.xml
 src\TabBinder.lua
 src\BigDebuffsSkin.lua
 src\ObjectiveTrackerHider.lua
