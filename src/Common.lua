@@ -10,6 +10,14 @@ function getBetterHealthTexture(frame)
   return barTexture
 end
 
+function getBetterPowerTexture(frame)
+  local barTexture = frame:CreateTexture()
+  barTexture:SetTexture("Interface\\HUD\\UIUnitFrame")
+  barTexture:SetAtlas("UI-HUD-UnitFrame-Player-PortraitOn-Bar-Mana")
+
+  return barTexture
+end
+
 AddonDir = "Interface\\AddOns\\EmsUI"
 MediaDir = AddonDir.."\\media"
 FontsDir = MediaDir.."\\fonts"
