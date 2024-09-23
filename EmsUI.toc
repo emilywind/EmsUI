@@ -2,7 +2,7 @@
 ## Title: Em's UI
 ## Notes: Simple skinnning modifications and quality of life features for the default interface to make it cleaner looking.
 ## Author: Emily
-## Version: 5.1.17
+## Version: 5.2.0
 ## SavedVariables: EUIDB
 ## IconTexture: Interface\Addons\EmsUI\media\icons\EmsUI
 ## Email: emlywind@gmail.com
@@ -42,8 +42,6 @@ src\LossOfControl.lua
 src\Range.lua
 src\SafeQueue.lua
 src\DampeningDisplay.lua
-src\SpellNotifications.lua
-src\SpellNotifications.xml
 src\TabBinder.lua
 src\BigDebuffsSkin.lua
 src\ObjectiveTrackerHider.lua
