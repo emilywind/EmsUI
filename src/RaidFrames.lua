@@ -16,17 +16,14 @@ local function updateTextures(self)
         self.myHealPrediction:SetTexture(EUIDB.statusBarTexture)
         self.otherHealPrediction:SetTexture(EUIDB.statusBarTexture)
       else
-        if not self.healthBar.euiTex then
-          self.healthBar.euiTex = getBetterHealthTexture(self.healthBar)
-          self.powerBar.euiTex = getBetterHealthTexture(self.powerBar)
-          self.myHealPrediction.euiTex = getBetterHealthTexture(self)
-          self.otherHealPrediction.euiTex = getBetterHealthTexture(self)
-        end
-
-        self.healthBar:SetStatusBarTexture(self.healthBar.euiTex)
-        self.powerBar:SetStatusBarTexture(self.powerBar.euiTex)
-        self.myHealPrediction:SetTexture(self.myHealPrediction.euiTex)
-        self.otherHealPrediction:SetTexture(self.otherHealPrediction.euiTex)
+        local healthBarTexture = getBetterHealthTexture(self)
+        self.healthBar:SetStatusBarTexture(healthBarTexture)
+        local powerBarTexture = getBetterHealthTexture(self)
+        self.powerBar:SetStatusBarTexture(powerBarTexture)
+        local healPredictTexture = getBetterHealthTexture(self)
+        self.myHealPrediction:SetTexture(healPredictTexture)
+        local otherHealPredictTexture = getBetterHealthTexture(self)
+        self.otherHealPrediction:SetTexture(otherHealPredictTexture)
       end
 
       self.vertLeftBorder:Hide()
