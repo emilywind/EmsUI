@@ -65,8 +65,7 @@ OnPlayerLogin(function()
   if EUIDB.uiStyle == "RillyClean" then
 	  bar:SetStatusBarTexture(EUIDB.statusBarTexture)
   else
-    local barTexture = getBetterHealthTexture(bar)
-    bar:SetStatusBarTexture(barTexture)
+    bar:SetStatusBarTexture(EUI_TEXTURES.newBlizzHealthBar)
   end
 	bar:ClearAllPoints()
 	bar:SetPoint("LEFT", 7, 0)

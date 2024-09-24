@@ -1,23 +1,6 @@
 SQUARE_TEXTURE = "Interface\\BUTTONS\\WHITE8X8"
 TOOLTIP_BORDER = "Interface\\Tooltips\\UI-Tooltip-Border"
 
-function getBetterHealthTexture(frame)
-  local barTexture = frame:CreateTexture()
-  barTexture:SetTexture("Interface\\HUD\\UIUnitFrame")
-  barTexture:SetAtlas("UI-HUD-UnitFrame-Player-PortraitOn-Bar-Health")
-  barTexture:SetDesaturated(1)
-
-  return barTexture
-end
-
-function getBetterPowerTexture(frame)
-  local barTexture = frame:CreateTexture()
-  barTexture:SetTexture("Interface\\HUD\\UIUnitFrame")
-  barTexture:SetAtlas("UI-HUD-UnitFrame-Player-PortraitOn-Bar-Mana")
-
-  return barTexture
-end
-
 AddonDir = "Interface\\AddOns\\EmsUI"
 MediaDir = AddonDir.."\\media"
 FontsDir = MediaDir.."\\fonts"
@@ -33,6 +16,8 @@ EUI_TEXTURES = {
   roundedBorder = TextureDir.."\\rounded-border.tga",
 
   statusBar = TextureDir.."\\status-bar.tga",
+  newBlizzHealthBar = TextureDir.."\\new-blizz-health-bar.tga",
+  newBlizzPowerBar = TextureDir.."\\new-blizz-power-bar.tga",
 
   classCircles = TextureDir.."\\class\\fabled",
 

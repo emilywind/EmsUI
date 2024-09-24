@@ -11,7 +11,7 @@ OnPlayerLogin(function()
   end)
 
   local showDuration = true
-  local showCooldownCount = false
+  local showCooldownCount = true
   local showFriendlyTotems = true
 
   local activeTotems = {}

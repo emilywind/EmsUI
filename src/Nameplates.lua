@@ -84,7 +84,7 @@ OnPlayerLogin(function()
 
     local healthBar = frame.healthBar
     if EUIDB.uiStyle == "BetterBlizz" then
-      healthBar:SetStatusBarTexture(getBetterHealthTexture(healthBar))
+      healthBar:SetStatusBarTexture(EUI_TEXTURES.newBlizzHealthBar)
     else
       healthBar:SetStatusBarTexture(EUIDB.statusBarTexture)
     end

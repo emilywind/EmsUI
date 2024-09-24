@@ -8,25 +8,19 @@ local function updateTextures(self)
     if name and name:match("^Compact") then
       if self:IsForbidden() then return end
 
+      local healthTex = EUI_TEXTURES.newBlizzHealthBar
+      local powerTex = EUI_TEXTURES.newBlizzPowerBar
       if EUIDB.uiStyle == "RillyClean" then
-        self.healthBar:SetStatusBarTexture(EUIDB.statusBarTexture)
-        self.healthBar:GetStatusBarTexture():SetDrawLayer("BORDER")
-        self.powerBar:SetStatusBarTexture(EUIDB.statusBarTexture)
-        self.powerBar:GetStatusBarTexture():SetDrawLayer("BORDER")
-        self.myHealPrediction:SetTexture(EUIDB.statusBarTexture)
-        self.otherHealPrediction:SetTexture(EUIDB.statusBarTexture)
-      else
-        local healthBarTexture = getBetterHealthTexture(self)
-        self.healthBar:SetStatusBarTexture(healthBarTexture)
-        self.healthBar:GetStatusBarTexture():SetDrawLayer("BORDER")
-        local powerBarTexture = getBetterPowerTexture(self)
-        self.powerBar:SetStatusBarTexture(powerBarTexture)
-        self.powerBar:GetStatusBarTexture():SetDrawLayer("BORDER")
-        local healPredictTexture = getBetterHealthTexture(self)
-        self.myHealPrediction:SetTexture(healPredictTexture)
-        local otherHealPredictTexture = getBetterHealthTexture(self)
-        self.otherHealPrediction:SetTexture(otherHealPredictTexture)
+        healthTex = EUIDB.statusBarTexture
+        powerTex = EUIDB.statusBarTexture
       end
+
+      self.healthBar:SetStatusBarTexture(healthTex)
+      self.healthBar:GetStatusBarTexture():SetDrawLayer("BORDER")
+      self.powerBar:SetStatusBarTexture(powerTex)
+      self.powerBar:GetStatusBarTexture():SetDrawLayer("BORDER")
+      self.myHealPrediction:SetTexture(healthTex)
+      self.otherHealPrediction:SetTexture(healthTex)
 
       self.vertLeftBorder:Hide()
       self.vertRightBorder:Hide()
