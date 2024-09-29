@@ -60,8 +60,18 @@ OnPlayerLogin(function()
     end
   end)
 
+  local function skinTargetHealthbar(self)
+    if not self or self:IsForbidden() then return end
+
+    -- Set Textures
+    self.healthbar:SetStatusBarTexture(EUIDB.statusBarTexture)
+    if self.myHealPrediction then
+      self.myHealPredictionBar:SetTexture(EUIDB.statusBarTexture)
+    end
+  end
+
   hooksecurefunc(TargetFrame, "OnEvent", function(self)
-    if EUIDB.uiStyle == "RillyClean" then
+    if EUIDB.skinPlayerTargetFrame then
       skinTargetHealthbar(self)
     end
 
@@ -72,7 +82,7 @@ OnPlayerLogin(function()
   end)
 
   hooksecurefunc(FocusFrame, "OnEvent", function(self)
-    if EUIDB.uiStyle == "RillyClean" then
+    if EUIDB.skinPlayerTargetFrame then
       skinTargetHealthbar(self)
     end
 
@@ -82,7 +92,7 @@ OnPlayerLogin(function()
     end
   end)
 
-  if EUIDB.uiStyle == "BetterBlizz" then return end
+  if not EUIDB.skinPlayerTargetFrame then return end
 
   local function skinPlayerFrameBars(self)
     self.healthbar:SetStatusBarTexture(EUIDB.statusBarTexture)
@@ -114,16 +124,6 @@ OnPlayerLogin(function()
   ------------------
   -- Target Frame --
   ------------------
-  local function skinTargetHealthbar(self)
-    if not self or self:IsForbidden() then return end
-
-    -- Set Textures
-    self.healthbar:SetStatusBarTexture(EUIDB.statusBarTexture)
-    if self.myHealPrediction then
-      self.myHealPredictionBar:SetTexture(EUIDB.statusBarTexture)
-    end
-  end
-
   hooksecurefunc(TargetFrame, "OnEvent", function(self)
     skinTargetHealthbar(self)
 
@@ -158,7 +158,7 @@ OnPlayerLogin(function()
     end
 
     if self.TargetFrameContent.TargetFrameContentMain.ReputationColor then
-      self.TargetFrameContent.TargetFrameContentMain.ReputationColor:SetVertexColor(unpack(EUIDB.frameColor))
+      self.TargetFrameContent.TargetFrameContentMain.ReputationColor:SetVertexColor(getFrameColour())
     end
   end
 

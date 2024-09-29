@@ -23,7 +23,7 @@ function applyAuraSkin(aura)
     aura.Border:SetAlpha(0)
   else
     if EUIDB.uiStyle == "BetterBlizz" then
-      setEuiBorderColor(border, unpack(EUIDB.frameColor))
+      setEuiBorderColor(border, getFrameColour())
     else
       setEuiBorderColor(border, 0, 0, 0)
     end

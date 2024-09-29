@@ -62,11 +62,7 @@ OnPlayerLogin(function()
 	setDefaultFont(bar.TextString, 11)
 
 	-- Gametooltip statusbar
-  if EUIDB.uiStyle == "RillyClean" then
-	  bar:SetStatusBarTexture(EUIDB.statusBarTexture)
-  else
-    bar:SetStatusBarTexture(EUI_TEXTURES.newBlizzHealthBar)
-  end
+  bar:SetStatusBarTexture(EUIDB.statusBarTexture)
 	bar:ClearAllPoints()
 	bar:SetPoint("LEFT", 7, 0)
 	bar:SetPoint("RIGHT", -7, 0)
@@ -81,7 +77,7 @@ OnPlayerLogin(function()
       skinGameTooltip()
       GameTooltip.NineSlice:SetBorderColor(0, 0, 0)
     else
-      GameTooltip.NineSlice:SetBorderColor(unpack(EUIDB.frameColor))
+      GameTooltip.NineSlice:SetBorderColor(getFrameColour())
     end
     GameTooltip.NineSlice:SetCenterColor(0.08, 0.08, 0.08)
 

@@ -8,12 +8,8 @@ local function updateTextures(self)
     if name and name:match("^Compact") then
       if self:IsForbidden() then return end
 
-      local healthTex = EUI_TEXTURES.newBlizzHealthBar
-      local powerTex = EUI_TEXTURES.newBlizzPowerBar
-      if EUIDB.uiStyle == "RillyClean" then
-        healthTex = EUIDB.statusBarTexture
-        powerTex = EUIDB.statusBarTexture
-      end
+      healthTex = EUIDB.statusBarTexture
+      powerTex = EUIDB.statusBarTexture
 
       self.healthBar:SetStatusBarTexture(healthTex)
       self.healthBar:GetStatusBarTexture():SetDrawLayer("BORDER")

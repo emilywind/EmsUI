@@ -14,17 +14,13 @@ EUIDBDefaults = {
   hideMacroText = true,
   arenaNumbers = false,
   skinActionBars = true,
-  darkMinimap = false,
   hideMicroMenu = false,
   hideBagBar = false,
 
-  statusBarTexture = EUI_TEXTURES.statusBar,
+  healthBar = EUI_TEXTURES.healthBar,
+  powerBar = EUI_TEXTURES.powerBar,
 
-  frameColor = {
-    0.2,
-    0.2,
-    0.2,
-  },
+  frameColor = DEFAULT_FRAME_COLOUR,
 
   hideAltPower = false,
   lootSpecDisplay = true, -- Display loot spec icon in the player frame
@@ -47,6 +43,9 @@ EUIDBDefaults = {
   nameplateHealthPercent = true,
   nameplateTotems = true,
   nameplateHideFriendlyHealthbars = false,
+
+  skinPlayerTargetFrame = true,
+  darkenUi = true,
 
   portraitStyle = "3D", -- 3D, 2D, or class (for class icons)
   classPortraitPack = EUI_TEXTURES.classCircles,
@@ -362,14 +361,24 @@ local function setupEuiOptions()
     hideMicroMenu
   )
 
-  local darkMinimap = newCheckbox(
-    "Dark Minimap",
-    "Make the outline of the Minimap dark",
-    EUIDB.darkMinimap,
+  local darkenUi = newCheckbox(
+    "Darken UI",
+    "Make the UI darker",
+    EUIDB.darkenUi,
     function(self, value)
-      EUIDB.darkMinimap = value
+      EUIDB.darkenUi = value
     end,
     hideBagBar
+  )
+
+  local skinPlayerTargetFrame = newCheckbox(
+    "Skin Target/Player/Focus/Pet frame",
+    "Apply status bar texture to Target/Player/Focus/Pet frame",
+    EUIDB.skinPlayerTargetFrame,
+    function(self, value)
+      EUIDB.skinPlayerTargetFrame = value
+    end,
+    darkenUi
   )
 
   ----------------

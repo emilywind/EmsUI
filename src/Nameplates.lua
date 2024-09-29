@@ -21,12 +21,8 @@ OnPlayerLogin(function()
 
     if isPersonal then
       if not frame.emsUISkinned then
-        local healthTex = EUI_TEXTURES.newBlizzHealthBar
-        local powerTex = EUI_TEXTURES.newBlizzPowerBar
-        if EUIDB.uiStyle == "RillyClean" then
-          healthTex = EUIDB.statusBarTexture
-          powerTex = EUIDB.statusBarTexture
-        end
+        healthTex = EUIDB.statusBarTexture
+        powerTex = EUIDB.statusBarTexture
         frame.healthBar:SetStatusBarTexture(healthTex)
         ClassNameplateManaBarFrame:SetStatusBarTexture(powerTex)
         ClassNameplateManaBarFrame.FeedbackFrame.BarTexture:SetTexture(powerTex)
@@ -89,11 +85,7 @@ OnPlayerLogin(function()
     if ( frame:IsForbidden() ) then return end
 
     local healthBar = frame.healthBar
-    if EUIDB.uiStyle == "BetterBlizz" then
-      healthBar:SetStatusBarTexture(EUI_TEXTURES.newBlizzHealthBar)
-    else
-      healthBar:SetStatusBarTexture(EUIDB.statusBarTexture)
-    end
+    healthBar:SetStatusBarTexture(EUIDB.statusBarTexture)
 
     local castBar = frame.castBar
     if (castBar) then

@@ -1,8 +1,9 @@
 -- Media
 local LSM = LibStub("LibSharedMedia-3.0")
 
-LSM:Register ("statusbar", "Em's Status Bar", [[Interface\AddOns\EmsUI\media\textures\status-bar.tga]])
-LSM:Register ('statusbar', "RillyClean Status Bar", [[Interface\AddOns\EmsUI\media\textures\df-status-bar.tga]])
+LSM:Register ("statusbar", "Em's Dragonflight Status Bar", [[Interface\AddOns\EmsUI\media\textures\status-bar.tga]])
+LSM:Register ('statusbar', "RillyClean Status Bar", [[Interface\AddOns\EmsUI\media\textures\rc-status-bar.tga]])
+LSM:Register ('statusbar', "Em's Blizz Inspired Bar", [[Interface\AddOns\EmsUI\media\textures\blizz-inspired.tga]])
 
 LSM:Register ("font", "Andika", [[Interface\AddOns\EmsUI\media\fonts\Andika.ttf]])
 LSM:Register ("font", "Marmelad", [[Interface\AddOns\EmsUI\media\fonts\Marmelad.ttf]])

@@ -1,5 +1,10 @@
 SQUARE_TEXTURE = "Interface\\BUTTONS\\WHITE8X8"
 TOOLTIP_BORDER = "Interface\\Tooltips\\UI-Tooltip-Border"
+DEFAULT_FRAME_COLOUR = {
+  0.2,
+  0.2,
+  0.2,
+}
 
 AddonDir = "Interface\\AddOns\\EmsUI"
 MediaDir = AddonDir.."\\media"
@@ -15,7 +20,8 @@ EUI_TEXTURES = {
 
   roundedBorder = TextureDir.."\\rounded-border.tga",
 
-  statusBar = TextureDir.."\\status-bar.tga",
+  healthBar = TextureDir.."\\blizz-inspired.tga",
+  powerBar = TextureDir.."\\blizz-inspired.tga",
   newBlizzHealthBar = TextureDir.."\\new-blizz-health-bar.tga",
   newBlizzPowerBar = TextureDir.."\\new-blizz-power-bar.tga",
 
@@ -116,6 +122,14 @@ for iconStyle, data in next, classInfo.styles do
   CLASS_PORTRAIT_PACKS[format('%s%s', classInfo.path, iconStyle)] = format('%s (by %s)', data.name, data.artist)
 end
 
+function getFrameColour()
+  if EUIDB.frameColor then
+    return unpack(EUIDB.frameColor)
+  else
+    return unpack(DEFAULT_FRAME_COLOUR)
+  end
+end
+
 function OnPlayerLogin(callback)
   local frame = CreateFrame("Frame")
   frame:RegisterEvent("PLAYER_LOGIN")
@@ -158,7 +172,7 @@ function applyEuiBackdrop(b, frame)
     border:SetPoint("TOPLEFT",icon,"TOPLEFT",-2,2)
     border:SetPoint("BOTTOMRIGHT",icon,"BOTTOMRIGHT",2,-2)
     border:SetBackdrop(EUI_BACKDROP)
-    border:SetBackdropBorderColor(unpack(EUIDB.frameColor))
+    border:SetBackdropBorderColor(getFrameColour())
   else
     border = frame:CreateTexture()
     border:SetDrawLayer("OVERLAY")
@@ -213,7 +227,7 @@ function skinProgressBar(bar)
   back:SetAtlas('ui-castingbar-background')
   back:SetPoint("TOPLEFT", bar, "TOPLEFT", -2, 2)
   back:SetPoint("BOTTOMRIGHT", bar, "BOTTOMRIGHT", 2, -2)
-  back:SetVertexColor(unpack(EUIDB.frameColor))
+  back:SetVertexColor(getFrameColour())
 
   bar.back = back
 
