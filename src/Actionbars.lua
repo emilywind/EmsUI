@@ -42,7 +42,7 @@ local function applyEuiButtonSkin(bu, icon, isLeaveButton)
       end
     else
       nt:SetTexture()
-      nt:SetVertexColor(getFrameColour)
+      nt:SetVertexColor(getFrameColour())
 
       if ct then
         ct:SetVertexColor(1, 1, 1)
@@ -51,7 +51,7 @@ local function applyEuiButtonSkin(bu, icon, isLeaveButton)
       local border = CreateFrame('Frame', nil, bu, "BackdropTemplate")
       border:SetAllPoints(icon)
       border:SetBackdrop(EUI_BACKDROP)
-      border:SetBackdropBorderColor(getFrameColour)
+      border:SetBackdropBorderColor(getFrameColour())
     end
   end
 end
