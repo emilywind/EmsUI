@@ -8,8 +8,8 @@ local function updateTextures(self)
     if name and name:match("^Compact") then
       if self:IsForbidden() then return end
 
-      healthTex = EUIDB.statusBarTexture
-      powerTex = EUIDB.statusBarTexture
+      healthTex = EUIDB.healthBarTex
+      powerTex = EUIDB.powerBarTex
 
       self.healthBar:SetStatusBarTexture(healthTex)
       self.healthBar:GetStatusBarTexture():SetDrawLayer("BORDER")

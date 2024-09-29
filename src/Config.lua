@@ -17,8 +17,8 @@ EUIDBDefaults = {
   hideMicroMenu = false,
   hideBagBar = false,
 
-  healthBar = EUI_TEXTURES.healthBar,
-  powerBar = EUI_TEXTURES.powerBar,
+  healthBarTex = EUI_TEXTURES.healthBar,
+  powerBarTex = EUI_TEXTURES.powerBar,
 
   frameColor = DEFAULT_FRAME_COLOUR,
 
@@ -276,16 +276,16 @@ local function setupEuiOptions()
     tooltipDropdown
   )
 
-  local statusBarChooser = newDropdown(
-    "Status Bar Texture",
+  local healthBarChooser = newDropdown(
+    "Health Bar Texture",
     LSM_STATUSBAR,
-    EUIDB.statusBarTexture,
+    EUIDB.healthBarTex,
     200,
     function(value)
-      EUIDB.statusBarTexture = value
+      EUIDB.healthBarTex = value
     end
   )
-  statusBarChooser:SetPoint("LEFT", lootSpecDisplay, "RIGHT", 300, 32)
+  healthBarChooser:SetPoint("LEFT", lootSpecDisplay, "RIGHT", 300, 32)
 
   local hideAltPower = newCheckbox(
     "Hide Alt Power (Requires reload)",

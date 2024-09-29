@@ -21,8 +21,8 @@ OnPlayerLogin(function()
 
     if isPersonal then
       if not frame.emsUISkinned then
-        healthTex = EUIDB.statusBarTexture
-        powerTex = EUIDB.statusBarTexture
+        healthTex = EUIDB.healthBarTex
+        powerTex = EUIDB.powerBarTex
         frame.healthBar:SetStatusBarTexture(healthTex)
         ClassNameplateManaBarFrame:SetStatusBarTexture(powerTex)
         ClassNameplateManaBarFrame.FeedbackFrame.BarTexture:SetTexture(powerTex)
@@ -85,7 +85,7 @@ OnPlayerLogin(function()
     if ( frame:IsForbidden() ) then return end
 
     local healthBar = frame.healthBar
-    healthBar:SetStatusBarTexture(EUIDB.statusBarTexture)
+    healthBar:SetStatusBarTexture(EUIDB.healthBarTex)
 
     local castBar = frame.castBar
     if (castBar) then

@@ -64,9 +64,9 @@ OnPlayerLogin(function()
     if not self or self:IsForbidden() then return end
 
     -- Set Textures
-    self.healthbar:SetStatusBarTexture(EUIDB.statusBarTexture)
+    self.healthbar:SetStatusBarTexture(EUIDB.healthBarTex)
     if self.myHealPrediction then
-      self.myHealPredictionBar:SetTexture(EUIDB.statusBarTexture)
+      self.myHealPredictionBar:SetTexture(EUIDB.healthBarTex)
     end
   end
 
@@ -95,16 +95,16 @@ OnPlayerLogin(function()
   if not EUIDB.skinPlayerTargetFrame then return end
 
   local function skinPlayerFrameBars(self)
-    self.healthbar:SetStatusBarTexture(EUIDB.statusBarTexture)
-    self.healthbar.AnimatedLossBar:SetStatusBarTexture(EUIDB.statusBarTexture)
+    self.healthbar:SetStatusBarTexture(EUIDB.healthBarTex)
+    self.healthbar.AnimatedLossBar:SetStatusBarTexture(EUIDB.healthBarTex)
 
     if self.manabar then
       -- Get Power Color
       local powerColor = PowerBarColor[self.manabar.powerType]
 
       -- Set Texture
-      self.manabar.texture:SetTexture(EUIDB.statusBarTexture)
-      self.manabar.FeedbackFrame.BarTexture:SetTexture(EUIDB.statusBarTexture)
+      self.manabar.texture:SetTexture(EUIDB.powerBarTex)
+      self.manabar.FeedbackFrame.BarTexture:SetTexture(EUIDB.powerBarTex)
 
       -- Set Power Color
       if self.manabar.powerType == 0 then
@@ -118,7 +118,7 @@ OnPlayerLogin(function()
   PlayerFrame:HookScript('OnEvent', skinPlayerFrameBars)
 
   PetFrame:HookScript('OnEvent', function(self)
-    self.healthbar:SetStatusBarTexture(EUIDB.statusBarTexture)
+    self.healthbar:SetStatusBarTexture(EUIDB.healthBarTex)
   end)
 
   ------------------
@@ -154,7 +154,7 @@ OnPlayerLogin(function()
     if not self then return end
 
     if self.healthbar then
-      self.healthbar:SetStatusBarTexture(EUIDB.statusBarTexture)
+      self.healthbar:SetStatusBarTexture(EUIDB.healthBarTex)
     end
 
     if self.TargetFrameContent.TargetFrameContentMain.ReputationColor then
@@ -177,7 +177,7 @@ OnPlayerLogin(function()
       local powerColor = PowerBarColor[self.powerType]
 
       -- Set Texture
-      self.texture:SetTexture(EUIDB.statusBarTexture)
+      self.texture:SetTexture(EUIDB.powerBarTex)
 
       -- Set Power Color
       if self.unitFrame and self.unitFrame.manabar then
@@ -194,7 +194,7 @@ OnPlayerLogin(function()
     if not self then return end
 
     local powerColor = PowerBarColor[self.powerType]
-    self:SetStatusBarTexture(EUIDB.statusBarTexture)
+    self:SetStatusBarTexture(EUIDB.powerBarTex)
     if self.powerType and self.powerType == 0 then
       self:SetStatusBarColor(0, 0.5, 1)
     elseif self.powerType and self.powerType ~= 0 then
