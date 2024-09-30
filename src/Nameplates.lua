@@ -21,8 +21,8 @@ OnPlayerLogin(function()
 
     if isPersonal then
       if not frame.emsUISkinned then
-        healthTex = EUIDB.healthBarTex
-        powerTex = EUIDB.powerBarTex
+        local healthTex = EUIDB.healthBarTex
+        local powerTex = EUIDB.powerBarTex
         frame.healthBar:SetStatusBarTexture(healthTex)
         ClassNameplateManaBarFrame:SetStatusBarTexture(powerTex)
         ClassNameplateManaBarFrame.FeedbackFrame.BarTexture:SetTexture(powerTex)
