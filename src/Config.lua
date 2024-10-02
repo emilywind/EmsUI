@@ -364,7 +364,7 @@ local function setupEuiOptions()
     end,
     EUI_Skinning
   )
-  healthBarChooser:SetPoint("LEFT", darkenUi, "RIGHT", 300, 32)
+  healthBarChooser:SetPoint("LEFT", skinPlayerTargetFrame, "RIGHT", 300, 32)
 
   local powerBarChooser = newDropdown(
     "Power Bar Texture",
@@ -673,9 +673,9 @@ local function setupEuiOptions()
     ReloadUI()
   end)
 
-  SLASH_emsui1 = "/emsui"
+  SLASH_emsui1 = "/eui"
 
-  SlashCmdList["emsui"] = function()
+  SlashCmdList["eui"] = function()
     openEuiConfig()
   end
 
