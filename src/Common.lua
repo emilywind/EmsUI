@@ -38,6 +38,13 @@ EUI_TEXTURES = {
   },
 }
 
+DEFAULT_UI_STYLE = "Clean"
+
+UI_STYLES = {
+  "BetterBlizz",
+  "Clean",
+}
+
 FABLED_CLASS_CIRCLES_DATA = {
   class = {
 		path = [[Interface\AddOns\EmsUI\media\textures\class\]],
