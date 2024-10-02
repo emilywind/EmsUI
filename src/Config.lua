@@ -679,7 +679,7 @@ local function setupEuiOptions()
   -------------------
   -- Slash Command --
   -------------------
-  SLASH_emsui1 = "/eui"
+  SLASH_eui1 = "/eui"
 
   SlashCmdList["eui"] = function()
     openEuiConfig()
