@@ -75,7 +75,7 @@ OnPlayerLogin(function()
 
     if EUIDB.uiStyle == "RillyClean" then
       skinGameTooltip()
-      GameTooltip.NineSlice:SetBorderColor(0, 0, 0)
+      GameTooltip.NineSlice:SetBorderColor(0, 0, 0, 0)
     else
       GameTooltip.NineSlice:SetBorderColor(getFrameColour())
     end
