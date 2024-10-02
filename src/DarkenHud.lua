@@ -1,6 +1,11 @@
 OnPlayerLogin(function()
   if not EUIDB.darkenUi then return end
 
+  -- Minimap
+  local compass = MinimapCompassTexture
+  compass:SetDesaturated(true)
+  compass:SetVertexColor(getFrameColour())
+
   -- Alternate Power Bar
   for i, v in ipairs({
       PlayerFrameAlternateManaBarBorder,
