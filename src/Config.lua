@@ -268,16 +268,6 @@ local function setupEuiOptions()
     tooltipDropdown
   )
 
-  local hideAltPower = newCheckbox(
-    "Hide Alt Power (Requires reload)",
-    "Hides alt power bars on character frame such as combo points or holy power to clean it up, when preferring WeakAura or etc.",
-    EUIDB.hideAltPower,
-    function(self, value)
-      EUIDB.hideAltPower = value
-    end,
-    lootSpecDisplay
-  )
-
   local customFonts = newCheckbox(
     "Use Custom Fonts (Requires Reload)",
     "Use custom fonts with support for Cyrillic and other character sets",
@@ -285,7 +275,7 @@ local function setupEuiOptions()
     function(self, value)
       EUIDB.customFonts = value
     end,
-    hideAltPower
+    lootSpecDisplay
   )
 
   local fontChooser = newDropdown(
@@ -297,7 +287,7 @@ local function setupEuiOptions()
       EUIDB.font = value
     end
   )
-  fontChooser:SetPoint("LEFT", hideAltPower, "RIGHT", 300, 0)
+  fontChooser:SetPoint("LEFT", lootSpecDisplay, "RIGHT", 300, 0)
 
   local damageFont = newCheckbox(
     "Use Custom Damage Font",
@@ -319,48 +309,6 @@ local function setupEuiOptions()
     end
   )
   damageFontChooser:SetPoint("LEFT", damageFont, "RIGHT", 300, 0)
-
-  local hideHotkeys = newCheckbox(
-    "Hide Hotkeys on Action Bars",
-    "Hides keybinding text on your action bar buttons.",
-    EUIDB.hideHotkeys,
-    function(self, value)
-      EUIDB.hideHotkeys = value
-    end,
-    damageFont
-  )
-
-  local hideMacroText = newCheckbox(
-    "Hide Macro Text on Action Bars",
-    "Hides macro text on your action bar buttons.",
-    EUIDB.hideMacroText,
-    function(self, value)
-      EUIDB.hideMacroText = value
-    end,
-    hideHotkeys
-  )
-
-  local hideMicroMenu = newCheckbox(
-    'Hide Micro Menu',
-    'Hides the micro menu, preserving the queue status icon',
-    EUIDB.hideMicroMenu,
-    function(self, value)
-      EUIDB.hideMicroMenu = value
-      setMicroMenuVisibility()
-    end,
-    hideMacroText
-  )
-
-  local hideBagBar = newCheckbox(
-    'Hide Bag Bar',
-    'Hides the bag bar',
-    EUIDB.hideBagBar,
-    function(self, value)
-      EUIDB.hideBagBar = value
-      setBagBarVisibility()
-    end,
-    hideMicroMenu
-  )
 
   --------------
   -- Skinning --
@@ -438,6 +386,83 @@ local function setupEuiOptions()
     end,
     skinPlayerTargetFrame,
     EUI_Skinning
+  )
+
+  ------------
+  -- Hiding --
+  ------------
+  makePanel("EUI_Hiding", eui.panel, "Hiding")
+
+  local hidingText = EUI_Hiding:CreateFontString(nil, "ARTWORK", "GameFontNormalLarge")
+  hidingText:SetText("Hiding")
+  hidingText:SetPoint("TOPLEFT", 16, -16)
+
+  local hideHotkeys = newCheckbox(
+    "Hide Hotkeys on Action Bars",
+    "Hides keybinding text on your action bar buttons.",
+    EUIDB.hideHotkeys,
+    function(self, value)
+      EUIDB.hideHotkeys = value
+    end,
+    hidingText,
+    EUI_Hiding
+  )
+
+  local hideAltPower = newCheckbox(
+    "Hide Alt Power",
+    "Hides alt power bars on character frame such as combo points or holy power to clean it up, when preferring WeakAura or etc.",
+    EUIDB.hideAltPower,
+    function(self, value)
+      EUIDB.hideAltPower = value
+    end,
+    hideHotkeys,
+    EUI_Hiding
+  )
+
+  local hideMacroText = newCheckbox(
+    "Hide Macro Text on Action Bars",
+    "Hides macro text on your action bar buttons.",
+    EUIDB.hideMacroText,
+    function(self, value)
+      EUIDB.hideMacroText = value
+    end,
+    hideAltPower,
+    EUI_Hiding
+  )
+
+  local hideMicroMenu = newCheckbox(
+    'Hide Micro Menu',
+    'Hides the micro menu, preserving the queue status icon',
+    EUIDB.hideMicroMenu,
+    function(self, value)
+      EUIDB.hideMicroMenu = value
+      setMicroMenuVisibility()
+    end,
+    hideMacroText,
+    EUI_Hiding
+  )
+
+  local hideBagBar = newCheckbox(
+    'Hide Bag Bar',
+    'Hides the bag bar',
+    EUIDB.hideBagBar,
+    function(self, value)
+      EUIDB.hideBagBar = value
+      setBagBarVisibility()
+    end,
+    hideMicroMenu,
+    EUI_Hiding
+  )
+
+  local hideObjectiveTracker = newCheckbox(
+    "Hide Objective Tracker in Battlegrounds",
+    "",
+    EUIDB.hideObjectiveTracker,
+    function(self, value)
+      EUIDB.hideObjectiveTracker = value
+    end,
+    hideBagBar,
+    EUI_Hiding
   )
 
   ----------------
@@ -613,17 +638,6 @@ local function setupEuiOptions()
       EUIDB.arenaNumbers = value
     end,
     tabBinder,
-    EUI_PvP
-  )
-
-  local hideObjectiveTracker = newCheckbox(
-    "Hide Objective Tracker in Battlegrounds",
-    "",
-    EUIDB.hideObjectiveTracker,
-    function(self, value)
-      EUIDB.hideObjectiveTracker = value
-    end,
-    arenaNumbers,
     EUI_PvP
   )
 
