@@ -2,7 +2,7 @@ local function applyEuiButtonSkin(bu, icon, isLeaveButton)
   if not bu then return end
   if bu.euiClean then return bu.border end
 
-  if EUIDB.uiStyle == "RillyClean" then
+  if EUIDB.uiStyle == "Clean" then
     local ht = bu:GetHighlightTexture()
     ht:SetTexture(EUI_TEXTURES.buttons.normal)
     ht:SetAllPoints(bu)
@@ -20,7 +20,7 @@ local function applyEuiButtonSkin(bu, icon, isLeaveButton)
   if (isLeaveButton) then
     applyEuiBackdrop(nt, bu)
   else
-    if EUIDB.uiStyle == "RillyClean" then
+    if EUIDB.uiStyle == "Clean" then
       nt:SetTexture(EUI_TEXTURES.buttons.normal)
       nt:SetVertexColor(0, 0, 0)
 

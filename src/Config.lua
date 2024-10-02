@@ -2,13 +2,13 @@ local LSM = LibStub("LibSharedMedia-3.0")
 
 UI_STYLES = {
   "BetterBlizz",
-  "RillyClean",
+  "Clean",
 }
 
 -- This table defines the addon's default settings:
 local name, EUI = ...
 EUIDBDefaults = {
-  uiStyle = "BetterBlizz",
+  uiStyle = "Clean",
 
   hideHotkeys = true,
   hideMacroText = true,
@@ -167,11 +167,14 @@ local function setupEuiOptions()
     return check
   end
 
-  local function newDropdown(label, options, initialValue, width, onChange)
-    local dropdownText = eui.panel:CreateFontString(nil, "ARTWORK", "GameFontNormal")
+  local function newDropdown(label, options, initialValue, width, onChange, frame)
+    if not frame then
+      frame = eui.panel
+    end
+    local dropdownText = frame:CreateFontString(nil, "ARTWORK", "GameFontNormal")
     dropdownText:SetText(label)
 
-    local dropdown = CreateFrame("Frame", "RCUIDropdown" .. label, eui.panel, "UIDropdownMenuTemplate")
+    local dropdown = CreateFrame("Frame", "RCUIDropdown" .. label, frame, "UIDropdownMenuTemplate")
     _G[dropdown:GetName() .. "Middle"]:SetWidth(width)
     dropdown:SetPoint("TOPLEFT", dropdownText, "BOTTOMLEFT", 0, -8)
     local displayText = _G[dropdown:GetName() .. "Text"]
@@ -276,17 +279,6 @@ local function setupEuiOptions()
     tooltipDropdown
   )
 
-  local healthBarChooser = newDropdown(
-    "Health Bar Texture",
-    LSM_STATUSBAR,
-    EUIDB.healthBarTex,
-    200,
-    function(value)
-      EUIDB.healthBarTex = value
-    end
-  )
-  healthBarChooser:SetPoint("LEFT", lootSpecDisplay, "RIGHT", 300, 32)
-
   local hideAltPower = newCheckbox(
     "Hide Alt Power (Requires reload)",
     "Hides alt power bars on character frame such as combo points or holy power to clean it up, when preferring WeakAura or etc.",
@@ -361,6 +353,15 @@ local function setupEuiOptions()
     hideMicroMenu
   )
 
+  --------------
+  -- Skinning --
+  --------------
+  makePanel("EUI_Skinning", eui.panel, "Skinning")
+
+  local skinningText = EUI_Skinning:CreateFontString(nil, "ARTWORK", "GameFontNormal")
+  skinningText:SetText("Skinning")
+  skinningText:SetPoint("TOPLEFT", 16, -16)
+
   local darkenUi = newCheckbox(
     "Darken UI",
     "Make the UI darker",
@@ -368,7 +369,8 @@ local function setupEuiOptions()
     function(self, value)
       EUIDB.darkenUi = value
     end,
-    hideBagBar
+    skinningText,
+    EUI_Skinning
   )
 
   local skinPlayerTargetFrame = newCheckbox(
@@ -378,8 +380,33 @@ local function setupEuiOptions()
     function(self, value)
       EUIDB.skinPlayerTargetFrame = value
     end,
-    darkenUi
+    darkenUi,
+    EUI_Skinning
   )
+
+  local healthBarChooser = newDropdown(
+    "Health Bar Texture",
+    LSM_STATUSBAR,
+    EUIDB.healthBarTex,
+    200,
+    function(value)
+      EUIDB.healthBarTex = value
+    end,
+    EUI_Skinning
+  )
+  healthBarChooser:SetPoint("LEFT", skinPlayerTargetFrame, "RIGHT", 300, 32)
+
+  local powerBarChooser = newDropdown(
+    "Power Bar Texture",
+    LSM_STATUSBAR,
+    EUIDB.powerBarTex,
+    200,
+    function(value)
+      EUIDB.powerBarTex = value
+    end,
+    EUI_Skinning
+  )
+  powerBarChooser:SetPoint("TOP", healthBarChooser, "BOTTOM", 0, -64)
 
   ----------------
   -- Action Bars --

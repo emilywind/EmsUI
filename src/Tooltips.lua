@@ -73,7 +73,7 @@ OnPlayerLogin(function()
 	function onTooltipSetUnit(self)
     if self ~= GameTooltip then return end
 
-    if EUIDB.uiStyle == "RillyClean" then
+    if EUIDB.uiStyle == "Clean" then
       skinGameTooltip()
       GameTooltip.NineSlice:SetBorderColor(0, 0, 0)
     else

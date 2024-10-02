@@ -22,8 +22,6 @@ EUI_TEXTURES = {
 
   healthBar = TextureDir.."\\blizz-inspired.tga",
   powerBar = TextureDir.."\\blizz-inspired.tga",
-  newBlizzHealthBar = TextureDir.."\\new-blizz-health-bar.tga",
-  newBlizzPowerBar = TextureDir.."\\new-blizz-power-bar.tga",
 
   classCircles = TextureDir.."\\class\\fabled",
 
