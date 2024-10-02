@@ -220,6 +220,16 @@ local function setupEuiOptions()
     return slider
   end
 
+  local function addReloadButton(frame)
+    local reload = CreateFrame("Button", "reload", frame, "UIPanelButtonTemplate")
+    reload:SetPoint("BOTTOMRIGHT", frame, "BOTTOMRIGHT", -10, 10)
+    reload:SetSize(100,22)
+    reload:SetText("Reload")
+    reload:SetScript("OnClick", function()
+      ReloadUI()
+    end)
+  end
+
   local version = C_AddOns.GetAddOnMetadata("EmsUI", "Version")
 
   local euiTitle = eui.panel:CreateFontString(nil, "ARTWORK", "GameFontNormalLarge")
@@ -421,7 +431,7 @@ local function setupEuiOptions()
   )
 
   local hideAltPower = newCheckbox(
-    "Hide Alt Power",
+    "Hide Alt Power (Holy Power, Combo Points, etc under Player frame)",
     "Hides alt power bars on character frame such as combo points or holy power to clean it up, when preferring WeakAura or etc.",
     EUIDB.hideAltPower,
     function(self, value)
@@ -653,32 +663,36 @@ local function setupEuiOptions()
     EUI_PvP
   )
 
-  ------------------
-  --Reload Button --
-  ------------------
-  local reload = CreateFrame("Button", "resettodefaults", eui.panel, "UIPanelButtonTemplate")
-  reload:SetPoint("BOTTOMLEFT", eui.panel, "BOTTOMLEFT", 10, 10)
-  reload:SetSize(120,22)
-  reload:SetText("Reset to Defaults")
-  reload:SetScript("OnClick", function()
+  -------------------
+  --Reload Buttons --
+  -------------------
+  local resetDefaults = CreateFrame("Button", "resettodefaults", eui.panel, "UIPanelButtonTemplate")
+  resetDefaults:SetPoint("BOTTOMLEFT", eui.panel, "BOTTOMLEFT", 10, 10)
+  resetDefaults:SetSize(120,22)
+  resetDefaults:SetText("Reset to Defaults")
+  resetDefaults:SetScript("OnClick", function()
     resetToDefaults()
     ReloadUI()
   end)
 
-  local reload = CreateFrame("Button", "reload", eui.panel, "UIPanelButtonTemplate")
-  reload:SetPoint("BOTTOMRIGHT", eui.panel, "BOTTOMRIGHT", -10, 10)
-  reload:SetSize(100,22)
-  reload:SetText("Reload")
-  reload:SetScript("OnClick", function()
-    ReloadUI()
-  end)
+  addReloadButton(eui.panel)
+  addReloadButton(EUI_Skinning)
+  addReloadButton(EUI_Hiding)
+  addReloadButton(EUI_Nameplates)
+  addReloadButton(EUI_PvP)
 
+  -------------------
+  -- Slash Command --
+  -------------------
   SLASH_emsui1 = "/eui"
 
   SlashCmdList["eui"] = function()
     openEuiConfig()
   end
 
+  ----------------------
+  -- Game Menu Button --
+  ----------------------
   local function EmsUIGameMenuButton(self)
     self:AddSection()
     self:AddButton("Em's UI", openEuiConfig)
