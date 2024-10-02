@@ -33,6 +33,7 @@ EUIDBDefaults = {
   tooltipAnchor = "ANCHOR_CURSOR_LEFT",
 
   -- Nameplate Settings
+  skinNameplates = true,
   nameplateNameFontSize = 9,
   nameplateHideServerNames = true,
   nameplateNameLength = 20,
@@ -144,7 +145,7 @@ local function setupEuiOptions()
       frame = eui.panel
     end
 
-    local check = CreateFrame("CheckButton", "RCUICheck" .. label, frame, "InterfaceOptionsCheckButtonTemplate")
+    local check = CreateFrame("CheckButton", "EUICheck" .. label, frame, "InterfaceOptionsCheckButtonTemplate")
     check:SetScript("OnClick", function(self)
       local tick = self:GetChecked()
       onChange(self, tick and true or false)
@@ -174,7 +175,7 @@ local function setupEuiOptions()
     local dropdownText = frame:CreateFontString(nil, "ARTWORK", "GameFontNormal")
     dropdownText:SetText(label)
 
-    local dropdown = CreateFrame("Frame", "RCUIDropdown" .. label, frame, "UIDropdownMenuTemplate")
+    local dropdown = CreateFrame("Frame", "EUIDropdown" .. label, frame, "UIDropdownMenuTemplate")
     _G[dropdown:GetName() .. "Middle"]:SetWidth(width)
     dropdown:SetPoint("TOPLEFT", dropdownText, "BOTTOMLEFT", 0, -8)
     local displayText = _G[dropdown:GetName() .. "Text"]
@@ -408,17 +409,6 @@ local function setupEuiOptions()
     EUI_Hiding
   )
 
-  local hideAltPower = newCheckbox(
-    "Hide Alt Power",
-    "Hides alt power bars on character frame such as combo points or holy power to clean it up, when preferring WeakAura or etc.",
-    EUIDB.hideAltPower,
-    function(self, value)
-      EUIDB.hideAltPower = value
-    end,
-    hideHotkeys,
-    EUI_Hiding
-  )
-
   local hideMacroText = newCheckbox(
     "Hide Macro Text on Action Bars",
     "Hides macro text on your action bar buttons.",
@@ -426,7 +416,18 @@ local function setupEuiOptions()
     function(self, value)
       EUIDB.hideMacroText = value
     end,
-    hideAltPower,
+    hideHotkeys,
+    EUI_Hiding
+  )
+
+  local hideAltPower = newCheckbox(
+    "Hide Alt Power",
+    "Hides alt power bars on character frame such as combo points or holy power to clean it up, when preferring WeakAura or etc.",
+    EUIDB.hideAltPower,
+    function(self, value)
+      EUIDB.hideAltPower = value
+    end,
+    hideMacroText,
     EUI_Hiding
   )
 
@@ -438,7 +439,7 @@ local function setupEuiOptions()
       EUIDB.hideMicroMenu = value
       setMicroMenuVisibility()
     end,
-    hideMacroText,
+    hideAltPower,
     EUI_Hiding
   )
 
@@ -465,6 +466,28 @@ local function setupEuiOptions()
     EUI_Hiding
   )
 
+  local nameplateHideCastText = newCheckbox(
+    "Hide Nameplate Cast Text",
+    "Hide cast text from nameplate castbars.",
+    EUIDB.nameplateHideCastText,
+    function(self, value)
+      EUIDB.nameplateHideCastText = value
+    end,
+    hideObjectiveTracker,
+    EUI_Hiding
+  )
+
+  local nameplateHideFriendlyHealthbars = newCheckbox(
+    "Hide Friendly Nameplate Health Bars",
+    "Hide health bars for friendly players.",
+    EUIDB.nameplateHideFriendlyHealthbars,
+    function(self, value)
+      EUIDB.nameplateHideFriendlyHealthbars = value
+    end,
+    nameplateHideCastText,
+    EUI_Hiding
+  )
+
   ----------------
   -- Nameplates --
   ----------------
@@ -474,13 +497,24 @@ local function setupEuiOptions()
   nameplateText:SetText("Nameplates")
   nameplateText:SetPoint("TOPLEFT", 16, -16)
 
+  local skinNameplates = newCheckbox(
+    "Skin Nameplates",
+    "Skin Nameplates",
+    EUIDB.skinNameplates,
+    function(self, value)
+      EUIDB.skinNameplates = value
+    end,
+    nameplateText,
+    EUI_Nameplates
+  )
+
   local nameplateFontSlider = newSlider(
-    "RCUI_NameplateFontSlider",
+    "EUI_NameplateFontSlider",
     FONT_SIZE.." "..FONT_SIZE_TEMPLATE,
     "nameplateNameFontSize",
     6,
     20,
-    nameplateText,
+    skinNameplates,
     EUI_Nameplates
   )
 
@@ -563,28 +597,6 @@ local function setupEuiOptions()
       EUIDB.nameplateTotems = value
     end,
     nameplateShowHealth,
-    EUI_Nameplates
-  )
-
-  local nameplateHideCastText = newCheckbox(
-    "Hide Cast Text",
-    "Hide cast text from nameplate castbars.",
-    EUIDB.nameplateHideCastText,
-    function(self, value)
-      EUIDB.nameplateHideCastText = value
-    end,
-    nameplateTotems,
-    EUI_Nameplates
-  )
-
-  local nameplateHideFriendlyHealthbars = newCheckbox(
-    "Hide Friendly Health Bars",
-    "Hide health bars for friendly players.",
-    EUIDB.nameplateHideFriendlyHealthbars,
-    function(self, value)
-      EUIDB.nameplateHideFriendlyHealthbars = value
-    end,
-    nameplateHideCastText,
     EUI_Nameplates
   )
 

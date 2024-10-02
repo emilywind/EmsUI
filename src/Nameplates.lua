@@ -1,4 +1,6 @@
 OnPlayerLogin(function()
+  if not EUIDB.skinNameplates then return end
+
   local defaultFriendlyWidth, defaultFriendlyHeight = C_NamePlate.GetNamePlateFriendlySize()
 
   function SetFriendlyNameplateSize(isChange)
