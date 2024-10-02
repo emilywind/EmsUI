@@ -221,20 +221,9 @@ local function setupEuiOptions()
 
   local version = C_AddOns.GetAddOnMetadata("EmsUI", "Version")
 
-  local rcuiTitle = eui.panel:CreateFontString(nil, "ARTWORK", "GameFontNormalLarge")
-  rcuiTitle:SetPoint("TOPLEFT", 16, -16)
-  rcuiTitle:SetText("Em's UI ("..version..")")
-
-  local uiStyle, uiStyleDropdown = newDropdown(
-    "UI Style",
-    flatTableToWowDropdown(UI_STYLES),
-    EUIDB.uiStyle,
-    100,
-    function(value)
-      EUIDB.uiStyle = value
-    end
-  )
-  uiStyle:SetPoint("TOPLEFT", rcuiTitle, "BOTTOMLEFT", 0, -16)
+  local euiTitle = eui.panel:CreateFontString(nil, "ARTWORK", "GameFontNormalLarge")
+  euiTitle:SetPoint("TOPLEFT", 16, -16)
+  euiTitle:SetText("Em's UI ("..version..")")
 
   local portraitSelect, portraitDropdown = newDropdown(
     "Portrait Style",
@@ -245,7 +234,7 @@ local function setupEuiOptions()
       EUIDB.portraitStyle = value
     end
   )
-  portraitSelect:SetPoint("TOPLEFT", uiStyleDropdown, "BOTTOMLEFT", 0, -16)
+  portraitSelect:SetPoint("TOPLEFT", euiTitle, "BOTTOMLEFT", 0, -16)
 
   local classPortraitPack = newDropdown(
     "Class Portrait Pack",
@@ -331,6 +320,26 @@ local function setupEuiOptions()
   )
   damageFontChooser:SetPoint("LEFT", damageFont, "RIGHT", 300, 0)
 
+  local hideHotkeys = newCheckbox(
+    "Hide Hotkeys on Action Bars",
+    "Hides keybinding text on your action bar buttons.",
+    EUIDB.hideHotkeys,
+    function(self, value)
+      EUIDB.hideHotkeys = value
+    end,
+    damageFont
+  )
+
+  local hideMacroText = newCheckbox(
+    "Hide Macro Text on Action Bars",
+    "Hides macro text on your action bar buttons.",
+    EUIDB.hideMacroText,
+    function(self, value)
+      EUIDB.hideMacroText = value
+    end,
+    hideHotkeys
+  )
+
   local hideMicroMenu = newCheckbox(
     'Hide Micro Menu',
     'Hides the micro menu, preserving the queue status icon',
@@ -339,7 +348,7 @@ local function setupEuiOptions()
       EUIDB.hideMicroMenu = value
       setMicroMenuVisibility()
     end,
-    damageFont
+    hideMacroText
   )
 
   local hideBagBar = newCheckbox(
@@ -358,9 +367,21 @@ local function setupEuiOptions()
   --------------
   makePanel("EUI_Skinning", eui.panel, "Skinning")
 
-  local skinningText = EUI_Skinning:CreateFontString(nil, "ARTWORK", "GameFontNormal")
+  local skinningText = EUI_Skinning:CreateFontString(nil, "ARTWORK", "GameFontNormalLarge")
   skinningText:SetText("Skinning")
   skinningText:SetPoint("TOPLEFT", 16, -16)
+
+  local uiStyle, uiStyleDropdown = newDropdown(
+    "UI Style",
+    flatTableToWowDropdown(UI_STYLES),
+    EUIDB.uiStyle,
+    100,
+    function(value)
+      EUIDB.uiStyle = value
+    end,
+    EUI_Skinning
+  )
+  uiStyle:SetPoint("TOPLEFT", skinningText, "BOTTOMLEFT", 0, -16)
 
   local darkenUi = newCheckbox(
     "Darken UI",
@@ -369,7 +390,7 @@ local function setupEuiOptions()
     function(self, value)
       EUIDB.darkenUi = value
     end,
-    skinningText,
+    uiStyleDropdown,
     EUI_Skinning
   )
 
@@ -394,7 +415,7 @@ local function setupEuiOptions()
     end,
     EUI_Skinning
   )
-  healthBarChooser:SetPoint("LEFT", skinPlayerTargetFrame, "RIGHT", 300, 32)
+  healthBarChooser:SetPoint("LEFT", darkenUi, "RIGHT", 300, 32)
 
   local powerBarChooser = newDropdown(
     "Power Bar Texture",
@@ -408,15 +429,6 @@ local function setupEuiOptions()
   )
   powerBarChooser:SetPoint("TOP", healthBarChooser, "BOTTOM", 0, -64)
 
-  ----------------
-  -- Action Bars --
-  ----------------
-  makePanel("EUI_ActionBars", eui.panel, "Action Bars")
-
-  local actionbarText = EUI_ActionBars:CreateFontString(nil, "ARTWORK", "GameFontNormal")
-  actionbarText:SetText("Action Bars")
-  actionbarText:SetPoint("TOPLEFT", 16, -16)
-
   local skinActionBars = newCheckbox(
     "Skin Action Bars",
     "Applies various skins to action bars.",
@@ -424,30 +436,8 @@ local function setupEuiOptions()
     function(self, value)
       EUIDB.skinActionBars = value
     end,
-    actionbarText,
-    EUI_ActionBars
-  )
-
-  local hideHotkeys = newCheckbox(
-    "Hide Hotkeys on Action Bars",
-    "Hides keybinding text on your action bar buttons.",
-    EUIDB.hideHotkeys,
-    function(self, value)
-      EUIDB.hideHotkeys = value
-    end,
-    skinActionBars,
-    EUI_ActionBars
-  )
-
-  local hideMacroText = newCheckbox(
-    "Hide Macro Text on Action Bars",
-    "Hides macro text on your action bar buttons.",
-    EUIDB.hideMacroText,
-    function(self, value)
-      EUIDB.hideMacroText = value
-    end,
-    hideHotkeys,
-    EUI_ActionBars
+    skinPlayerTargetFrame,
+    EUI_Skinning
   )
 
   ----------------
@@ -455,7 +445,7 @@ local function setupEuiOptions()
   ----------------
   makePanel("EUI_Nameplates", eui.panel, "Nameplates")
 
-  local nameplateText = EUI_Nameplates:CreateFontString(nil, "ARTWORK", "GameFontNormal")
+  local nameplateText = EUI_Nameplates:CreateFontString(nil, "ARTWORK", "GameFontNormalLarge")
   nameplateText:SetText("Nameplates")
   nameplateText:SetPoint("TOPLEFT", 16, -16)
 
@@ -578,7 +568,7 @@ local function setupEuiOptions()
   ----------------
   makePanel("EUI_PvP", eui.panel, "PvP")
 
-  local pvpText = EUI_PvP:CreateFontString(nil, "ARTWORK", "GameFontNormal")
+  local pvpText = EUI_PvP:CreateFontString(nil, "ARTWORK", "GameFontNormalLarge")
   pvpText:SetText("PvP")
   pvpText:SetPoint("TOPLEFT", 16, -16)
 

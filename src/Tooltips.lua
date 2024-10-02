@@ -12,7 +12,7 @@ local function getUnitHealthColor(unit)
 	return r, g, b
 end
 
-function skinGameTooltip()
+local function skinNineSlice()
   local ns = GameTooltip.NineSlice
 
   local nsPoints = {
@@ -30,6 +30,16 @@ function skinGameTooltip()
   for _, nsPoint in pairs(nsPoints) do
     ns[nsPoint]:SetTexture(SQUARE_TEXTURE)
   end
+end
+
+local function skinGameTooltip()
+  if EUIDB.uiStyle == "Clean" then
+    skinNineSlice()
+    GameTooltip.NineSlice:SetBorderColor(0, 0, 0, 0)
+  else
+    GameTooltip.NineSlice:SetBorderColor(getFrameColour())
+  end
+  GameTooltip.NineSlice:SetCenterColor(0.08, 0.08, 0.08)
 end
 
 local colours = {
@@ -69,18 +79,13 @@ OnPlayerLogin(function()
 	bar:SetPoint("BOTTOM", 0, 7)
 	bar:SetHeight(10)
 
+  skinGameTooltip()
+
 	-- Class colours
-	function onTooltipSetUnit(self)
+	local function onTooltipSetUnit(self)
     if self ~= GameTooltip then return end
 
-    if EUIDB.uiStyle == "Clean" then
-      skinGameTooltip()
-      GameTooltip.NineSlice:SetBorderColor(0, 0, 0, 0)
-    else
-      GameTooltip.NineSlice:SetBorderColor(getFrameColour())
-    end
-    GameTooltip.NineSlice:SetCenterColor(0.08, 0.08, 0.08)
-
+    skinGameTooltip()
 
     local tooltip = GameTooltip
 		local unit = select(2, tooltip:GetUnit())
