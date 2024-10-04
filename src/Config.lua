@@ -3,7 +3,7 @@ local LSM = LibStub("LibSharedMedia-3.0")
 -- This table defines the addon's default settings:
 local name, EUI = ...
 EUIDBDefaults = {
-  uiStyle = DEFAULT_UI_STYLE,
+  uiStyle = CLEAN_UI,
 
   hideHotkeys = true,
   hideMacroText = true,

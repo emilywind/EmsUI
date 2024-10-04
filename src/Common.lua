@@ -38,11 +38,12 @@ EUI_TEXTURES = {
   },
 }
 
-DEFAULT_UI_STYLE = "Clean"
+CLEAN_UI = "Clean"
+BETTER_BLIZZ_UI = "BetterBlizz"
 
 UI_STYLES = {
-  "BetterBlizz",
-  "Clean",
+  BETTER_BLIZZ_UI,
+  CLEAN_UI,
 }
 
 FABLED_CLASS_CIRCLES_DATA = {

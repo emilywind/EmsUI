@@ -33,7 +33,7 @@ local function skinNineSlice()
 end
 
 local function skinGameTooltip()
-  if EUIDB.uiStyle == DEFAULT_UI_STYLE then
+  if EUIDB.uiStyle == CLEAN_UI then
     skinNineSlice()
     GameTooltip.NineSlice:SetBorderColor(0, 0, 0, 0)
   else
