@@ -99,17 +99,22 @@ OnPlayerLogin(function()
 		local r, g, b = getUnitHealthColor(unit)
 
 		if UnitIsPlayer(unit) then
-			local className, class = UnitClass(unit)
+      local level = UnitLevel(unit)
 			local race = UnitRace(unit)
 
+      -- Class coloured name
 			local text = GameTooltipTextLeft1:GetText()
 			GameTooltipTextLeft1:SetFormattedText("|cff%02x%02x%02x%s|r", r * 255, g * 255, b * 255, text:match("|cff\x\x\x\x\x\x(.+)|r") or text)
 
+      local playerInfoLine = GameTooltipTextLeft2
 			local guildName, guildRank = GetGuildInfo(unit)
 			if (guildName) then
+        playerInfoLine = GameTooltipTextLeft3
 				guildLine = GameTooltipTextLeft2
 				guildLine:SetText('|cff' .. colours.guildName .. guildName .. '|r' .. '|cff' .. colours.guildRank .. ' (' .. guildRank .. ')|r')
 			end
+
+      playerInfoLine:SetText('Level ' .. level .. ' ' .. race)
 		end
 
 		local family = UnitCreatureFamily(unit)
